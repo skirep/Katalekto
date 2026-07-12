@@ -1,0 +1,97 @@
+[
+  {
+    "id": "words-easy-1",
+    "title": "Paraules fàcils - Animals",
+    "description": "Llegeix noms d'animals",
+    "type": "words",
+    "difficulty": "easy",
+    "items": [
+      { "id": "w01", "text": "gat", "type": "words", "difficulty": "easy" },
+      { "id": "w02", "text": "gos", "type": "words", "difficulty": "easy" },
+      { "id": "w03", "text": "peix", "type": "words", "difficulty": "easy" },
+      { "id": "w04", "text": "oca", "type": "words", "difficulty": "easy" },
+      { "id": "w05", "text": "lleó", "type": "words", "difficulty": "easy" },
+      { "id": "w06", "text": "rata", "type": "words", "difficulty": "easy" },
+      { "id": "w07", "text": "elefant", "type": "words", "difficulty": "easy" },
+      { "id": "w08", "text": "porc", "type": "words", "difficulty": "easy" },
+      { "id": "w09", "text": "vaca", "type": "words", "difficulty": "easy" },
+      { "id": "w10", "text": "ovella", "type": "words", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "words-easy-2",
+    "title": "Paraules fàcils - Colors",
+    "description": "Llegeix noms de colors",
+    "type": "words",
+    "difficulty": "easy",
+    "items": [
+      { "id": "w11", "text": "blau", "type": "words", "difficulty": "easy" },
+      { "id": "w12", "text": "verd", "type": "words", "difficulty": "easy" },
+      { "id": "w13", "text": "roig", "type": "words", "difficulty": "easy" },
+      { "id": "w14", "text": "groc", "type": "words", "difficulty": "easy" },
+      { "id": "w15", "text": "negre", "type": "words", "difficulty": "easy" },
+      { "id": "w16", "text": "blanc", "type": "words", "difficulty": "easy" },
+      { "id": "w17", "text": "rosa", "type": "words", "difficulty": "easy" },
+      { "id": "w18", "text": "lila", "type": "words", "difficulty": "easy" },
+      { "id": "w19", "text": "taronja", "type": "words", "difficulty": "easy" },
+      { "id": "w20", "text": "marró", "type": "words", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "words-easy-3",
+    "title": "Paraules fàcils - Família",
+    "description": "Llegeix paraules de la família",
+    "type": "words",
+    "difficulty": "easy",
+    "items": [
+      { "id": "w21", "text": "mama", "type": "words", "difficulty": "easy" },
+      { "id": "w22", "text": "papa", "type": "words", "difficulty": "easy" },
+      { "id": "w23", "text": "avi", "type": "words", "difficulty": "easy" },
+      { "id": "w24", "text": "àvia", "type": "words", "difficulty": "easy" },
+      { "id": "w25", "text": "germà", "type": "words", "difficulty": "easy" },
+      { "id": "w26", "text": "germana", "type": "words", "difficulty": "easy" },
+      { "id": "w27", "text": "oncle", "type": "words", "difficulty": "easy" },
+      { "id": "w28", "text": "tieta", "type": "words", "difficulty": "easy" },
+      { "id": "w29", "text": "cosí", "type": "words", "difficulty": "easy" },
+      { "id": "w30", "text": "bebè", "type": "words", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "words-medium-1",
+    "title": "Paraules mitjanes - Escola",
+    "description": "Llegeix paraules de l'escola",
+    "type": "words",
+    "difficulty": "medium",
+    "items": [
+      { "id": "w31", "text": "llibre", "type": "words", "difficulty": "medium" },
+      { "id": "w32", "text": "llapis", "type": "words", "difficulty": "medium" },
+      { "id": "w33", "text": "mestre", "type": "words", "difficulty": "medium" },
+      { "id": "w34", "text": "classe", "type": "words", "difficulty": "medium" },
+      { "id": "w35", "text": "pissarra", "type": "words", "difficulty": "medium" },
+      { "id": "w36", "text": "motxilla", "type": "words", "difficulty": "medium" },
+      { "id": "w37", "text": "goma", "type": "words", "difficulty": "medium" },
+      { "id": "w38", "text": "regla", "type": "words", "difficulty": "medium" },
+      { "id": "w39", "text": "tisores", "type": "words", "difficulty": "medium" },
+      { "id": "w40", "text": "pinzell", "type": "words", "difficulty": "medium" }
+    ]
+  },
+  {
+    "id": "words-hard-1",
+    "title": "Paraules difícils",
+    "description": "Paraules més llargues i complexes",
+    "type": "words",
+    "difficulty": "hard",
+    "items": [
+      { "id": "w41", "text": "extraordinari", "type": "words", "difficulty": "hard" },
+      { "id": "w42", "text": "responsabilitat", "type": "words", "difficulty": "hard" },
+      { "id": "w43", "text": "circumferència", "type": "words", "difficulty": "hard" },
+      { "id": "w44", "text": "constitució", "type": "words", "difficulty": "hard" },
+      { "id": "w45", "text": "independència", "type": "words", "difficulty": "hard" },
+      { "id": "w46", "text": "biodiversitat", "type": "words", "difficulty": "hard" },
+      { "id": "w47", "text": "meteorologia", "type": "words", "difficulty": "hard" },
+      { "id": "w48", "text": "quadrilàter", "type": "words", "difficulty": "hard" },
+      { "id": "w49", "text": "microscòpic", "type": "words", "difficulty": "hard" },
+      { "id": "w50", "text": "esternocleidomastoïdal", "type": "words", "difficulty": "hard" }
+    ]
+  }
+]

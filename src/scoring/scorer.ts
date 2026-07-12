@@ -1,0 +1,105 @@
+import type { ErrorType, ReadingResult } from '../models';
+
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z\s]/g, '')
+    .trim();
+}
+
+function levenshtein(a: string, b: string): number {
+  const m = a.length;
+  const n = b.length;
+  const dp: number[][] = Array.from({ length: m + 1 }, (_, i) =>
+    Array.from({ length: n + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0))
+  );
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (a[i - 1] === b[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+      }
+    }
+  }
+  return dp[m][n];
+}
+
+export function calculateSimilarity(expected: string, recognized: string): number {
+  const a = normalize(expected);
+  const b = normalize(recognized);
+  if (a === b) return 1;
+  if (!a || !b) return 0;
+  const maxLen = Math.max(a.length, b.length);
+  const distance = levenshtein(a, b);
+  return Math.max(0, 1 - distance / maxLen);
+}
+
+export function classifyResult(similarity: number): ReadingResult {
+  if (similarity >= 0.85) return 'correct';
+  if (similarity >= 0.6) return 'almost';
+  return 'incorrect';
+}
+
+export function detectErrors(expected: string, recognized: string): ErrorType[] {
+  const errors: ErrorType[] = [];
+  const a = normalize(expected);
+  const b = normalize(recognized);
+
+  if (!a || !b) return errors;
+
+  // b/d confusion
+  const swapBD = (s: string) => s.replace(/b/g, 'X').replace(/d/g, 'b').replace(/X/g, 'd');
+  if (normalize(swapBD(a)) === b || normalize(swapBD(b)) === a) {
+    errors.push('b_d_confusion');
+  }
+
+  // p/q confusion
+  const swapPQ = (s: string) => s.replace(/p/g, 'X').replace(/q/g, 'p').replace(/X/g, 'q');
+  if (normalize(swapPQ(a)) === b || normalize(swapPQ(b)) === a) {
+    errors.push('p_q_confusion');
+  }
+
+  // omission: recognized is shorter than expected
+  if (b.length < a.length * 0.8) {
+    errors.push('omission');
+  }
+
+  // addition: recognized is longer than expected
+  if (b.length > a.length * 1.2) {
+    errors.push('addition');
+  }
+
+  // repetition: recognized has repeated words
+  const words = b.split(/\s+/);
+  const uniqueWords = new Set(words);
+  if (uniqueWords.size < words.length * 0.8) {
+    errors.push('repetition');
+  }
+
+  // inversion: letters in wrong order
+  const aChars = a.replace(/\s/g, '');
+  const bChars = b.replace(/\s/g, '');
+  if (aChars.length === bChars.length && aChars !== bChars) {
+    const sorted = (s: string) => s.split('').sort().join('');
+    if (sorted(aChars) === sorted(bChars)) {
+      errors.push('inversion');
+    }
+  }
+
+  return errors;
+}
+
+export function calculateScore(correctItems: number, totalItems: number): number {
+  if (totalItems === 0) return 0;
+  return Math.round((correctItems / totalItems) * 100);
+}
+
+export function calculateXpGained(score: number, difficulty: string, timeMs: number): number {
+  const base = difficulty === 'easy' ? 10 : difficulty === 'medium' ? 20 : 35;
+  const scoreBonus = Math.round((score / 100) * base);
+  const speedBonus = timeMs < 3000 ? 5 : timeMs < 5000 ? 2 : 0;
+  return scoreBonus + speedBonus;
+}

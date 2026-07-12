@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border-radius: var(--radius-lg);
+  border: 2px solid #fed7aa;
+}
+
+.fire {
+  font-size: 40px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.current {
+  font-size: 36px;
+  font-weight: 800;
+  color: #ea580c;
+  line-height: 1;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.best {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  background: rgba(255,255,255,0.6);
+  padding: 4px 10px;
+  border-radius: 99px;
+}

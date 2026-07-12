@@ -1,0 +1,42 @@
+.page {
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.streakCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 2px solid #fed7aa;
+}
+
+.streakFire {
+  font-size: 40px;
+}
+
+.streakNum {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ea580c;
+}
+
+.streakBest {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}

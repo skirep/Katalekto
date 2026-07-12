@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sent-easy-1",
+    "title": "Frases fàcils",
+    "description": "Frases curtes i senzilles",
+    "type": "sentences",
+    "difficulty": "easy",
+    "items": [
+      { "id": "f01", "text": "El gat és gran.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f02", "text": "La mama cuina.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f03", "text": "El nen juga.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f04", "text": "La nena canta.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f05", "text": "El sol brilla.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f06", "text": "El gos bota.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f07", "text": "La pilota és roja.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f08", "text": "L'ocell vola.", "type": "sentences", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "sent-medium-1",
+    "title": "Frases mitjanes",
+    "description": "Frases amb més paraules",
+    "type": "sentences",
+    "difficulty": "medium",
+    "items": [
+      { "id": "f09", "text": "El gat dorm sobre la cadira.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f10", "text": "La mare porta el pa a casa.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f11", "text": "Els nens juguen al parc.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f12", "text": "Avui fa molt bon temps.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f13", "text": "El gos menja les galetes.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f14", "text": "La lluna brilla a la nit.", "type": "sentences", "difficulty": "medium" }
+    ]
+  },
+  {
+    "id": "sent-hard-1",
+    "title": "Frases difícils",
+    "description": "Frases llargues i complexes",
+    "type": "sentences",
+    "difficulty": "hard",
+    "items": [
+      { "id": "f15", "text": "El noi i la noia van anar junts a la biblioteca del barri.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f16", "text": "La professora va explicar una lliçó molt interessant sobre els animals.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f17", "text": "Quan plou, els carrerons de la ciutat es tornen molt lliscadissos.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f18", "text": "En Pere i la Maria estudien molt per treure bones notes a l'escola.", "type": "sentences", "difficulty": "hard" }
+    ]
+  }
+]
