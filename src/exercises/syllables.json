@@ -1,0 +1,74 @@
+[
+  {
+    "id": "syl-easy-1",
+    "title": "Síl·labes simples - Vocal + Consonant",
+    "description": "Practica les síl·labes bàsiques",
+    "type": "syllables",
+    "difficulty": "easy",
+    "items": [
+      { "id": "s01", "text": "ma", "type": "syllables", "difficulty": "easy" },
+      { "id": "s02", "text": "me", "type": "syllables", "difficulty": "easy" },
+      { "id": "s03", "text": "mi", "type": "syllables", "difficulty": "easy" },
+      { "id": "s04", "text": "mo", "type": "syllables", "difficulty": "easy" },
+      { "id": "s05", "text": "mu", "type": "syllables", "difficulty": "easy" },
+      { "id": "s06", "text": "pa", "type": "syllables", "difficulty": "easy" },
+      { "id": "s07", "text": "pe", "type": "syllables", "difficulty": "easy" },
+      { "id": "s08", "text": "pi", "type": "syllables", "difficulty": "easy" },
+      { "id": "s09", "text": "po", "type": "syllables", "difficulty": "easy" },
+      { "id": "s10", "text": "pu", "type": "syllables", "difficulty": "easy" },
+      { "id": "s11", "text": "ta", "type": "syllables", "difficulty": "easy" },
+      { "id": "s12", "text": "te", "type": "syllables", "difficulty": "easy" },
+      { "id": "s13", "text": "ti", "type": "syllables", "difficulty": "easy" },
+      { "id": "s14", "text": "to", "type": "syllables", "difficulty": "easy" },
+      { "id": "s15", "text": "tu", "type": "syllables", "difficulty": "easy" },
+      { "id": "s16", "text": "sa", "type": "syllables", "difficulty": "easy" },
+      { "id": "s17", "text": "se", "type": "syllables", "difficulty": "easy" },
+      { "id": "s18", "text": "si", "type": "syllables", "difficulty": "easy" },
+      { "id": "s19", "text": "so", "type": "syllables", "difficulty": "easy" },
+      { "id": "s20", "text": "su", "type": "syllables", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "syl-easy-2",
+    "title": "Síl·labes b/d",
+    "description": "Practica les síl·labes amb b i d",
+    "type": "syllables",
+    "difficulty": "easy",
+    "items": [
+      { "id": "s21", "text": "ba", "type": "syllables", "difficulty": "easy" },
+      { "id": "s22", "text": "be", "type": "syllables", "difficulty": "easy" },
+      { "id": "s23", "text": "bi", "type": "syllables", "difficulty": "easy" },
+      { "id": "s24", "text": "bo", "type": "syllables", "difficulty": "easy" },
+      { "id": "s25", "text": "bu", "type": "syllables", "difficulty": "easy" },
+      { "id": "s26", "text": "da", "type": "syllables", "difficulty": "easy" },
+      { "id": "s27", "text": "de", "type": "syllables", "difficulty": "easy" },
+      { "id": "s28", "text": "di", "type": "syllables", "difficulty": "easy" },
+      { "id": "s29", "text": "do", "type": "syllables", "difficulty": "easy" },
+      { "id": "s30", "text": "du", "type": "syllables", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "syl-medium-1",
+    "title": "Síl·labes trabades",
+    "description": "Practica les síl·labes amb dues consonants",
+    "type": "syllables",
+    "difficulty": "medium",
+    "items": [
+      { "id": "s31", "text": "bra", "type": "syllables", "difficulty": "medium" },
+      { "id": "s32", "text": "bre", "type": "syllables", "difficulty": "medium" },
+      { "id": "s33", "text": "bri", "type": "syllables", "difficulty": "medium" },
+      { "id": "s34", "text": "bro", "type": "syllables", "difficulty": "medium" },
+      { "id": "s35", "text": "bru", "type": "syllables", "difficulty": "medium" },
+      { "id": "s36", "text": "tra", "type": "syllables", "difficulty": "medium" },
+      { "id": "s37", "text": "tre", "type": "syllables", "difficulty": "medium" },
+      { "id": "s38", "text": "tri", "type": "syllables", "difficulty": "medium" },
+      { "id": "s39", "text": "tro", "type": "syllables", "difficulty": "medium" },
+      { "id": "s40", "text": "tru", "type": "syllables", "difficulty": "medium" },
+      { "id": "s41", "text": "pla", "type": "syllables", "difficulty": "medium" },
+      { "id": "s42", "text": "ple", "type": "syllables", "difficulty": "medium" },
+      { "id": "s43", "text": "pli", "type": "syllables", "difficulty": "medium" },
+      { "id": "s44", "text": "plo", "type": "syllables", "difficulty": "medium" },
+      { "id": "s45", "text": "plu", "type": "syllables", "difficulty": "medium" }
+    ]
+  }
+]

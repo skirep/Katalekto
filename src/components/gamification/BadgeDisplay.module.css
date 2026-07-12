@@ -1,0 +1,50 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: transform 0.15s;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+}
+
+.earned {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #f59e0b;
+  box-shadow: var(--shadow-sm);
+}
+
+.locked {
+  background: var(--color-border);
+  border: 2px solid transparent;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.icon {
+  font-size: 32px;
+}
+
+.name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.condition {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  line-height: 1.2;
+}

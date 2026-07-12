@@ -1,0 +1,54 @@
+[
+  {
+    "id": "pseudo-easy-1",
+    "title": "Pseudoparaules fàcils",
+    "description": "Llegeix paraules inventades amb sons bàsics",
+    "type": "pseudowords",
+    "difficulty": "easy",
+    "items": [
+      { "id": "p01", "text": "mato", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p02", "text": "peli", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p03", "text": "dasu", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p04", "text": "tofe", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p05", "text": "biru", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p06", "text": "sona", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p07", "text": "rupe", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p08", "text": "fimo", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p09", "text": "lati", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p10", "text": "neso", "type": "pseudowords", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "pseudo-medium-1",
+    "title": "Pseudoparaules mitjanes",
+    "description": "Pseudoparaules de tres síl·labes",
+    "type": "pseudowords",
+    "difficulty": "medium",
+    "items": [
+      { "id": "p11", "text": "molipa", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p12", "text": "tesura", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p13", "text": "bimedo", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p14", "text": "davelo", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p15", "text": "punori", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p16", "text": "soritam", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p17", "text": "relipot", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p18", "text": "fanobis", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p19", "text": "tarimep", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p20", "text": "gositun", "type": "pseudowords", "difficulty": "medium" }
+    ]
+  },
+  {
+    "id": "pseudo-hard-1",
+    "title": "Pseudoparaules difícils",
+    "description": "Pseudoparaules llargues i complexes",
+    "type": "pseudowords",
+    "difficulty": "hard",
+    "items": [
+      { "id": "p21", "text": "bravitolen", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p22", "text": "prisacolem", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p23", "text": "drotisaber", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p24", "text": "fraguimoper", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p25", "text": "tratisolber", "type": "pseudowords", "difficulty": "hard" }
+    ]
+  }
+]
