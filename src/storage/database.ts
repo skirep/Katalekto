@@ -31,6 +31,21 @@ export class LletrixDatabase extends Dexie {
     });
     this.version(2).stores({
       profiles: 'id, userId, name, createdAt',
+      profileStats: 'profileId, level, experience',
+      sessions: 'id, profileId, type, completedAt, startedAt',
+      badges: '[profileId+badgeId], profileId',
+      dailyGoals: '[profileId+date], profileId',
+      streaks: 'profileId',
+      settings: 'profileId',
+    });
+    this.version(3).stores({
+      profiles: 'id, userId, name, createdAt',
+      profileStats: 'profileId, level, experience',
+      sessions: 'id, profileId, type, completedAt, startedAt',
+      badges: '[profileId+badgeId], profileId',
+      dailyGoals: '[profileId+date], profileId',
+      streaks: 'profileId',
+      settings: 'profileId',
     });
   }
 }

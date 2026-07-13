@@ -17,9 +17,20 @@ interface ExerciseRunnerProps {
 }
 
 const RESULT_DISPLAY_MS = 1200;
+const HARD_SYLLABLE_BASE_ITEMS = 50;
 
 export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) {
-  const [items] = useState(() => shuffleItems(set.items));
+  const isHardSyllableMode = set.type === 'syllables' && set.difficulty === 'hard';
+  const [items, setItems] = useState(() => {
+    const shuffled = shuffleItems(set.items);
+    if (!isHardSyllableMode || shuffled.length === 0) {
+      return shuffled;
+    }
+    return Array.from({ length: HARD_SYLLABLE_BASE_ITEMS }, (_, idx) => {
+      const source = shuffled[idx % shuffled.length];
+      return { ...source, id: `${source.id}-run-${idx + 1}` };
+    });
+  });
   const [index, setIndex] = useState(0);
   const [attempts, setAttempts] = useState<ExerciseAttempt[]>([]);
   const [lastResult, setLastResult] = useState<{ result: ReadingResult; recognized: string; similarity: number } | null>(null);
@@ -32,6 +43,8 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
   const nextTimeoutRef = useRef<number | null>(null);
   const attemptsRef = useRef<ExerciseAttempt[]>([]);
   const completingRef = useRef(false);
+  const phaseRef = useRef<'ready' | 'listening' | 'result' | 'done'>('ready');
+  const transcriptRef = useRef('');
 
   const { settings } = useSettings(profile.id);
   const { transcript, isListening, error, isSupported, start, stop, setTranscript } = useSpeechRecognition();
@@ -44,6 +57,35 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
       timer.current = null;
     }
   }, []);
+
+  const evaluateCurrentAttempt = useCallback((recognizedText: string) => {
+    if (phaseRef.current !== 'listening' || !currentItem) return;
+    clearTimer(readTimeoutRef);
+    const timeMs = Date.now() - startTimeRef.current;
+    const similarity = calculateSimilarity(currentItem.text, recognizedText);
+    const result = classifyResult(similarity);
+    const errorTypes = detectErrors(currentItem.text, recognizedText);
+    setLastResult({ result, recognized: recognizedText, similarity });
+    const attempt: ExerciseAttempt = {
+      itemId: currentItem.id,
+      expected: currentItem.text,
+      recognized: recognizedText,
+      result,
+      similarity,
+      errorTypes,
+      timeMs,
+      timestamp: Date.now(),
+    };
+    setAttempts((prev) => {
+      const updated = [...prev, attempt];
+      attemptsRef.current = updated;
+      return updated;
+    });
+    if (isHardSyllableMode && result !== 'correct') {
+      setItems((prev) => [...prev, { ...currentItem, id: `${currentItem.id}-retry-${Date.now()}` }]);
+    }
+    setPhase('result');
+  }, [currentItem, clearTimer, isHardSyllableMode]);
 
   const completeSession = useCallback(async (finalAttempts: ExerciseAttempt[]) => {
     if (completingRef.current) return;
@@ -80,8 +122,21 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
   }, [attempts]);
 
   useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
+
+  useEffect(() => {
+    transcriptRef.current = transcript;
+  }, [transcript]);
+
+  useEffect(() => {
+    if (items.length === 0) {
+      setPhase('done');
+      return;
+    }
     if (phase !== 'ready') return;
     setTranscript('');
+    transcriptRef.current = '';
     setLastResult(null);
     const durationMs = Math.max(1000, Math.round(settings.speed * 1000));
     startTimeRef.current = Date.now();
@@ -92,12 +147,13 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     readTimeoutRef.current = window.setTimeout(() => {
       stop();
       setTimeLeftMs(0);
+      evaluateCurrentAttempt(transcriptRef.current);
     }, durationMs);
 
     return () => {
       clearTimer(readTimeoutRef);
     };
-  }, [phase, settings.speed, start, stop, setTranscript, clearTimer]);
+  }, [phase, settings.speed, start, stop, setTranscript, clearTimer, evaluateCurrentAttempt, items.length]);
 
   useEffect(() => {
     if (phase !== 'listening') return;
@@ -110,30 +166,9 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
   // When recognition ends automatically, evaluate and transition to result phase
   useEffect(() => {
     if (!isListening && phase === 'listening') {
-      clearTimer(readTimeoutRef);
-      const timeMs = Date.now() - startTimeRef.current;
-      const similarity = calculateSimilarity(currentItem.text, transcript);
-      const result = classifyResult(similarity);
-      const errorTypes = detectErrors(currentItem.text, transcript);
-      setLastResult({ result, recognized: transcript, similarity });
-      const attempt: ExerciseAttempt = {
-        itemId: currentItem.id,
-        expected: currentItem.text,
-        recognized: transcript,
-        result,
-        similarity,
-        errorTypes,
-        timeMs,
-        timestamp: Date.now(),
-      };
-      setAttempts((prev) => {
-        const updated = [...prev, attempt];
-        attemptsRef.current = updated;
-        return updated;
-      });
-      setPhase('result');
+      evaluateCurrentAttempt(transcriptRef.current);
     }
-  }, [isListening, transcript, phase, currentItem, clearTimer]);
+  }, [isListening, phase, evaluateCurrentAttempt]);
 
   useEffect(() => {
     if (phase !== 'result') return;
