@@ -212,6 +212,16 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     );
   }
 
+  if (!currentItem) {
+    return (
+      <div className={`page ${styles.done}`}>
+        <Button size="lg" onClick={onFinish}>
+          🏠 Tornar a l&apos;inici
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className={`page ${styles.runner}`}>
       {/* Progress */}
