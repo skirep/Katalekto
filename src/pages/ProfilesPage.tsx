@@ -24,7 +24,7 @@ export function ProfilesPage({ onSelect }: ProfilesPageProps) {
     <div className={styles.page}>
       <div className={styles.header}>
         <span className={styles.logo}>📖</span>
-        <h1 className={styles.title}>Katalekto</h1>
+        <h1 className={styles.title}>Lletrix</h1>
         <p className={styles.subtitle}>Qui llegeix avui?</p>
       </div>
 
@@ -48,7 +48,7 @@ export function ProfilesPage({ onSelect }: ProfilesPageProps) {
           {profiles.length === 0 && (
             <div className={styles.empty}>
               <span className={styles.emptyIcon}>👋</span>
-              <p>Benvingut a Katalekto!</p>
+              <p>Benvingut a Lletrix!</p>
               <p className="text-muted">Crea el teu perfil per començar</p>
             </div>
           )}

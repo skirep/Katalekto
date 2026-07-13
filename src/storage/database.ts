@@ -9,7 +9,7 @@ import type {
   AppSettings,
 } from '../models';
 
-export class KatalektoDatabase extends Dexie {
+export class LletrixDatabase extends Dexie {
   profiles!: EntityTable<Profile, 'id'>;
   profileStats!: EntityTable<ProfileStats, 'profileId'>;
   sessions!: EntityTable<ExerciseSession, 'id'>;
@@ -19,7 +19,7 @@ export class KatalektoDatabase extends Dexie {
   settings!: EntityTable<AppSettings, 'profileId'>;
 
   constructor() {
-    super('katalekto');
+    super('lletrix');
     this.version(1).stores({
       profiles: 'id, name, createdAt',
       profileStats: 'profileId, level, experience',
@@ -32,4 +32,4 @@ export class KatalektoDatabase extends Dexie {
   }
 }
 
-export const db = new KatalektoDatabase();
+export const db = new LletrixDatabase();
