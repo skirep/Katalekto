@@ -29,6 +29,9 @@ export class LletrixDatabase extends Dexie {
       streaks: 'profileId',
       settings: 'profileId',
     });
+    this.version(2).stores({
+      profiles: 'id, userId, name, createdAt',
+    });
   }
 }
 

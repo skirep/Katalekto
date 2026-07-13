@@ -60,6 +60,18 @@
   max-width: 480px;
 }
 
+.logoutBtn {
+  margin-top: 4px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.userEmail {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
