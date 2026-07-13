@@ -1,23 +1,46 @@
 import { useState, useEffect } from 'react';
-import { profileStorage } from '../storage';
+import { profileStorage, loadProfilesFromSupabase } from '../storage';
 import type { Profile, ProfileStats } from '../models';
+import { generateId } from '../utils';
 
-export function useProfiles() {
+export function useProfiles(userId?: string) {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
 
   const load = async () => {
     setLoading(true);
-    const data = await profileStorage.getAll();
-    setProfiles(data);
+    if (userId) {
+      const cloud = await loadProfilesFromSupabase(userId);
+      for (const p of cloud) {
+        await profileStorage.getById(p.id).then(async (existing) => {
+          if (!existing) {
+            await profileStorage.create(p);
+          }
+        });
+      }
+      const local = await profileStorage.getAll(userId);
+      setProfiles(local.length > 0 ? local : cloud);
+    } else {
+      const data = await profileStorage.getAll();
+      setProfiles(data);
+    }
     setLoading(false);
   };
 
-  useEffect(() => { void load(); }, []);
+  useEffect(() => { void load(); }, [userId]);
 
-  const createProfile = async (profile: Profile) => {
+  const createProfile = async (name: string, avatar: string) => {
+    const profile: Profile = {
+      id: generateId(),
+      userId,
+      name,
+      avatar,
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    };
     await profileStorage.create(profile);
     await load();
+    return profile;
   };
 
   const updateProfile = async (profile: Profile) => {

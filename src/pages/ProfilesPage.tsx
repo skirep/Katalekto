@@ -3,6 +3,7 @@ import styles from './ProfilesPage.module.css';
 import { ProfileCard, ProfileForm } from '../components/profile';
 import { Button, LoadingSpinner } from '../components/common';
 import { useProfiles, useProfileStats } from '../hooks';
+import { useAuth } from '../services';
 import type { Profile } from '../models';
 
 interface ProfilesPageProps {
@@ -15,7 +16,8 @@ function ProfileWithStats({ profile, onSelect }: { profile: Profile; onSelect: (
 }
 
 export function ProfilesPage({ onSelect }: ProfilesPageProps) {
-  const { profiles, loading, createProfile } = useProfiles();
+  const { user, signOut } = useAuth();
+  const { profiles, loading, createProfile } = useProfiles(user?.id);
   const [showForm, setShowForm] = useState(false);
 
   if (loading) return <LoadingSpinner />;
@@ -26,12 +28,13 @@ export function ProfilesPage({ onSelect }: ProfilesPageProps) {
         <span className={styles.logo}>📖</span>
         <h1 className={styles.title}>Lletrix</h1>
         <p className={styles.subtitle}>Qui llegeix avui?</p>
+        {user && <p className={styles.userEmail}>{user.email}</p>}
       </div>
 
       {showForm ? (
         <ProfileForm
-          onSave={async (p) => {
-            await createProfile(p);
+          onSave={async (draft) => {
+            const p = await createProfile(draft.name, draft.avatar);
             setShowForm(false);
             onSelect(p);
           }}
@@ -62,6 +65,17 @@ export function ProfilesPage({ onSelect }: ProfilesPageProps) {
           >
             Nou perfil
           </Button>
+
+          {user && (
+            <Button
+              className={styles.logoutBtn}
+              variant="secondary"
+              size="sm"
+              onClick={() => void signOut()}
+            >
+              Tancar sessió
+            </Button>
+          )}
         </>
       )}
     </div>

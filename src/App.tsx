@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import { AppProvider, useAppContext } from './services';
+import { AppProvider, useAppContext, AuthProvider, useAuth } from './services';
 import { ProfilesPage } from './pages/ProfilesPage';
+import { AuthPage } from './pages/AuthPage';
 import { HomePage } from './pages/HomePage';
 import { ExercisesPage } from './pages/ExercisesPage';
 import { StatsPage } from './pages/StatsPage';
 import { BadgesPage } from './pages/BadgesPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { BottomNav } from './components/layout';
+import { LoadingSpinner } from './components/common';
 import { useSettings } from './hooks';
 import type { Profile } from './models';
 
@@ -25,8 +27,17 @@ function AppSettings({ profileId }: { profileId: string }) {
 }
 
 function AppContent() {
+  const { user, loading: authLoading } = useAuth();
   const { currentProfile, setCurrentProfile } = useAppContext();
   const [page, setPage] = useState<Page>('home');
+
+  useEffect(() => {
+    if (!user) setCurrentProfile(null);
+  }, [user, setCurrentProfile]);
+
+  if (authLoading) return <LoadingSpinner />;
+
+  if (!user) return <AuthPage />;
 
   if (!currentProfile) {
     return (
@@ -60,8 +71,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <AppProvider>
-      <AppContent />
-    </AppProvider>
+    <AuthProvider>
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
+    </AuthProvider>
   );
 }

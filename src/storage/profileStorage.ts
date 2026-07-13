@@ -1,9 +1,49 @@
 import { db } from './database';
 import type { Profile, ProfileStats } from '../models';
 import { getLevelFromXp } from '../models';
+import { supabase } from '../lib/supabase';
+
+async function syncToSupabase(profile: Profile): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+  await supabase.from('profiles').upsert({
+    id: profile.id,
+    user_id: user.id,
+    name: profile.name,
+    avatar: profile.avatar,
+    created_at: profile.createdAt,
+    updated_at: profile.updatedAt,
+  });
+}
+
+async function deleteFromSupabase(id: string): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+  await supabase.from('profiles').delete().eq('id', id).eq('user_id', user.id);
+}
+
+export async function loadProfilesFromSupabase(userId: string): Promise<Profile[]> {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('user_id', userId)
+    .order('name');
+  if (error || !data) return [];
+  return data.map((r) => ({
+    id: r.id as string,
+    userId: r.user_id as string,
+    name: r.name as string,
+    avatar: r.avatar as string,
+    createdAt: r.created_at as number,
+    updatedAt: r.updated_at as number,
+  }));
+}
 
 export const profileStorage = {
-  async getAll(): Promise<Profile[]> {
+  async getAll(userId?: string): Promise<Profile[]> {
+    if (userId) {
+      return db.profiles.where('userId').equals(userId).sortBy('name');
+    }
     return db.profiles.orderBy('name').toArray();
   },
 
@@ -26,10 +66,12 @@ export const profileStorage = {
       errorFrequency: {},
     };
     await db.profileStats.add(stats);
+    void syncToSupabase(profile);
   },
 
   async update(profile: Profile): Promise<void> {
     await db.profiles.put(profile);
+    void syncToSupabase(profile);
   },
 
   async delete(id: string): Promise<void> {
@@ -42,6 +84,7 @@ export const profileStorage = {
       await db.streaks.delete(id);
       await db.settings.delete(id);
     });
+    void deleteFromSupabase(id);
   },
 
   async getStats(profileId: string): Promise<ProfileStats | undefined> {

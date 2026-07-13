@@ -1,5 +1,6 @@
 export interface Profile {
   id: string;
+  userId?: string;
   name: string;
   avatar: string;
   createdAt: number;
