@@ -23,10 +23,10 @@ const COLOR_SCHEMES: { id: ColorScheme; label: string; emoji: string }[] = [
 ];
 
 const READING_SPEEDS: { id: number; label: string }[] = [
-  { id: 2, label: 'Ràpida (2s)' },
-  { id: 4, label: 'Normal (4s)' },
-  { id: 6, label: 'Tranquil·la (6s)' },
-  { id: 8, label: 'Molt tranquil·la (8s)' },
+  { id: 1, label: 'Ràpida (1s)' },
+  { id: 2, label: 'Normal (2s)' },
+  { id: 4, label: 'Tranquil·la (4s)' },
+  { id: 6, label: 'Molt tranquil·la (6s)' },
 ];
 
 export function SettingsPage({ profile, onUpdateProfile }: SettingsPageProps) {
