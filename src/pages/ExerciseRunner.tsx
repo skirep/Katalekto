@@ -17,7 +17,7 @@ interface ExerciseRunnerProps {
 }
 
 export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) {
-  const items = shuffleItems(set.items);
+  const [items] = useState(() => shuffleItems(set.items));
   const [index, setIndex] = useState(0);
   const [attempts, setAttempts] = useState<ExerciseAttempt[]>([]);
   const [lastResult, setLastResult] = useState<{ result: ReadingResult; recognized: string; similarity: number } | null>(null);
