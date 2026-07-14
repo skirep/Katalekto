@@ -30,6 +30,21 @@ export function HomePage({ profile, onNavigate, onSwitchProfile }: HomePageProps
         </div>
       </div>
 
+      {/* About the game */}
+      <details className="info-box">
+        <summary>🎓 Sobre Lletrix: per a què serveix?</summary>
+        <div className="info-box-content">
+          <p><strong>Lletrix</strong> és una eina d&apos;entrenament de la lectura en veu alta pensada per a infants i persones que volen millorar la seva fluïdesa lectora.</p>
+          <p>L&apos;objectiu principal és practicar la descodificació de síl·labes, paraules, pseudoparaules i frases llegint amb la veu mentre el sistema comprova automàticament si ho has dit bé.</p>
+          <ul>
+            <li>🔤 <strong>Síl·labes i paraules</strong> — consolida el coneixement fonètic i ortogràfic.</li>
+            <li>🔮 <strong>Pseudoparaules</strong> — entrena la ruta fonològica sense dependre de la memòria visual.</li>
+            <li>📖 <strong>Frases</strong> — millora la lectura contínua i la comprensió.</li>
+          </ul>
+          <p>Amb la pràctica diària, la ratxa i el sistema de punts pots fer un seguiment del teu progrés i mantenir la motivació.</p>
+        </div>
+      </details>
+
       {/* XP Bar */}
       {xpInfo && (
         <div className={`card ${styles.xpCard}`}>
