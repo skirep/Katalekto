@@ -6,6 +6,8 @@ function normalize(text: string): string {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z\s]/g, '')
+    // b and v are phonetically identical in Catalan/Spanish; treat them as equal
+    .replace(/v/g, 'b')
     .trim();
 }
 
@@ -32,6 +34,15 @@ export function calculateSimilarity(expected: string, recognized: string): numbe
   const b = normalize(recognized);
   if (a === b) return 1;
   if (!a || !b) return 0;
+
+  // For short tokens (syllables, ≤ 3 chars), also accept the answer when the
+  // expected syllable appears as a whole word inside the recognized transcript.
+  // Speech recognizers often embed bare syllables in longer phrases (e.g. "la pa").
+  if (a.length <= 3) {
+    const recognizedWords = b.split(/\s+/);
+    if (recognizedWords.includes(a)) return 1;
+  }
+
   const maxLen = Math.max(a.length, b.length);
   const distance = levenshtein(a, b);
   return Math.max(0, 1 - distance / maxLen);
