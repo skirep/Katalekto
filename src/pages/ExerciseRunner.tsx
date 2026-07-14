@@ -112,8 +112,16 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
       correctItems,
       averageTimeMs: avgTime,
     };
-    await sessionStorage.save(session);
-    await gamificationService.processSession(session);
+    try {
+      await sessionStorage.save(session);
+    } catch (err) {
+      console.error('Error saving session:', err);
+    }
+    try {
+      await gamificationService.processSession(session);
+    } catch (err) {
+      console.error('Error processing gamification:', err);
+    }
     setPhase('done');
   }, [profile.id, set.id, set.type, set.difficulty]);
 
