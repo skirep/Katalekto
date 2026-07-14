@@ -28,8 +28,12 @@ export interface ProfileBadge {
 export interface PokemonReward {
   pokemonId: number;
   fallbackName: string;
-  requiredExercises: number;
+  unlockRequirement: PokemonUnlockRequirement;
 }
+
+export type PokemonUnlockRequirement =
+  | { type: 'progress'; target: number }
+  | { type: 'milestones'; target: number };
 
 export interface PokemonDetails {
   id: number;
@@ -147,7 +151,10 @@ export const POKEMON_REWARDS: PokemonReward[] = Array.from({ length: 200 }, (_, 
         : pokemonId === 151
           ? 'Mew'
           : `Pokémon ${pokemonId}`,
-    requiredExercises: pokemonId,
+    unlockRequirement:
+      pokemonId <= 100
+        ? { type: 'progress', target: pokemonId }
+        : { type: 'milestones', target: pokemonId - 100 },
   };
 });
 
