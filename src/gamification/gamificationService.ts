@@ -51,6 +51,13 @@ export const gamificationService = {
     // Update stats
     const currentStats = await profileStorage.getStats(profileId);
     if (currentStats) {
+      const updatedErrorFrequency = { ...currentStats.errorFrequency };
+      for (const attempt of session.attempts) {
+        for (const errorType of attempt.errorTypes) {
+          updatedErrorFrequency[errorType] = (updatedErrorFrequency[errorType] ?? 0) + 1;
+        }
+      }
+
       const updatedStats = {
         ...currentStats,
         totalExercises: currentStats.totalExercises + 1,
@@ -58,6 +65,7 @@ export const gamificationService = {
         totalAttempts: currentStats.totalAttempts + totalItems,
         totalTimeMs: currentStats.totalTimeMs + (session.completedAt ?? 0) - session.startedAt,
         lastSessionDate: Date.now(),
+        errorFrequency: updatedErrorFrequency,
       };
       await profileStorage.updateStats(updatedStats);
     }
