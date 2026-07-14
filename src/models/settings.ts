@@ -1,6 +1,7 @@
 export type FontFamily = 'standard' | 'dyslexia';
 export type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
 export type ColorScheme = 'default' | 'high-contrast' | 'warm' | 'cool';
+export type SkinId = 'original' | 'pokemon';
 
 export interface AppSettings {
   profileId: string;
@@ -8,6 +9,7 @@ export interface AppSettings {
   fontSize: FontSize;
   fontFamily: FontFamily;
   colorScheme: ColorScheme;
+  skin: SkinId;
   dyslexiaMode: boolean;
   timeBetweenWords: number;
   fullscreen: boolean;
@@ -18,6 +20,7 @@ export const DEFAULT_SETTINGS: Omit<AppSettings, 'profileId'> = {
   fontSize: 'large',
   fontFamily: 'standard',
   colorScheme: 'default',
+  skin: 'original',
   dyslexiaMode: false,
   timeBetweenWords: 0,
   fullscreen: false,

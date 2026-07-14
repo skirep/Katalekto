@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './SettingsPage.module.css';
 import { useSettings } from '../hooks';
-import type { Profile, FontSize, ColorScheme } from '../models';
+import type { Profile, FontSize, ColorScheme, SkinId } from '../models';
 
 interface SettingsPageProps {
   profile: Profile;
@@ -20,6 +20,11 @@ const COLOR_SCHEMES: { id: ColorScheme; label: string; emoji: string }[] = [
   { id: 'high-contrast', label: 'Alt contrast', emoji: '⚫' },
   { id: 'warm', label: 'Calentet', emoji: '🟡' },
   { id: 'cool', label: 'Fresquet', emoji: '🔵' },
+];
+
+const SKINS: { id: SkinId; label: string; description: string; emoji: string }[] = [
+  { id: 'original', label: 'Original', description: 'L\'aspecte clàssic de Lletrix', emoji: '📖' },
+  { id: 'pokemon', label: 'Pokémon', description: 'Amb la Mew i la MewTwo', emoji: '✨' },
 ];
 
 const READING_SPEEDS: { id: number; label: string }[] = [
@@ -132,6 +137,24 @@ export function SettingsPage({ profile, onUpdateProfile }: SettingsPageProps) {
               onClick={() => void update({ colorScheme: cs.id })}
             >
               {cs.emoji} {cs.label}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className={`card ${styles.section}`}>
+        <h2 className={styles.sectionTitle}>Skin</h2>
+        <div className={styles.optionGrid}>
+          {SKINS.map((skin) => (
+            <button
+              key={skin.id}
+              className={`${styles.optBtn} ${settings.skin === skin.id ? styles.optSelected : ''}`}
+              onClick={() => void update({ skin: skin.id })}
+            >
+              <span>{skin.emoji} {skin.label}</span>
+              <span className="text-muted" style={{ display: 'block', fontSize: '13px', marginTop: '4px' }}>
+                {skin.description}
+              </span>
             </button>
           ))}
         </div>
