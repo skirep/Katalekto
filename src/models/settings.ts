@@ -1,7 +1,7 @@
 export type FontFamily = 'standard' | 'dyslexia';
 export type FontSize = 'small' | 'medium' | 'large' | 'xlarge';
 export type ColorScheme = 'default' | 'high-contrast' | 'warm' | 'cool';
-export type SkinId = 'original' | 'pokemon';
+export type SkinId = 'original' | 'pokemon' | 'pikachu-ash' | 'team-rocket';
 
 export interface AppSettings {
   profileId: string;

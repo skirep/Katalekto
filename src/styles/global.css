@@ -59,6 +59,32 @@
   --color-border: #e9d5ff;
 }
 
+[data-skin="pikachu-ash"] {
+  --color-primary: #f59e0b;
+  --color-primary-dark: #d97706;
+  --color-primary-light: #fde68a;
+  --color-secondary: #ef4444;
+  --color-secondary-dark: #dc2626;
+  --color-bg: #fffbeb;
+  --color-surface: rgba(255, 255, 255, 0.94);
+  --color-text: #78350f;
+  --color-text-muted: #92400e;
+  --color-border: #fde68a;
+}
+
+[data-skin="team-rocket"] {
+  --color-primary: #dc2626;
+  --color-primary-dark: #b91c1c;
+  --color-primary-light: #fca5a5;
+  --color-secondary: #7c3aed;
+  --color-secondary-dark: #6d28d9;
+  --color-bg: #0f0f1a;
+  --color-surface: rgba(20, 20, 40, 0.95);
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-border: #2d2d4e;
+}
+
 [data-dyslexia="true"] {
   font-family: var(--font-dyslexia) !important;
   letter-spacing: 0.05em;
@@ -196,6 +222,22 @@ a {
 }
 
 [data-skin="pokemon"] .card {
+  backdrop-filter: blur(6px);
+}
+
+[data-skin="pikachu-ash"] body {
+  background-image: radial-gradient(circle at top left, rgba(245, 158, 11, 0.18), transparent 35%), radial-gradient(circle at bottom right, rgba(239, 68, 68, 0.14), transparent 40%);
+}
+
+[data-skin="pikachu-ash"] .card {
+  backdrop-filter: blur(4px);
+}
+
+[data-skin="team-rocket"] body {
+  background-image: radial-gradient(circle at top left, rgba(220, 38, 38, 0.2), transparent 35%), radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.18), transparent 40%);
+}
+
+[data-skin="team-rocket"] .card {
   backdrop-filter: blur(6px);
 }
 
