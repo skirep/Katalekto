@@ -1,38 +1,45 @@
 import { useEffect, useState } from 'react';
-import { BADGES, POKEMON_REWARDS, type PokemonCollectionItem, type ProfileBadge } from '../models';
+import { POKEMON_REWARDS, type PokemonCollectionItem } from '../models';
 import { pokeApiService } from '../services/pokeApiService';
+import { profileStorage } from '../storage';
 
-export function usePokemonCollection(earnedBadges: ProfileBadge[]) {
+export function usePokemonCollection(profileId: string | null) {
   const [collection, setCollection] = useState<PokemonCollectionItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
-    const earnedAtByBadgeId = new Map(earnedBadges.map((badge) => [badge.badgeId, badge.earnedAt]));
 
     setLoading(true);
-    Promise.all(
-      POKEMON_REWARDS.map(async (reward) => {
-        const pokemon = await pokeApiService.getPokemon(reward.pokemonId, reward.fallbackName);
-        const badge = BADGES[reward.badgeId];
-        return {
-          ...reward,
-          ...pokemon,
-          unlocked: earnedAtByBadgeId.has(reward.badgeId),
-          unlockedAt: earnedAtByBadgeId.get(reward.badgeId) ?? null,
-          unlockCondition: badge.condition,
-        } satisfies PokemonCollectionItem;
-      }),
-    ).then((nextCollection) => {
-      if (cancelled) return;
-      setCollection(nextCollection);
-      setLoading(false);
-    });
+
+    const load = async () => {
+      const stats = profileId ? await profileStorage.getStats(profileId) : null;
+      const totalExercises = stats?.totalExercises ?? 0;
+
+      const nextCollection = await Promise.all(
+        POKEMON_REWARDS.map(async (reward) => {
+          const pokemon = await pokeApiService.getPokemon(reward.pokemonId, reward.fallbackName);
+          return {
+            ...reward,
+            ...pokemon,
+            unlocked: totalExercises >= reward.requiredExercises,
+            unlockCondition: `${reward.requiredExercises} exercici${reward.requiredExercises === 1 ? '' : 's'}`,
+          } satisfies PokemonCollectionItem;
+        }),
+      );
+
+      if (!cancelled) {
+        setCollection(nextCollection);
+        setLoading(false);
+      }
+    };
+
+    void load();
 
     return () => {
       cancelled = true;
     };
-  }, [earnedBadges]);
+  }, [profileId]);
 
   return { collection, loading };
 }

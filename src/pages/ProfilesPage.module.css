@@ -40,6 +40,47 @@
   gap: 12px;
 }
 
+.profileRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profileCardWrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.deleteBtn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  opacity: 0.6;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.deleteBtn:hover {
+  opacity: 1;
+  background: #fee2e2;
+}
+
+.deleteConfirm {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.deleteConfirmText {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
 .empty {
   display: flex;
   flex-direction: column;
