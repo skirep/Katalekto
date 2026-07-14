@@ -46,6 +46,19 @@
   --color-text: #1e2a4a;
 }
 
+[data-skin="pokemon"] {
+  --color-primary: #ec4899;
+  --color-primary-dark: #db2777;
+  --color-primary-light: #f9a8d4;
+  --color-secondary: #8b5cf6;
+  --color-secondary-dark: #7c3aed;
+  --color-bg: #fdf4ff;
+  --color-surface: rgba(255, 255, 255, 0.92);
+  --color-text: #3b0764;
+  --color-text-muted: #7e22ce;
+  --color-border: #e9d5ff;
+}
+
 [data-dyslexia="true"] {
   font-family: var(--font-dyslexia) !important;
   letter-spacing: 0.05em;
@@ -76,12 +89,17 @@ body {
   font-size: var(--font-size-md);
   -webkit-font-smoothing: antialiased;
   overscroll-behavior: none;
+  position: relative;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
 }
 
 button {
@@ -171,6 +189,14 @@ a {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   padding: 24px;
+}
+
+[data-skin="pokemon"] body {
+  background-image: radial-gradient(circle at top left, rgba(236, 72, 153, 0.14), transparent 35%), radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.16), transparent 40%);
+}
+
+[data-skin="pokemon"] .card {
+  backdrop-filter: blur(6px);
 }
 
 .page {

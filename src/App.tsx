@@ -14,17 +14,29 @@ import type { Profile } from './models';
 import styles from './App.module.css';
 
 type Page = 'home' | 'exercises' | 'stats' | 'badges' | 'settings';
+const POKEMON_SKIN_ART = {
+  mew: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png',
+  mewtwo: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png',
+} as const;
 
 function AppSettings({ profileId }: { profileId: string }) {
   const { settings } = useSettings(profileId);
 
   useEffect(() => {
     document.documentElement.dataset.scheme = settings.colorScheme;
+    document.documentElement.dataset.skin = settings.skin;
     document.documentElement.dataset.dyslexia = String(settings.dyslexiaMode);
     document.documentElement.dataset.fontSize = settings.fontSize;
   }, [settings]);
 
-  return null;
+  if (settings.skin !== 'pokemon') return null;
+
+  return (
+    <>
+      <img className={`${styles.skinArt} ${styles.skinArtLeft}`} src={POKEMON_SKIN_ART.mew} alt="" aria-hidden="true" />
+      <img className={`${styles.skinArt} ${styles.skinArtRight}`} src={POKEMON_SKIN_ART.mewtwo} alt="" aria-hidden="true" />
+    </>
+  );
 }
 
 function AppContent() {

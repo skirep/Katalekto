@@ -4,3 +4,42 @@
   right: 16px;
   z-index: 200;
 }
+
+.skinArt {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.26;
+  filter: drop-shadow(0 10px 24px rgba(76, 29, 149, 0.2));
+}
+
+.skinArtLeft {
+  top: max(72px, env(safe-area-inset-top) + 40px);
+  left: -36px;
+  width: min(180px, 38vw);
+  transform: rotate(-8deg);
+}
+
+.skinArtRight {
+  right: -40px;
+  bottom: 96px;
+  width: min(220px, 44vw);
+  transform: rotate(8deg);
+}
+
+@media (max-width: 480px) {
+  .skinArt {
+    opacity: 0.18;
+  }
+
+  .skinArtLeft {
+    left: -48px;
+    width: 148px;
+  }
+
+  .skinArtRight {
+    right: -52px;
+    width: 176px;
+  }
+}
