@@ -155,7 +155,16 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     readTimeoutRef.current = window.setTimeout(() => {
       stop();
       setTimeLeftMs(0);
-      evaluateCurrentAttempt(transcriptRef.current);
+      if (!transcriptRef.current.trim()) {
+        if (index + 1 >= items.length) {
+          void completeSession(attemptsRef.current);
+        } else {
+          setIndex((i) => i + 1);
+          setPhase('ready');
+        }
+      } else {
+        evaluateCurrentAttempt(transcriptRef.current);
+      }
     }, durationMs);
 
     return () => {
@@ -261,7 +270,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
       {/* Controls */}
       <div className={styles.controls}>
         {phase === 'listening' && (
-          <p className="text-muted">⏱️ Temps restant: {(timeLeftMs / 1000).toFixed(1)}s</p>
+          <p className="text-muted">⏱️ Temps restant: {Math.ceil(timeLeftMs / 1000)}s</p>
         )}
         {phase === 'result' && (
           <p className="text-muted">Preparant el següent element...</p>

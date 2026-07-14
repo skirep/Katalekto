@@ -1,0 +1,88 @@
+.runner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  padding-bottom: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.streak {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--color-text-muted);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.closeBtn:hover {
+  background: var(--color-border);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Done state */
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.doneEmoji {
+  font-size: 80px;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.doneTitle {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.streakCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 240px;
+}
+
+.streakValue {
+  font-size: 72px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.lastAttempt {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import styles from './ExercisesPage.module.css';
 import { Button } from '../components/common';
 import { ExerciseRunner } from './ExerciseRunner';
+import { EndlessRunner } from './EndlessRunner';
 import { getAllSets, getSetsByType, getSetsByTypeAndDifficulty } from '../exercises';
-import type { ExerciseType, Difficulty, ExerciseSet, Profile } from '../models';
+import type { ExerciseType, Difficulty, ExerciseSet, ExerciseItem, Profile } from '../models';
 
 const TYPE_LABELS: Record<ExerciseType, string> = {
   syllables: '🔤 Síl·labes',
@@ -27,6 +28,9 @@ export function ExercisesPage({ profile }: ExercisesPageProps) {
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | null>(null);
   const [selectedSet, setSelectedSet] = useState<ExerciseSet | null>(null);
   const [running, setRunning] = useState(false);
+  const [endlessRunning, setEndlessRunning] = useState(false);
+  const [endlessPool, setEndlessPool] = useState<ExerciseItem[]>([]);
+  const [endlessLabel, setEndlessLabel] = useState('');
 
   const allTypes: ExerciseType[] = ['syllables', 'words', 'pseudowords', 'sentences'];
   const difficulties: Difficulty[] = ['easy', 'medium', 'hard'];
@@ -46,6 +50,17 @@ export function ExercisesPage({ profile }: ExercisesPageProps) {
           setRunning(false);
           setSelectedSet(null);
         }}
+      />
+    );
+  }
+
+  if (endlessRunning && endlessPool.length > 0) {
+    return (
+      <EndlessRunner
+        profile={profile}
+        itemPool={endlessPool}
+        label={endlessLabel}
+        onFinish={() => setEndlessRunning(false)}
       />
     );
   }
@@ -120,6 +135,29 @@ export function ExercisesPage({ profile }: ExercisesPageProps) {
           </Button>
         </div>
       )}
+
+      {/* Endless mode */}
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>🔄 Mode sense fi</h2>
+        <p className={styles.endlessDesc}>
+          Llegeix elements sense parar fins que cometis un error.
+          {selectedType && <> ({TYPE_LABELS[selectedType]})</>}
+        </p>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            const pool = availableSets.flatMap((s) => s.items);
+            if (pool.length === 0) return;
+            const label = selectedType ? TYPE_LABELS[selectedType] : 'Tots els elements';
+            setEndlessPool(pool);
+            setEndlessLabel(label);
+            setEndlessRunning(true);
+          }}
+          disabled={availableSets.flatMap((s) => s.items).length === 0}
+        >
+          🚀 Jugar en mode sense fi
+        </Button>
+      </section>
     </div>
   );
 }
