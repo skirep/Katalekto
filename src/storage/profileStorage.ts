@@ -163,8 +163,11 @@ export const profileStorage = {
   },
 
   async addExperience(profileId: string, xp: number): Promise<ProfileStats> {
-    const stats = await db.profileStats.get(profileId);
-    if (!stats) throw new Error('Profile stats not found');
+    let stats = await db.profileStats.get(profileId);
+    if (!stats) {
+      stats = createEmptyProfileStats(profileId);
+      await db.profileStats.add(stats);
+    }
     const newXp = stats.experience + xp;
     const updated: ProfileStats = {
       ...stats,
