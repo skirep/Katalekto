@@ -10,7 +10,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'home', label: 'Inici', icon: '🏠' },
   { id: 'exercises', label: 'Exercicis', icon: '📚' },
   { id: 'stats', label: 'Estadístiques', icon: '📊' },
-  { id: 'badges', label: 'Medalles', icon: '🏆' },
+  { id: 'badges', label: 'Pokémon', icon: '🐾' },
   { id: 'settings', label: 'Ajustos', icon: '⚙️' },
 ];
 

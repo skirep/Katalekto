@@ -77,7 +77,7 @@ export function HomePage({ profile, onNavigate, onSwitchProfile }: HomePageProps
             📊 Estadístiques
           </Button>
           <Button variant="secondary" onClick={() => onNavigate('badges')}>
-            🏆 Medalles
+            🐾 Pokémon
           </Button>
         </div>
       </div>

@@ -10,14 +10,38 @@ interface ProfilesPageProps {
   onSelect: (profile: Profile) => void;
 }
 
-function ProfileWithStats({ profile, onSelect }: { profile: Profile; onSelect: (p: Profile) => void }) {
+function ProfileWithStats({ profile, onSelect, onDelete }: { profile: Profile; onSelect: (p: Profile) => void; onDelete: (id: string) => void }) {
   const stats = useProfileStats(profile.id);
-  return <ProfileCard profile={profile} stats={stats ?? undefined} onClick={() => onSelect(profile)} />;
+  const [confirming, setConfirming] = useState(false);
+
+  return (
+    <div className={styles.profileRow}>
+      <div className={styles.profileCardWrapper}>
+        <ProfileCard profile={profile} stats={stats ?? undefined} onClick={() => onSelect(profile)} />
+      </div>
+      {confirming ? (
+        <div className={styles.deleteConfirm}>
+          <span className={styles.deleteConfirmText}>Eliminar?</span>
+          <Button variant="danger" size="sm" onClick={() => onDelete(profile.id)}>Sí</Button>
+          <Button variant="secondary" size="sm" onClick={() => setConfirming(false)}>No</Button>
+        </div>
+      ) : (
+        <button
+          className={styles.deleteBtn}
+          onClick={() => setConfirming(true)}
+          aria-label={`Eliminar perfil ${profile.name}`}
+          title="Eliminar perfil"
+        >
+          🗑️
+        </button>
+      )}
+    </div>
+  );
 }
 
 export function ProfilesPage({ onSelect }: ProfilesPageProps) {
   const { user, signOut } = useAuth();
-  const { profiles, loading, createProfile } = useProfiles(user?.id);
+  const { profiles, loading, createProfile, deleteProfile } = useProfiles(user?.id);
   const [showForm, setShowForm] = useState(false);
 
   if (loading) return <LoadingSpinner />;
@@ -44,7 +68,7 @@ export function ProfilesPage({ onSelect }: ProfilesPageProps) {
         <>
           <div className={styles.list}>
             {profiles.map((p) => (
-              <ProfileWithStats key={p.id} profile={p} onSelect={onSelect} />
+              <ProfileWithStats key={p.id} profile={p} onSelect={onSelect} onDelete={deleteProfile} />
             ))}
           </div>
 
