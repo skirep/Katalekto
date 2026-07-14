@@ -1,3 +1,19 @@
+/**
+ * Gamification model: badges, Pokémon rewards, daily goals and streaks.
+ *
+ * Achievement flow overview
+ * ─────────────────────────
+ * 1. After every exercise session the gamificationService evaluates which
+ *    badges the player has newly earned.
+ * 2. A badge is awarded at most once per profile.  The set of eligible badges
+ *    is defined by BADGES and the unlock conditions are checked in
+ *    gamificationService.processSession().
+ * 3. Progress toward Pokémon rewards is tracked separately:
+ *    - Pokémon IDs 1–100 unlock by *experience level* (pokemonId === level).
+ *    - Pokémon IDs 101–200 unlock by *milestone points* (number of badges
+ *      earned), offset by 100 (e.g. Pokémon 105 requires 5 badges).
+ */
+
 export type BadgeId =
   | 'first_exercise'
   | 'streak_3'
@@ -61,6 +77,7 @@ export interface Streak {
   lastDate: string;
 }
 
+/** Full catalogue of streak and mastery badges displayed on the Badges page. */
 export const BADGES: Record<BadgeId, Badge> = {
   first_exercise: {
     id: 'first_exercise',
@@ -141,6 +158,15 @@ export const BADGES: Record<BadgeId, Badge> = {
   },
 };
 
+/**
+ * List of the first 200 generation-I Pokémon used as collectible rewards.
+ *
+ * Unlock rules:
+ *   - IDs   1–100 → unlocked when experience level ≥ pokemonId  (progress-based)
+ *   - IDs 101–200 → unlocked when badges earned   ≥ pokemonId - 100  (milestone-based)
+ *
+ * See usePokemonCollection for the unlock evaluation logic.
+ */
 export const POKEMON_REWARDS: PokemonReward[] = Array.from({ length: 200 }, (_, idx) => {
   const pokemonId = idx + 1;
   return {
@@ -159,4 +185,5 @@ export const POKEMON_REWARDS: PokemonReward[] = Array.from({ length: 200 }, (_, 
 });
 
 
+/** Number of exercises a player must complete each day to meet the daily goal. */
 export const DAILY_GOAL_TARGET = 5;
