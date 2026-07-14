@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { POKEMON_REWARDS, type PokemonCollectionItem } from '../models';
 import { pokeApiService } from '../services/pokeApiService';
-import { profileStorage } from '../storage';
+import { gamificationStorage, profileStorage } from '../storage';
 
 export function usePokemonCollection(profileId: string | null) {
   const [collection, setCollection] = useState<PokemonCollectionItem[]>([]);
@@ -13,20 +13,34 @@ export function usePokemonCollection(profileId: string | null) {
     setLoading(true);
 
     const load = async () => {
-      const stats = profileId ? await profileStorage.getStats(profileId) : null;
+      const [stats, streak, badges] = profileId
+        ? await Promise.all([
+          profileStorage.getStats(profileId),
+          gamificationStorage.getStreak(profileId),
+          gamificationStorage.getBadges(profileId),
+        ])
+        : [null, { current: 0 }, []];
       const totalProgress = Math.max(
         stats?.totalCorrect ?? 0,
         stats?.totalExercises ?? 0,
       );
+      const milestonePoints = (stats?.level ?? 1) + streak.current + (badges.length * 2);
 
       const nextCollection = await Promise.all(
         POKEMON_REWARDS.map(async (reward) => {
           const pokemon = await pokeApiService.getPokemon(reward.pokemonId, reward.fallbackName);
+          const unlocked = reward.unlockRequirement.type === 'progress'
+            ? totalProgress >= reward.unlockRequirement.target
+            : milestonePoints >= reward.unlockRequirement.target;
+          const unlockCondition = reward.unlockRequirement.type === 'progress'
+            ? `${reward.unlockRequirement.target} avenç${reward.unlockRequirement.target === 1 ? '' : 'os'}`
+            : `${reward.unlockRequirement.target} punts de fites`;
+
           return {
             ...reward,
             ...pokemon,
-            unlocked: totalProgress >= reward.requiredExercises,
-            unlockCondition: `${reward.requiredExercises} avenç${reward.requiredExercises === 1 ? '' : 'os'}`,
+            unlocked,
+            unlockCondition,
           } satisfies PokemonCollectionItem;
         }),
       );
