@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import styles from './SettingsPage.module.css';
-import { useSettings } from '../hooks';
-import type { Profile, FontSize, ColorScheme, SkinId } from '../models';
+import type { Profile, FontSize, ColorScheme, SkinId, AppSettings } from '../models';
 
 interface SettingsPageProps {
   profile: Profile;
+  settings: AppSettings;
+  onUpdateSettings: (partial: Partial<Omit<AppSettings, 'profileId'>>) => Promise<void>;
   onUpdateProfile: (profile: Profile) => Promise<void>;
 }
 
@@ -25,6 +26,8 @@ const COLOR_SCHEMES: { id: ColorScheme; label: string; emoji: string }[] = [
 const SKINS: { id: SkinId; label: string; description: string; emoji: string }[] = [
   { id: 'original', label: 'Original', description: 'L\'aspecte clàssic de Lletrix', emoji: '📖' },
   { id: 'pokemon', label: 'Pokémon', description: 'Amb la Mew i la MewTwo', emoji: '✨' },
+  { id: 'pikachu-ash', label: 'Pikachu i Ash', description: 'Amb el Pikachu i el Charizard', emoji: '⚡' },
+  { id: 'team-rocket', label: 'Team Rocket', description: 'Prepareu-vos per a la batalla!', emoji: '🚀' },
 ];
 
 const READING_SPEEDS: { id: number; label: string }[] = [
@@ -34,8 +37,7 @@ const READING_SPEEDS: { id: number; label: string }[] = [
   { id: 6, label: 'Molt tranquil·la (6s)' },
 ];
 
-export function SettingsPage({ profile, onUpdateProfile }: SettingsPageProps) {
-  const { settings, update } = useSettings(profile.id);
+export function SettingsPage({ profile, settings, onUpdateSettings: update, onUpdateProfile }: SettingsPageProps) {
   const [name, setName] = useState(profile.name);
   const [school, setSchool] = useState(profile.school ?? '');
   const [location, setLocation] = useState(profile.location ?? '');

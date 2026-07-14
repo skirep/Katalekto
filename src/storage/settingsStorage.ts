@@ -3,7 +3,7 @@ import type { AppSettings } from '../models';
 import { DEFAULT_SETTINGS } from '../models';
 
 const ALLOWED_SPEEDS = [1, 2, 4, 6];
-const ALLOWED_SKINS = ['original', 'pokemon'] as const;
+const ALLOWED_SKINS = ['original', 'pokemon', 'pikachu-ash', 'team-rocket'] as const;
 
 function normalizeSpeed(speed: number): number {
   if (ALLOWED_SPEEDS.includes(speed)) return speed;

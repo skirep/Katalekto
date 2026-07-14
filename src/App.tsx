@@ -10,18 +10,20 @@ import { SettingsPage } from './pages/SettingsPage';
 import { BottomNav } from './components/layout';
 import { DatabaseReadIndicator, LoadingSpinner } from './components/common';
 import { useSettings, useProfiles } from './hooks';
-import type { Profile } from './models';
+import type { Profile, AppSettings as AppSettingsData } from './models';
 import styles from './App.module.css';
 
 type Page = 'home' | 'exercises' | 'stats' | 'badges' | 'settings';
 const POKEMON_SKIN_ART = {
   mew: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png',
   mewtwo: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png',
+  pikachu: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
+  charizard: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png',
+  meowth: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/52.png',
+  arbok: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/24.png',
 } as const;
 
-function AppSettings({ profileId }: { profileId: string }) {
-  const { settings } = useSettings(profileId);
-
+function AppSettings({ settings }: { settings: AppSettingsData }) {
   useEffect(() => {
     document.documentElement.dataset.scheme = settings.colorScheme;
     document.documentElement.dataset.skin = settings.skin;
@@ -29,14 +31,34 @@ function AppSettings({ profileId }: { profileId: string }) {
     document.documentElement.dataset.fontSize = settings.fontSize;
   }, [settings]);
 
-  if (settings.skin !== 'pokemon') return null;
+  if (settings.skin === 'pokemon') {
+    return (
+      <>
+        <img className={`${styles.skinArt} ${styles.skinArtLeft}`} src={POKEMON_SKIN_ART.mew} alt="" aria-hidden="true" />
+        <img className={`${styles.skinArt} ${styles.skinArtRight}`} src={POKEMON_SKIN_ART.mewtwo} alt="" aria-hidden="true" />
+      </>
+    );
+  }
 
-  return (
-    <>
-      <img className={`${styles.skinArt} ${styles.skinArtLeft}`} src={POKEMON_SKIN_ART.mew} alt="" aria-hidden="true" />
-      <img className={`${styles.skinArt} ${styles.skinArtRight}`} src={POKEMON_SKIN_ART.mewtwo} alt="" aria-hidden="true" />
-    </>
-  );
+  if (settings.skin === 'pikachu-ash') {
+    return (
+      <>
+        <img className={`${styles.skinArt} ${styles.skinArtLeft}`} src={POKEMON_SKIN_ART.pikachu} alt="" aria-hidden="true" />
+        <img className={`${styles.skinArt} ${styles.skinArtRight}`} src={POKEMON_SKIN_ART.charizard} alt="" aria-hidden="true" />
+      </>
+    );
+  }
+
+  if (settings.skin === 'team-rocket') {
+    return (
+      <>
+        <img className={`${styles.skinArt} ${styles.skinArtLeft}`} src={POKEMON_SKIN_ART.meowth} alt="" aria-hidden="true" />
+        <img className={`${styles.skinArt} ${styles.skinArtRight}`} src={POKEMON_SKIN_ART.arbok} alt="" aria-hidden="true" />
+      </>
+    );
+  }
+
+  return null;
 }
 
 function AppContent() {
@@ -51,6 +73,7 @@ function AppContent() {
     databaseReadError,
     loadedUserId,
   } = useProfiles(user?.id);
+  const { settings, update: updateSettings } = useSettings(currentProfile?.id ?? null);
   const [page, setPage] = useState<Page>('home');
   const [autoHandling, setAutoHandling] = useState(false);
   const waitingForDatabaseRead = Boolean(user && loadedUserId !== user.id);
@@ -103,13 +126,13 @@ function AppContent() {
       case 'exercises': return <ExercisesPage profile={currentProfile} />;
       case 'stats': return <StatsPage profile={currentProfile} />;
       case 'badges': return <BadgesPage profile={currentProfile} />;
-      case 'settings': return <SettingsPage profile={currentProfile} onUpdateProfile={async (p) => { await updateProfile(p); setCurrentProfile(p); }} />;
+      case 'settings': return <SettingsPage profile={currentProfile} settings={settings} onUpdateSettings={updateSettings} onUpdateProfile={async (p) => { await updateProfile(p); setCurrentProfile(p); }} />;
     }
   };
 
   return (
     <>
-      <AppSettings profileId={currentProfile.id} />
+      <AppSettings settings={settings} />
       {databaseIndicator}
       <main style={{ flex: 1 }}>
         {renderPage()}
