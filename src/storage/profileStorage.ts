@@ -36,6 +36,47 @@ async function syncToSupabase(profile: Profile): Promise<void> {
   }
 }
 
+async function syncStatsToSupabase(stats: ProfileStats): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+  const { error } = await supabase.from('profile_stats').upsert({
+    profile_id: stats.profileId,
+    total_exercises: stats.totalExercises,
+    total_correct: stats.totalCorrect,
+    total_attempts: stats.totalAttempts,
+    total_time_ms: stats.totalTimeMs,
+    consecutive_days: stats.consecutiveDays,
+    last_session_date: stats.lastSessionDate,
+    experience: stats.experience,
+    level: stats.level,
+    error_frequency: stats.errorFrequency,
+  }, { onConflict: 'profile_id' });
+  if (error) {
+    console.error('Failed to sync stats to Supabase:', error.message);
+  }
+}
+
+export async function loadStatsFromSupabase(profileId: string): Promise<ProfileStats | null> {
+  const { data, error } = await supabase
+    .from('profile_stats')
+    .select('*')
+    .eq('profile_id', profileId)
+    .maybeSingle();
+  if (error || !data) return null;
+  return {
+    profileId: data.profile_id as string,
+    totalExercises: data.total_exercises as number,
+    totalCorrect: data.total_correct as number,
+    totalAttempts: data.total_attempts as number,
+    totalTimeMs: data.total_time_ms as number,
+    consecutiveDays: data.consecutive_days as number,
+    lastSessionDate: data.last_session_date as number,
+    experience: data.experience as number,
+    level: data.level as number,
+    errorFrequency: (data.error_frequency as Record<string, number>) ?? {},
+  };
+}
+
 async function syncRankingToSupabase(profile: Profile, stats: ProfileStats): Promise<void> {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return;
@@ -129,9 +170,17 @@ export const profileStorage = {
 
   async upsertFromCloud(profile: Profile): Promise<void> {
     await db.profiles.put(profile);
-    const stats = await db.profileStats.get(profile.id);
-    if (!stats) {
-      await db.profileStats.add(createEmptyProfileStats(profile.id));
+    const cloudStats = await loadStatsFromSupabase(profile.id);
+    if (cloudStats) {
+      const localStats = await db.profileStats.get(profile.id);
+      if (!localStats || cloudStats.totalExercises >= localStats.totalExercises) {
+        await db.profileStats.put(cloudStats);
+      }
+    } else {
+      const stats = await db.profileStats.get(profile.id);
+      if (!stats) {
+        await db.profileStats.add(createEmptyProfileStats(profile.id));
+      }
     }
   },
 
@@ -175,6 +224,7 @@ export const profileStorage = {
       level: getLevelFromXp(newXp),
     };
     await db.profileStats.put(updated);
+    void syncStatsToSupabase(updated);
     return updated;
   },
 
@@ -182,5 +232,6 @@ export const profileStorage = {
     await db.profileStats.put(stats);
     const profile = await db.profiles.get(stats.profileId);
     if (profile) void syncRankingToSupabase(profile, stats);
+    void syncStatsToSupabase(stats);
   },
 };
