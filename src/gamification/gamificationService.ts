@@ -13,7 +13,30 @@ export interface GamificationResult {
   dailyGoalCompleted: boolean;
 }
 
+/**
+ * gamificationService – processes an exercise session and awards XP, badges,
+ * updates streaks and daily goals.
+ *
+ * Call processSession() immediately after saving a completed ExerciseSession.
+ * It runs all reward checks atomically and returns a GamificationResult that
+ * callers can use to display congratulation overlays to the player.
+ */
 export const gamificationService = {
+  /**
+   * Process a completed exercise session and update all gamification state.
+   *
+   * Steps performed:
+   *  1. Calculate XP gained from score, difficulty and average response time.
+   *  2. Add XP to the profile and detect a level-up.
+   *  3. Update aggregate stats (totalExercises, totalCorrect, totalTimeMs…).
+   *  4. Update the daily streak (increments if the player hasn't already
+   *     logged an exercise today; resets if a day was missed).
+   *  5. Increment the daily goal counter.
+   *  6. Check every badge condition; award any that are newly met.
+   *
+   * @returns GamificationResult with XP gained, new badges, level-up flag,
+   *          current streak and daily-goal completion status.
+   */
   async processSession(session: ExerciseSession): Promise<GamificationResult> {
     const { profileId, difficulty, score, totalItems, correctItems } = session;
     const avgTime = session.averageTimeMs;
@@ -82,6 +105,7 @@ export const gamificationService = {
     };
   },
 
+  /** Returns all badge definitions (used to render the Badges/collection page). */
   async getAvailableBadges() {
     return Object.values(BADGES);
   },

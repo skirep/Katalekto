@@ -1,3 +1,21 @@
+/**
+ * Scoring and error-detection utilities for reading exercises.
+ *
+ * Flow for each exercise item:
+ *  1. calculateSimilarity()  – compares the expected text with what the speech
+ *     recogniser heard, using Levenshtein distance after phonetic normalisation
+ *     (accent stripping, b/v equivalence).  Returns a value in [0, 1].
+ *  2. classifyResult()       – maps the similarity score to 'correct' (≥0.85),
+ *     'almost' (≥0.60) or 'incorrect' (<0.60).
+ *  3. detectErrors()         – identifies the *type* of reading error
+ *     (b/d confusion, p/q confusion, omission, addition, repetition, inversion)
+ *     to help teachers understand where the learner struggles.
+ *
+ * At session end:
+ *  4. calculateScore()       – percentage of correct items (0–100).
+ *  5. calculateXpGained()    – XP reward based on score, difficulty and speed.
+ */
+
 import type { ErrorType, ReadingResult } from '../models';
 
 function normalize(text: string): string {

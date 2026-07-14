@@ -6,6 +6,23 @@ import { EndlessRunner } from './EndlessRunner';
 import { getAllSets, getSetsByType, getSetsByTypeAndDifficulty } from '../exercises';
 import type { ExerciseType, Difficulty, ExerciseSet, ExerciseItem, Profile } from '../models';
 
+/**
+ * ExercisesPage – exercise catalogue and launcher.
+ *
+ * The player follows three optional filter steps before starting:
+ *  1. **Type**       – syllables / words / pseudowords / sentences.
+ *  2. **Difficulty** – easy / medium / hard.
+ *  3. **Set**        – one of the available exercise sets matching the filters.
+ *
+ * Once a set is selected the player can either:
+ *  - Start a **standard run** (fixed number of items, shuffled).
+ *  - Start an **endless run** (all items from the current filter, looping
+ *    until the player exits or makes an error in syllable-hard mode).
+ *
+ * Rendering ExerciseRunner or EndlessRunner is handled inline: when `running`
+ * or `endlessRunning` is true the corresponding component replaces this page.
+ */
+
 const TYPE_LABELS: Record<ExerciseType, string> = {
   syllables: '🔤 Síl·labes',
   words: '📝 Paraules',

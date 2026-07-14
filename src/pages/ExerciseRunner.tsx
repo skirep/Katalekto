@@ -10,6 +10,26 @@ import { shuffleItems } from '../exercises';
 import { generateId } from '../utils';
 import type { ExerciseSet, Profile, ExerciseAttempt, ExerciseSession, ReadingResult } from '../models';
 
+/**
+ * ExerciseRunner – runs a single exercise set item by item using speech recognition.
+ *
+ * Item lifecycle (phase state machine):
+ *  'ready'     → Speech recognition starts; a countdown timer is shown.
+ *  'listening' → Microphone is open; the player reads the displayed text aloud.
+ *                The item times out after `settings.speed` seconds if no speech
+ *                is detected.
+ *  'result'    → The recognised text is compared to the expected text and
+ *                classified as correct / almost / incorrect.  Feedback is shown
+ *                for RESULT_DISPLAY_MS milliseconds.
+ *  'done'      → All items have been processed; the session is saved and
+ *                gamification is processed (XP, badges, streak…).
+ *
+ * Special behaviour:
+ *  - In **syllable-hard** mode the set is pre-expanded to HARD_SYLLABLE_BASE_ITEMS
+ *    items; any item answered incorrectly is appended again to the queue so the
+ *    player must eventually read every syllable correctly.
+ */
+
 interface ExerciseRunnerProps {
   profile: Profile;
   set: ExerciseSet;
