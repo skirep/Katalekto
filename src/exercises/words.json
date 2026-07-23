@@ -57,6 +57,44 @@
     ]
   },
   {
+    "id": "words-easy-4",
+    "title": "Paraules fàcils - Fruites i aliments",
+    "description": "Llegeix noms de fruites i aliments",
+    "type": "words",
+    "difficulty": "easy",
+    "items": [
+      { "id": "w61", "text": "poma", "type": "words", "difficulty": "easy" },
+      { "id": "w62", "text": "pera", "type": "words", "difficulty": "easy" },
+      { "id": "w63", "text": "raïm", "type": "words", "difficulty": "easy" },
+      { "id": "w64", "text": "meló", "type": "words", "difficulty": "easy" },
+      { "id": "w65", "text": "plàtan", "type": "words", "difficulty": "easy" },
+      { "id": "w66", "text": "maduixa", "type": "words", "difficulty": "easy" },
+      { "id": "w67", "text": "pa", "type": "words", "difficulty": "easy" },
+      { "id": "w68", "text": "llet", "type": "words", "difficulty": "easy" },
+      { "id": "w69", "text": "ou", "type": "words", "difficulty": "easy" },
+      { "id": "w70", "text": "arròs", "type": "words", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "words-easy-5",
+    "title": "Paraules fàcils - Casa i objectes",
+    "description": "Llegeix paraules de casa",
+    "type": "words",
+    "difficulty": "easy",
+    "items": [
+      { "id": "w71", "text": "porta", "type": "words", "difficulty": "easy" },
+      { "id": "w72", "text": "taula", "type": "words", "difficulty": "easy" },
+      { "id": "w73", "text": "cadira", "type": "words", "difficulty": "easy" },
+      { "id": "w74", "text": "llit", "type": "words", "difficulty": "easy" },
+      { "id": "w75", "text": "got", "type": "words", "difficulty": "easy" },
+      { "id": "w76", "text": "plat", "type": "words", "difficulty": "easy" },
+      { "id": "w77", "text": "bossa", "type": "words", "difficulty": "easy" },
+      { "id": "w78", "text": "clau", "type": "words", "difficulty": "easy" },
+      { "id": "w79", "text": "llum", "type": "words", "difficulty": "easy" },
+      { "id": "w80", "text": "rellotge", "type": "words", "difficulty": "easy" }
+    ]
+  },
+  {
     "id": "words-medium-1",
     "title": "Paraules mitjanes - Escola",
     "description": "Llegeix paraules de l'escola",
@@ -76,6 +114,44 @@
     ]
   },
   {
+    "id": "words-medium-2",
+    "title": "Paraules mitjanes - Naturalesa",
+    "description": "Llegeix paraules de la naturalesa",
+    "type": "words",
+    "difficulty": "medium",
+    "items": [
+      { "id": "w81", "text": "bosc", "type": "words", "difficulty": "medium" },
+      { "id": "w82", "text": "muntanya", "type": "words", "difficulty": "medium" },
+      { "id": "w83", "text": "riu", "type": "words", "difficulty": "medium" },
+      { "id": "w84", "text": "pedra", "type": "words", "difficulty": "medium" },
+      { "id": "w85", "text": "planta", "type": "words", "difficulty": "medium" },
+      { "id": "w86", "text": "flor", "type": "words", "difficulty": "medium" },
+      { "id": "w87", "text": "papallona", "type": "words", "difficulty": "medium" },
+      { "id": "w88", "text": "cargol", "type": "words", "difficulty": "medium" },
+      { "id": "w89", "text": "granota", "type": "words", "difficulty": "medium" },
+      { "id": "w90", "text": "tronc", "type": "words", "difficulty": "medium" }
+    ]
+  },
+  {
+    "id": "words-medium-3",
+    "title": "Paraules mitjanes - Cos humà",
+    "description": "Llegeix paraules del cos humà",
+    "type": "words",
+    "difficulty": "medium",
+    "items": [
+      { "id": "w91", "text": "braç", "type": "words", "difficulty": "medium" },
+      { "id": "w92", "text": "cama", "type": "words", "difficulty": "medium" },
+      { "id": "w93", "text": "pit", "type": "words", "difficulty": "medium" },
+      { "id": "w94", "text": "esquena", "type": "words", "difficulty": "medium" },
+      { "id": "w95", "text": "muscle", "type": "words", "difficulty": "medium" },
+      { "id": "w96", "text": "genoll", "type": "words", "difficulty": "medium" },
+      { "id": "w97", "text": "colze", "type": "words", "difficulty": "medium" },
+      { "id": "w98", "text": "dit", "type": "words", "difficulty": "medium" },
+      { "id": "w99", "text": "ungla", "type": "words", "difficulty": "medium" },
+      { "id": "w100", "text": "parpella", "type": "words", "difficulty": "medium" }
+    ]
+  },
+  {
     "id": "words-hard-1",
     "title": "Paraules difícils",
     "description": "Paraules més llargues i complexes",
@@ -92,6 +168,44 @@
       { "id": "w48", "text": "quadrilàter", "type": "words", "difficulty": "hard" },
       { "id": "w49", "text": "microscòpic", "type": "words", "difficulty": "hard" },
       { "id": "w50", "text": "esternocleidomastoïdal", "type": "words", "difficulty": "hard" }
+    ]
+  },
+  {
+    "id": "words-hard-2",
+    "title": "Paraules difícils - Ciència i tecnologia",
+    "description": "Paraules científiques i tecnològiques",
+    "type": "words",
+    "difficulty": "hard",
+    "items": [
+      { "id": "w101", "text": "fotosíntesi", "type": "words", "difficulty": "hard" },
+      { "id": "w102", "text": "electroimant", "type": "words", "difficulty": "hard" },
+      { "id": "w103", "text": "gravitació", "type": "words", "difficulty": "hard" },
+      { "id": "w104", "text": "termòmetre", "type": "words", "difficulty": "hard" },
+      { "id": "w105", "text": "microscopi", "type": "words", "difficulty": "hard" },
+      { "id": "w106", "text": "ecosistema", "type": "words", "difficulty": "hard" },
+      { "id": "w107", "text": "clorofil·la", "type": "words", "difficulty": "hard" },
+      { "id": "w108", "text": "descomposició", "type": "words", "difficulty": "hard" },
+      { "id": "w109", "text": "transformació", "type": "words", "difficulty": "hard" },
+      { "id": "w110", "text": "perpendicular", "type": "words", "difficulty": "hard" }
+    ]
+  },
+  {
+    "id": "words-hard-3",
+    "title": "Paraules difícils - Història i cultura",
+    "description": "Paraules de l'àmbit cultural i històric",
+    "type": "words",
+    "difficulty": "hard",
+    "items": [
+      { "id": "w111", "text": "democratització", "type": "words", "difficulty": "hard" },
+      { "id": "w112", "text": "arqueologia", "type": "words", "difficulty": "hard" },
+      { "id": "w113", "text": "civilització", "type": "words", "difficulty": "hard" },
+      { "id": "w114", "text": "filosofia", "type": "words", "difficulty": "hard" },
+      { "id": "w115", "text": "arquitectura", "type": "words", "difficulty": "hard" },
+      { "id": "w116", "text": "manufactura", "type": "words", "difficulty": "hard" },
+      { "id": "w117", "text": "cosmopolita", "type": "words", "difficulty": "hard" },
+      { "id": "w118", "text": "bibliografia", "type": "words", "difficulty": "hard" },
+      { "id": "w119", "text": "contradicció", "type": "words", "difficulty": "hard" },
+      { "id": "w120", "text": "transcendència", "type": "words", "difficulty": "hard" }
     ]
   }
 ]

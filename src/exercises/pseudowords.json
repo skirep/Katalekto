@@ -19,6 +19,25 @@
     ]
   },
   {
+    "id": "pseudo-easy-2",
+    "title": "Pseudoparaules fàcils b/d",
+    "description": "Paraules inventades que comencen per b o d",
+    "type": "pseudowords",
+    "difficulty": "easy",
+    "items": [
+      { "id": "p31", "text": "bola", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p32", "text": "demi", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p33", "text": "batu", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p34", "text": "dipo", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p35", "text": "bune", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p36", "text": "dafe", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p37", "text": "bila", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p38", "text": "doru", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p39", "text": "beso", "type": "pseudowords", "difficulty": "easy" },
+      { "id": "p40", "text": "duna", "type": "pseudowords", "difficulty": "easy" }
+    ]
+  },
+  {
     "id": "pseudo-medium-1",
     "title": "Pseudoparaules mitjanes",
     "description": "Pseudoparaules de tres síl·labes",
@@ -38,6 +57,25 @@
     ]
   },
   {
+    "id": "pseudo-medium-2",
+    "title": "Pseudoparaules mitjanes b/d",
+    "description": "Pseudoparaules de tres síl·labes amb b i d",
+    "type": "pseudowords",
+    "difficulty": "medium",
+    "items": [
+      { "id": "p41", "text": "baturo", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p42", "text": "dalope", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p43", "text": "binota", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p44", "text": "deburi", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p45", "text": "bulafi", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p46", "text": "dotare", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p47", "text": "bilonas", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p48", "text": "dorapel", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p49", "text": "bedolis", "type": "pseudowords", "difficulty": "medium" },
+      { "id": "p50", "text": "dibunat", "type": "pseudowords", "difficulty": "medium" }
+    ]
+  },
+  {
     "id": "pseudo-hard-1",
     "title": "Pseudoparaules difícils",
     "description": "Pseudoparaules llargues i complexes",
@@ -49,6 +87,22 @@
       { "id": "p23", "text": "drotisaber", "type": "pseudowords", "difficulty": "hard" },
       { "id": "p24", "text": "fraguimoper", "type": "pseudowords", "difficulty": "hard" },
       { "id": "p25", "text": "tratisolber", "type": "pseudowords", "difficulty": "hard" }
+    ]
+  },
+  {
+    "id": "pseudo-hard-2",
+    "title": "Pseudoparaules difícils - Extra",
+    "description": "Més pseudoparaules llargues amb consonants trabades",
+    "type": "pseudowords",
+    "difficulty": "hard",
+    "items": [
+      { "id": "p51", "text": "clanibodret", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p52", "text": "drobastimel", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p53", "text": "frabistonel", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p54", "text": "grepistolan", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p55", "text": "plandobirest", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p56", "text": "trambodiscel", "type": "pseudowords", "difficulty": "hard" },
+      { "id": "p57", "text": "blasidronef", "type": "pseudowords", "difficulty": "hard" }
     ]
   }
 ]

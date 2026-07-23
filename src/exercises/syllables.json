@@ -48,6 +48,30 @@
     ]
   },
   {
+    "id": "syl-easy-3",
+    "title": "Síl·labes simples - La/Na/Ra",
+    "description": "Practica les síl·labes amb l, n i r",
+    "type": "syllables",
+    "difficulty": "easy",
+    "items": [
+      { "id": "s51", "text": "la", "type": "syllables", "difficulty": "easy" },
+      { "id": "s52", "text": "le", "type": "syllables", "difficulty": "easy" },
+      { "id": "s53", "text": "li", "type": "syllables", "difficulty": "easy" },
+      { "id": "s54", "text": "lo", "type": "syllables", "difficulty": "easy" },
+      { "id": "s55", "text": "lu", "type": "syllables", "difficulty": "easy" },
+      { "id": "s56", "text": "na", "type": "syllables", "difficulty": "easy" },
+      { "id": "s57", "text": "ne", "type": "syllables", "difficulty": "easy" },
+      { "id": "s58", "text": "ni", "type": "syllables", "difficulty": "easy" },
+      { "id": "s59", "text": "no", "type": "syllables", "difficulty": "easy" },
+      { "id": "s60", "text": "nu", "type": "syllables", "difficulty": "easy" },
+      { "id": "s61", "text": "ra", "type": "syllables", "difficulty": "easy" },
+      { "id": "s62", "text": "re", "type": "syllables", "difficulty": "easy" },
+      { "id": "s63", "text": "ri", "type": "syllables", "difficulty": "easy" },
+      { "id": "s64", "text": "ro", "type": "syllables", "difficulty": "easy" },
+      { "id": "s65", "text": "ru", "type": "syllables", "difficulty": "easy" }
+    ]
+  },
+  {
     "id": "syl-medium-1",
     "title": "Síl·labes trabades",
     "description": "Practica les síl·labes amb dues consonants",
@@ -69,6 +93,54 @@
       { "id": "s43", "text": "pli", "type": "syllables", "difficulty": "medium" },
       { "id": "s44", "text": "plo", "type": "syllables", "difficulty": "medium" },
       { "id": "s45", "text": "plu", "type": "syllables", "difficulty": "medium" }
+    ]
+  },
+  {
+    "id": "syl-medium-2",
+    "title": "Síl·labes trabades - Dr/Cl/Fl",
+    "description": "Practica les síl·labes amb dr, cl i fl",
+    "type": "syllables",
+    "difficulty": "medium",
+    "items": [
+      { "id": "s66", "text": "dra", "type": "syllables", "difficulty": "medium" },
+      { "id": "s67", "text": "dre", "type": "syllables", "difficulty": "medium" },
+      { "id": "s68", "text": "dri", "type": "syllables", "difficulty": "medium" },
+      { "id": "s69", "text": "dro", "type": "syllables", "difficulty": "medium" },
+      { "id": "s70", "text": "dru", "type": "syllables", "difficulty": "medium" },
+      { "id": "s71", "text": "cla", "type": "syllables", "difficulty": "medium" },
+      { "id": "s72", "text": "cle", "type": "syllables", "difficulty": "medium" },
+      { "id": "s73", "text": "cli", "type": "syllables", "difficulty": "medium" },
+      { "id": "s74", "text": "clo", "type": "syllables", "difficulty": "medium" },
+      { "id": "s75", "text": "clu", "type": "syllables", "difficulty": "medium" },
+      { "id": "s76", "text": "fla", "type": "syllables", "difficulty": "medium" },
+      { "id": "s77", "text": "fle", "type": "syllables", "difficulty": "medium" },
+      { "id": "s78", "text": "fli", "type": "syllables", "difficulty": "medium" },
+      { "id": "s79", "text": "flo", "type": "syllables", "difficulty": "medium" },
+      { "id": "s80", "text": "flu", "type": "syllables", "difficulty": "medium" }
+    ]
+  },
+  {
+    "id": "syl-medium-3",
+    "title": "Síl·labes travades - Gr/Fr/Cr",
+    "description": "Practica les síl·labes amb gr, fr i cr",
+    "type": "syllables",
+    "difficulty": "medium",
+    "items": [
+      { "id": "s81", "text": "gra", "type": "syllables", "difficulty": "medium" },
+      { "id": "s82", "text": "gre", "type": "syllables", "difficulty": "medium" },
+      { "id": "s83", "text": "gri", "type": "syllables", "difficulty": "medium" },
+      { "id": "s84", "text": "gro", "type": "syllables", "difficulty": "medium" },
+      { "id": "s85", "text": "gru", "type": "syllables", "difficulty": "medium" },
+      { "id": "s86", "text": "fra", "type": "syllables", "difficulty": "medium" },
+      { "id": "s87", "text": "fre", "type": "syllables", "difficulty": "medium" },
+      { "id": "s88", "text": "fri", "type": "syllables", "difficulty": "medium" },
+      { "id": "s89", "text": "fro", "type": "syllables", "difficulty": "medium" },
+      { "id": "s90", "text": "fru", "type": "syllables", "difficulty": "medium" },
+      { "id": "s91", "text": "cra", "type": "syllables", "difficulty": "medium" },
+      { "id": "s92", "text": "cre", "type": "syllables", "difficulty": "medium" },
+      { "id": "s93", "text": "cri", "type": "syllables", "difficulty": "medium" },
+      { "id": "s94", "text": "cro", "type": "syllables", "difficulty": "medium" },
+      { "id": "s95", "text": "cru", "type": "syllables", "difficulty": "medium" }
     ]
   }
 ]

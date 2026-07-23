@@ -21,3 +21,11 @@
 .large .text {
   font-size: calc(var(--exercise-font-size, 40px) * 1.3);
 }
+
+.letterB {
+  color: #2563eb;
+}
+
+.letterD {
+  color: #dc2626;
+}
