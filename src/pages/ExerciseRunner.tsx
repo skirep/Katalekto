@@ -35,6 +35,7 @@ interface ExerciseRunnerProps {
 
 const HARD_SYLLABLE_BASE_ITEMS = 50;
 const SPEECH_GRACE_MS = 200;
+const SHORT_TIMER_SPEECH_GRACE_MS = 700;
 
 export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) {
   const isHardSyllableMode = set.type === 'syllables' && set.difficulty === 'hard';
@@ -58,6 +59,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
   const timedOutRef = useRef(false);
   const readTimeoutRef = useRef<number | null>(null);
   const graceTimeoutRef = useRef<number | null>(null);
+  const currentDurationMsRef = useRef(0);
   const attemptsRef = useRef<ExerciseAttempt[]>([]);
   const completingRef = useRef(false);
   const phaseRef = useRef<'ready' | 'listening' | 'done'>('ready');
@@ -218,8 +220,11 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
       return;
     }
 
+    const graceMs = currentDurationMsRef.current <= 1000
+      ? SHORT_TIMER_SPEECH_GRACE_MS
+      : SPEECH_GRACE_MS;
     clearTimer(graceTimeoutRef);
-    graceTimeoutRef.current = window.setTimeout(tryFinalizeFromCapturedSpeech, SPEECH_GRACE_MS);
+    graceTimeoutRef.current = window.setTimeout(tryFinalizeFromCapturedSpeech, graceMs);
   }, [clearTimer, stop, currentItem, isHardSyllableMode, index, items.length, completeSession, evaluateCurrentAttempt]);
 
   useEffect(() => {
@@ -251,6 +256,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     timedOutRef.current = false;
     const configuredSeconds = settings.exerciseSpeeds?.[set.type] ?? settings.speed;
     const durationMs = Math.max(1000, Math.round(configuredSeconds * 1000));
+    currentDurationMsRef.current = durationMs;
     startTimeRef.current = Date.now();
     itemDeadlineRef.current = startTimeRef.current + durationMs;
     setTimeLeftMs(durationMs);
