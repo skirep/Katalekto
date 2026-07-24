@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import styles from './ExerciseRunner.module.css';
-import { ExerciseText, ResultFeedback } from '../components/exercise';
+import { ExerciseText } from '../components/exercise';
 import { Button } from '../components/common';
 import { useSettings, useSpeechRecognition } from '../hooks';
 import { calculateSimilarity, classifyResult, detectErrors, calculateScore } from '../scoring';
@@ -8,7 +8,7 @@ import { sessionStorage } from '../storage';
 import { gamificationService } from '../gamification';
 import { shuffleItems } from '../exercises';
 import { generateId } from '../utils';
-import type { ExerciseSet, Profile, ExerciseAttempt, ExerciseSession, ReadingResult } from '../models';
+import type { ExerciseSet, Profile, ExerciseAttempt, ExerciseSession } from '../models';
 
 /**
  * ExerciseRunner – runs a single exercise set item by item using speech recognition.
@@ -18,10 +18,6 @@ import type { ExerciseSet, Profile, ExerciseAttempt, ExerciseSession, ReadingRes
  *  'listening' → Microphone is open; the player reads the displayed text aloud.
  *                The item times out after the configured seconds for this
  *                exercise type if no speech is detected.
- *                is detected.
- *  'result'    → The recognised text is compared to the expected text and
- *                classified as correct / almost / incorrect.  Feedback is shown
- *                for RESULT_DISPLAY_MS milliseconds.
  *  'done'      → All items have been processed; the session is saved and
  *                gamification is processed (XP, badges, streak…).
  *
@@ -37,8 +33,6 @@ interface ExerciseRunnerProps {
   onFinish: () => void;
 }
 
-const RESULT_DISPLAY_MS = 1200;
-const SYLLABLE_RESULT_DISPLAY_MS = 0;
 const HARD_SYLLABLE_BASE_ITEMS = 50;
 
 export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) {
@@ -55,18 +49,16 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
   });
   const [index, setIndex] = useState(0);
   const [attempts, setAttempts] = useState<ExerciseAttempt[]>([]);
-  const [lastResult, setLastResult] = useState<{ result: ReadingResult; recognized: string; similarity: number } | null>(null);
-  const [phase, setPhase] = useState<'ready' | 'listening' | 'result' | 'done'>('ready');
+  const [phase, setPhase] = useState<'ready' | 'listening' | 'done'>('ready');
   const [timeLeftMs, setTimeLeftMs] = useState(0);
   const startTimeRef = useRef<number>(0);
   const sessionStartRef = useRef<number>(Date.now());
   const itemDeadlineRef = useRef<number>(0);
   const timedOutRef = useRef(false);
   const readTimeoutRef = useRef<number | null>(null);
-  const nextTimeoutRef = useRef<number | null>(null);
   const attemptsRef = useRef<ExerciseAttempt[]>([]);
   const completingRef = useRef(false);
-  const phaseRef = useRef<'ready' | 'listening' | 'result' | 'done'>('ready');
+  const phaseRef = useRef<'ready' | 'listening' | 'done'>('ready');
   const transcriptRef = useRef('');
   const alternativesRef = useRef<Array<{ transcript: string; confidence: number }>>([]);
 
@@ -81,49 +73,6 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
       timer.current = null;
     }
   }, []);
-
-  const evaluateCurrentAttempt = useCallback((recognizedText: string) => {
-    if (phaseRef.current !== 'listening' || timedOutRef.current || !currentItem) return;
-    clearTimer(readTimeoutRef);
-    const timeMs = Date.now() - startTimeRef.current;
-
-    // Try all speech alternatives and pick the one that best matches the expected text.
-    // This significantly improves recognition of short syllables that aren't real words,
-    // since the speech engine's top result often misidentifies them.
-    let bestText = recognizedText;
-    let bestSimilarity = calculateSimilarity(currentItem.text, recognizedText);
-    for (const alt of alternativesRef.current) {
-      const sim = calculateSimilarity(currentItem.text, alt.transcript);
-      if (sim > bestSimilarity) {
-        bestSimilarity = sim;
-        bestText = alt.transcript;
-      }
-    }
-
-    const similarity = bestSimilarity;
-    const result = classifyResult(similarity);
-    const errorTypes = detectErrors(currentItem.text, bestText);
-    setLastResult({ result, recognized: bestText, similarity });
-    const attempt: ExerciseAttempt = {
-      itemId: currentItem.id,
-      expected: currentItem.text,
-      recognized: bestText,
-      result,
-      similarity,
-      errorTypes,
-      timeMs,
-      timestamp: Date.now(),
-    };
-    setAttempts((prev) => {
-      const updated = [...prev, attempt];
-      attemptsRef.current = updated;
-      return updated;
-    });
-    if (isHardSyllableMode && result !== 'correct') {
-      setItems((prev) => [...prev, { ...currentItem, id: `${currentItem.id}-retry-${Date.now()}` }]);
-    }
-    setPhase('result');
-  }, [currentItem, clearTimer, isHardSyllableMode]);
 
   const completeSession = useCallback(async (finalAttempts: ExerciseAttempt[]) => {
     if (completingRef.current) return;
@@ -163,19 +112,91 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     setPhase('done');
   }, [profile.id, set.id, set.type, set.difficulty]);
 
+  const evaluateCurrentAttempt = useCallback((recognizedText: string) => {
+    if (phaseRef.current !== 'listening' || timedOutRef.current || !currentItem) return;
+    clearTimer(readTimeoutRef);
+    const timeMs = Date.now() - startTimeRef.current;
+
+    // Try all speech alternatives and pick the one that best matches the expected text.
+    // This significantly improves recognition of short syllables that aren't real words,
+    // since the speech engine's top result often misidentifies them.
+    let bestText = recognizedText;
+    let bestSimilarity = calculateSimilarity(currentItem.text, recognizedText);
+    for (const alt of alternativesRef.current) {
+      const sim = calculateSimilarity(currentItem.text, alt.transcript);
+      if (sim > bestSimilarity) {
+        bestSimilarity = sim;
+        bestText = alt.transcript;
+      }
+    }
+
+    const similarity = bestSimilarity;
+    const result = classifyResult(similarity);
+    const errorTypes = detectErrors(currentItem.text, bestText);
+    const attempt: ExerciseAttempt = {
+      itemId: currentItem.id,
+      expected: currentItem.text,
+      recognized: bestText,
+      result,
+      similarity,
+      errorTypes,
+      timeMs,
+      timestamp: Date.now(),
+    };
+    const updatedAttempts = [...attemptsRef.current, attempt];
+    attemptsRef.current = updatedAttempts;
+    setAttempts(updatedAttempts);
+
+    const shouldRetry = isHardSyllableMode && result !== 'correct';
+    if (shouldRetry) {
+      setItems((prev) => [...prev, { ...currentItem, id: `${currentItem.id}-retry-${Date.now()}` }]);
+    }
+
+    if (index + 1 < items.length || shouldRetry) {
+      setIndex((i) => i + 1);
+      setPhase('ready');
+      return;
+    }
+
+    void completeSession(updatedAttempts);
+  }, [currentItem, clearTimer, isHardSyllableMode, index, items.length, completeSession]);
+
   const handleReadTimeout = useCallback(() => {
-    if (phaseRef.current !== 'listening' || timedOutRef.current) return;
+    if (phaseRef.current !== 'listening' || timedOutRef.current || !currentItem) return;
     timedOutRef.current = true;
     clearTimer(readTimeoutRef);
     stop();
     setTimeLeftMs(0);
-    if (index + 1 >= items.length) {
-      void completeSession(attemptsRef.current);
-    } else {
+
+    const attempt: ExerciseAttempt = {
+      itemId: currentItem.id,
+      expected: currentItem.text,
+      recognized: '',
+      result: 'incorrect',
+      similarity: 0,
+      errorTypes: detectErrors(currentItem.text, ''),
+      timeMs: Date.now() - startTimeRef.current,
+      timestamp: Date.now(),
+    };
+    const updatedAttempts = [...attemptsRef.current, attempt];
+    attemptsRef.current = updatedAttempts;
+    setAttempts(updatedAttempts);
+
+    if (isHardSyllableMode) {
+      setItems((prev) => [...prev, { ...currentItem, id: `${currentItem.id}-retry-${Date.now()}` }]);
       setIndex((i) => i + 1);
       setPhase('ready');
+      return;
     }
-  }, [clearTimer, stop, index, items.length, completeSession]);
+
+    if (index + 1 < items.length) {
+      setIndex((i) => i + 1);
+      setPhase('ready');
+      return;
+    }
+
+    void completeSession(updatedAttempts);
+  }, [clearTimer, stop, currentItem, isHardSyllableMode, index, items.length, completeSession]);
 
   useEffect(() => {
     attemptsRef.current = attempts;
@@ -201,7 +222,6 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     if (phase !== 'ready') return;
     setTranscript('');
     transcriptRef.current = '';
-    setLastResult(null);
     timedOutRef.current = false;
     const configuredSeconds = settings.exerciseSpeeds?.[set.type] ?? settings.speed;
     const durationMs = Math.max(1000, Math.round(configuredSeconds * 1000));
@@ -237,25 +257,8 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     }
   }, [isListening, phase, evaluateCurrentAttempt]);
 
-  useEffect(() => {
-    if (phase !== 'result') return;
-    const resultDisplayMs = set.type === 'syllables' ? SYLLABLE_RESULT_DISPLAY_MS : RESULT_DISPLAY_MS;
-    nextTimeoutRef.current = window.setTimeout(() => {
-      if (index + 1 >= items.length) {
-        void completeSession(attemptsRef.current);
-      } else {
-        setIndex((i) => i + 1);
-        setPhase('ready');
-      }
-    }, resultDisplayMs);
-    return () => {
-      clearTimer(nextTimeoutRef);
-    };
-  }, [phase, index, items.length, completeSession, clearTimer, set.type]);
-
   useEffect(() => () => {
     clearTimer(readTimeoutRef);
-    clearTimer(nextTimeoutRef);
     stop();
   }, [clearTimer, stop]);
 
@@ -270,8 +273,27 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
           <div className={styles.scoreValue}>{score}%</div>
           <div className="text-muted">de respostes correctes</div>
           <div className={styles.scoreDetail}>
-            {correctItems} de {attempts.length} paraules llegides bé
+            {correctItems} de {attempts.length} elements llegits bé
           </div>
+        </div>
+        <div className={`card ${styles.summaryCard}`}>
+          <h2 className={styles.summaryTitle}>Resum de l&apos;exercici</h2>
+          {attempts.map((attempt, attemptIndex) => {
+            const isCorrect = attempt.result === 'correct';
+            const statusLabel = isCorrect ? 'Bé' : 'No';
+            const recognizedLabel = attempt.recognized.trim() ? attempt.recognized : 'Sense resposta';
+
+            return (
+              <div key={`${attempt.itemId}-${attempt.timestamp}`} className={styles.summaryRow}>
+                <div className={styles.summaryHeader}>
+                  <span className={styles.summaryIndex}>#{attemptIndex + 1}</span>
+                  <span className={isCorrect ? styles.summaryOk : styles.summaryBad}>{statusLabel}</span>
+                </div>
+                <div className={styles.summaryLine}><strong>Esperat:</strong> {attempt.expected}</div>
+                <div className={styles.summaryLine}><strong>Has dit:</strong> {recognizedLabel}</div>
+              </div>
+            );
+          })}
         </div>
         <Button size="lg" onClick={onFinish}>
           🏠 Tornar a l&apos;inici
@@ -311,23 +333,10 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
       {error && <p className="text-error text-center">{error}</p>}
       {!isSupported && <p className="text-error text-center">🎤 Micròfon no disponible en aquest navegador</p>}
 
-      {/* Result */}
-      {lastResult && (
-        <ResultFeedback
-          result={lastResult.result}
-          expected={currentItem.text}
-          recognized={lastResult.recognized}
-          similarity={lastResult.similarity}
-        />
-      )}
-
       {/* Controls */}
       <div className={styles.controls}>
         {phase === 'listening' && (
           <p className="text-muted">⏱️ Temps restant: {Math.ceil(timeLeftMs / 1000)}s</p>
-        )}
-        {phase === 'result' && (
-          <p className="text-muted">Preparant el següent element...</p>
         )}
       </div>
     </div>
