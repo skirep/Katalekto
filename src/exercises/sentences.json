@@ -6,14 +6,54 @@
     "type": "sentences",
     "difficulty": "easy",
     "items": [
-      { "id": "f01", "text": "El gat és gran.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f02", "text": "La mama cuina.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f03", "text": "El nen juga.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f04", "text": "La nena canta.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f05", "text": "El sol brilla.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f06", "text": "El gos bota.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f07", "text": "La pilota és roja.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f08", "text": "L'ocell vola.", "type": "sentences", "difficulty": "easy" }
+      {
+        "id": "f01",
+        "text": "El gat és gran.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f02",
+        "text": "La mama cuina.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f03",
+        "text": "El nen juga.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f04",
+        "text": "La nena canta.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f05",
+        "text": "El sol brilla.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f06",
+        "text": "El gos bota.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f07",
+        "text": "La pilota és roja.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f08",
+        "text": "L'ocell vola.",
+        "type": "sentences",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -23,14 +63,54 @@
     "type": "sentences",
     "difficulty": "easy",
     "items": [
-      { "id": "f21", "text": "El bebè dorm.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f22", "text": "La bola és blava.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f23", "text": "El drac és bonic.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f24", "text": "La dona balla.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f25", "text": "El bou és gran.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f26", "text": "La dama porta un barret.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f27", "text": "El dad és bo.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f28", "text": "La bici és de David.", "type": "sentences", "difficulty": "easy" }
+      {
+        "id": "f21",
+        "text": "El bebè dorm.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f22",
+        "text": "La bola és blava.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f23",
+        "text": "El drac és bonic.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f24",
+        "text": "La dona balla.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f25",
+        "text": "El bou és gran.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f26",
+        "text": "La dama porta un barret.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f27",
+        "text": "El dad és bo.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f28",
+        "text": "La bici és de David.",
+        "type": "sentences",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -40,14 +120,54 @@
     "type": "sentences",
     "difficulty": "easy",
     "items": [
-      { "id": "f29", "text": "El gat beu llet.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f30", "text": "La nena llegeix.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f31", "text": "El nen corre ràpid.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f32", "text": "El gos menja.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f33", "text": "La mama somriu.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f34", "text": "L'ocell canta.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f35", "text": "El nen dorm bé.", "type": "sentences", "difficulty": "easy" },
-      { "id": "f36", "text": "La nena dibuixa.", "type": "sentences", "difficulty": "easy" }
+      {
+        "id": "f29",
+        "text": "El gat beu llet.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f30",
+        "text": "La nena llegeix.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f31",
+        "text": "El nen corre ràpid.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f32",
+        "text": "El gos menja.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f33",
+        "text": "La mama somriu.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f34",
+        "text": "L'ocell canta.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f35",
+        "text": "El nen dorm bé.",
+        "type": "sentences",
+        "difficulty": "easy"
+      },
+      {
+        "id": "f36",
+        "text": "La nena dibuixa.",
+        "type": "sentences",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -57,12 +177,42 @@
     "type": "sentences",
     "difficulty": "medium",
     "items": [
-      { "id": "f09", "text": "El gat dorm sobre la cadira.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f10", "text": "La mare porta el pa a casa.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f11", "text": "Els nens juguen al parc.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f12", "text": "Avui fa molt bon temps.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f13", "text": "El gos menja les galetes.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f14", "text": "La lluna brilla a la nit.", "type": "sentences", "difficulty": "medium" }
+      {
+        "id": "f09",
+        "text": "El gat dorm sobre la cadira.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f10",
+        "text": "La mare porta el pa a casa.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f11",
+        "text": "Els nens juguen al parc.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f12",
+        "text": "Avui fa molt bon temps.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f13",
+        "text": "El gos menja les galetes.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f14",
+        "text": "La lluna brilla a la nit.",
+        "type": "sentences",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -72,12 +222,42 @@
     "type": "sentences",
     "difficulty": "medium",
     "items": [
-      { "id": "f37", "text": "La ballarina dansa al damunt de l'escenari.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f38", "text": "El drac blau busca el seu tresor.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f39", "text": "La bicicleta del David és de color blava.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f40", "text": "En Bernat dóna una beguda a la seva besàvia.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f41", "text": "La bestia dormia dins de la cova.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f42", "text": "El dimoni bona boca no tenia.", "type": "sentences", "difficulty": "medium" }
+      {
+        "id": "f37",
+        "text": "La ballarina dansa al damunt de l'escenari.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f38",
+        "text": "El drac blau busca el seu tresor.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f39",
+        "text": "La bicicleta del David és de color blava.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f40",
+        "text": "En Bernat dóna una beguda a la seva besàvia.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f41",
+        "text": "La bestia dormia dins de la cova.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f42",
+        "text": "El dimoni bona boca no tenia.",
+        "type": "sentences",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -87,12 +267,42 @@
     "type": "sentences",
     "difficulty": "medium",
     "items": [
-      { "id": "f43", "text": "Els arbres del bosc creixen molt alts.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f44", "text": "La mestra explica la lliçó de matemàtiques.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f45", "text": "Els ocells canten al jardí cada matí.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f46", "text": "Avui hem anat d'excursió al camp.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f47", "text": "La papallona vola entre les flors.", "type": "sentences", "difficulty": "medium" },
-      { "id": "f48", "text": "Els nens pinten un mural a la classe.", "type": "sentences", "difficulty": "medium" }
+      {
+        "id": "f43",
+        "text": "Els arbres del bosc creixen molt alts.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f44",
+        "text": "La mestra explica la lliçó de matemàtiques.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f45",
+        "text": "Els ocells canten al jardí cada matí.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f46",
+        "text": "Avui hem anat d'excursió al camp.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f47",
+        "text": "La papallona vola entre les flors.",
+        "type": "sentences",
+        "difficulty": "medium"
+      },
+      {
+        "id": "f48",
+        "text": "Els nens pinten un mural a la classe.",
+        "type": "sentences",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -102,10 +312,30 @@
     "type": "sentences",
     "difficulty": "hard",
     "items": [
-      { "id": "f15", "text": "El noi i la noia van anar junts a la biblioteca del barri.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f16", "text": "La professora va explicar una lliçó molt interessant sobre els animals.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f17", "text": "Quan plou, els carrerons de la ciutat es tornen molt lliscadissos.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f18", "text": "En Pere i la Maria estudien molt per treure bones notes a l'escola.", "type": "sentences", "difficulty": "hard" }
+      {
+        "id": "f15",
+        "text": "El noi i la noia van anar junts a la biblioteca del barri.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f16",
+        "text": "La professora va explicar una lliçó molt interessant sobre els animals.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f17",
+        "text": "Quan plou, els carrerons de la ciutat es tornen molt lliscadissos.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f18",
+        "text": "En Pere i la Maria estudien molt per treure bones notes a l'escola.",
+        "type": "sentences",
+        "difficulty": "hard"
+      }
     ]
   },
   {
@@ -115,10 +345,30 @@
     "type": "sentences",
     "difficulty": "hard",
     "items": [
-      { "id": "f49", "text": "La ballena blava és el mamífer més gran que existeix al planeta.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f50", "text": "En David i la Berta van descobrir un bosc encantat durant l'excursió.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f51", "text": "La biodiversitat dels boscos catalans depèn de la conservació dels hàbitats naturals.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f52", "text": "Després de la tormenta, els núvols desapareixien deixant un cel completament blau.", "type": "sentences", "difficulty": "hard" }
+      {
+        "id": "f49",
+        "text": "La ballena blava és el mamífer més gran que existeix al planeta.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f50",
+        "text": "En David i la Berta van descobrir un bosc encantat durant l'excursió.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f51",
+        "text": "La biodiversitat dels boscos catalans depèn de la conservació dels hàbitats naturals.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f52",
+        "text": "Després de la tormenta, els núvols desapareixien deixant un cel completament blau.",
+        "type": "sentences",
+        "difficulty": "hard"
+      }
     ]
   },
   {
@@ -128,10 +378,639 @@
     "type": "sentences",
     "difficulty": "hard",
     "items": [
-      { "id": "f53", "text": "La fotosíntesi és el procés pel qual les plantes transformen la llum solar en energia.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f54", "text": "L'astronauta va descriure detalladament l'experiència de veure la Terra des de l'espai.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f55", "text": "La investigació científica requereix molta paciència i rigorositat en els experiments.", "type": "sentences", "difficulty": "hard" },
-      { "id": "f56", "text": "Els dinosaures van desaparèixer fa aproximadament seixanta-sis milions d'anys de la Terra.", "type": "sentences", "difficulty": "hard" }
+      {
+        "id": "f53",
+        "text": "La fotosíntesi és el procés pel qual les plantes transformen la llum solar en energia.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f54",
+        "text": "L'astronauta va descriure detalladament l'experiència de veure la Terra des de l'espai.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f55",
+        "text": "La investigació científica requereix molta paciència i rigorositat en els experiments.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f56",
+        "text": "Els dinosaures van desaparèixer fa aproximadament seixanta-sis milions d'anys de la Terra.",
+        "type": "sentences",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "id": "f-hard-100",
+    "title": "Frases difícils (100)",
+    "description": "Repte de 100 frases",
+    "type": "sentences",
+    "difficulty": "hard",
+    "items": [
+      {
+        "id": "f100-001",
+        "text": "El gat és gran.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-002",
+        "text": "La mama cuina.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-003",
+        "text": "El nen juga.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-004",
+        "text": "La nena canta.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-005",
+        "text": "El sol brilla.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-006",
+        "text": "El gos bota.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-007",
+        "text": "La pilota és roja.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-008",
+        "text": "L'ocell vola.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-009",
+        "text": "El bebè dorm.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-010",
+        "text": "La bola és blava.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-011",
+        "text": "El drac és bonic.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-012",
+        "text": "La dona balla.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-013",
+        "text": "El bou és gran.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-014",
+        "text": "La dama porta un barret.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-015",
+        "text": "El dad és bo.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-016",
+        "text": "La bici és de David.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-017",
+        "text": "El gat beu llet.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-018",
+        "text": "La nena llegeix.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-019",
+        "text": "El nen corre ràpid.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-020",
+        "text": "El gos menja.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-021",
+        "text": "La mama somriu.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-022",
+        "text": "L'ocell canta.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-023",
+        "text": "El nen dorm bé.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-024",
+        "text": "La nena dibuixa.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-025",
+        "text": "El gat dorm sobre la cadira.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-026",
+        "text": "La mare porta el pa a casa.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-027",
+        "text": "Els nens juguen al parc.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-028",
+        "text": "Avui fa molt bon temps.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-029",
+        "text": "El gos menja les galetes.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-030",
+        "text": "La lluna brilla a la nit.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-031",
+        "text": "La ballarina dansa al damunt de l'escenari.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-032",
+        "text": "El drac blau busca el seu tresor.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-033",
+        "text": "La bicicleta del David és de color blava.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-034",
+        "text": "En Bernat dóna una beguda a la seva besàvia.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-035",
+        "text": "La bestia dormia dins de la cova.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-036",
+        "text": "El dimoni bona boca no tenia.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-037",
+        "text": "Els arbres del bosc creixen molt alts.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-038",
+        "text": "La mestra explica la lliçó de matemàtiques.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-039",
+        "text": "Els ocells canten al jardí cada matí.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-040",
+        "text": "Avui hem anat d'excursió al camp.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-041",
+        "text": "La papallona vola entre les flors.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-042",
+        "text": "Els nens pinten un mural a la classe.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-043",
+        "text": "El noi i la noia van anar junts a la biblioteca del barri.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-044",
+        "text": "La professora va explicar una lliçó molt interessant sobre els animals.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-045",
+        "text": "Quan plou, els carrerons de la ciutat es tornen molt lliscadissos.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-046",
+        "text": "En Pere i la Maria estudien molt per treure bones notes a l'escola.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-047",
+        "text": "La ballena blava és el mamífer més gran que existeix al planeta.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-048",
+        "text": "En David i la Berta van descobrir un bosc encantat durant l'excursió.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-049",
+        "text": "La biodiversitat dels boscos catalans depèn de la conservació dels hàbitats naturals.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-050",
+        "text": "Després de la tormenta, els núvols desapareixien deixant un cel completament blau.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-051",
+        "text": "La fotosíntesi és el procés pel qual les plantes transformen la llum solar en energia.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-052",
+        "text": "L'astronauta va descriure detalladament l'experiència de veure la Terra des de l'espai.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-053",
+        "text": "La investigació científica requereix molta paciència i rigorositat en els experiments.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-054",
+        "text": "Els dinosaures van desaparèixer fa aproximadament seixanta-sis milions d'anys de la Terra.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-055",
+        "text": "El gat és gran.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-056",
+        "text": "La mama cuina.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-057",
+        "text": "El nen juga.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-058",
+        "text": "La nena canta.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-059",
+        "text": "El sol brilla.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-060",
+        "text": "El gos bota.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-061",
+        "text": "La pilota és roja.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-062",
+        "text": "L'ocell vola.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-063",
+        "text": "El bebè dorm.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-064",
+        "text": "La bola és blava.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-065",
+        "text": "El drac és bonic.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-066",
+        "text": "La dona balla.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-067",
+        "text": "El bou és gran.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-068",
+        "text": "La dama porta un barret.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-069",
+        "text": "El dad és bo.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-070",
+        "text": "La bici és de David.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-071",
+        "text": "El gat beu llet.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-072",
+        "text": "La nena llegeix.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-073",
+        "text": "El nen corre ràpid.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-074",
+        "text": "El gos menja.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-075",
+        "text": "La mama somriu.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-076",
+        "text": "L'ocell canta.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-077",
+        "text": "El nen dorm bé.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-078",
+        "text": "La nena dibuixa.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-079",
+        "text": "El gat dorm sobre la cadira.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-080",
+        "text": "La mare porta el pa a casa.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-081",
+        "text": "Els nens juguen al parc.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-082",
+        "text": "Avui fa molt bon temps.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-083",
+        "text": "El gos menja les galetes.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-084",
+        "text": "La lluna brilla a la nit.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-085",
+        "text": "La ballarina dansa al damunt de l'escenari.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-086",
+        "text": "El drac blau busca el seu tresor.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-087",
+        "text": "La bicicleta del David és de color blava.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-088",
+        "text": "En Bernat dóna una beguda a la seva besàvia.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-089",
+        "text": "La bestia dormia dins de la cova.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-090",
+        "text": "El dimoni bona boca no tenia.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-091",
+        "text": "Els arbres del bosc creixen molt alts.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-092",
+        "text": "La mestra explica la lliçó de matemàtiques.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-093",
+        "text": "Els ocells canten al jardí cada matí.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-094",
+        "text": "Avui hem anat d'excursió al camp.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-095",
+        "text": "La papallona vola entre les flors.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-096",
+        "text": "Els nens pinten un mural a la classe.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-097",
+        "text": "El noi i la noia van anar junts a la biblioteca del barri.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-098",
+        "text": "La professora va explicar una lliçó molt interessant sobre els animals.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-099",
+        "text": "Quan plou, els carrerons de la ciutat es tornen molt lliscadissos.",
+        "type": "sentences",
+        "difficulty": "hard"
+      },
+      {
+        "id": "f100-100",
+        "text": "En Pere i la Maria estudien molt per treure bones notes a l'escola.",
+        "type": "sentences",
+        "difficulty": "hard"
+      }
     ]
   }
 ]

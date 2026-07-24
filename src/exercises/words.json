@@ -6,16 +6,66 @@
     "type": "words",
     "difficulty": "easy",
     "items": [
-      { "id": "w01", "text": "gat", "type": "words", "difficulty": "easy" },
-      { "id": "w02", "text": "gos", "type": "words", "difficulty": "easy" },
-      { "id": "w03", "text": "peix", "type": "words", "difficulty": "easy" },
-      { "id": "w04", "text": "oca", "type": "words", "difficulty": "easy" },
-      { "id": "w05", "text": "lleó", "type": "words", "difficulty": "easy" },
-      { "id": "w06", "text": "rata", "type": "words", "difficulty": "easy" },
-      { "id": "w07", "text": "elefant", "type": "words", "difficulty": "easy" },
-      { "id": "w08", "text": "porc", "type": "words", "difficulty": "easy" },
-      { "id": "w09", "text": "vaca", "type": "words", "difficulty": "easy" },
-      { "id": "w10", "text": "ovella", "type": "words", "difficulty": "easy" }
+      {
+        "id": "w01",
+        "text": "gat",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w02",
+        "text": "gos",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w03",
+        "text": "peix",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w04",
+        "text": "oca",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w05",
+        "text": "lleó",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w06",
+        "text": "rata",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w07",
+        "text": "elefant",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w08",
+        "text": "porc",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w09",
+        "text": "vaca",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w10",
+        "text": "ovella",
+        "type": "words",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -25,16 +75,66 @@
     "type": "words",
     "difficulty": "easy",
     "items": [
-      { "id": "w11", "text": "blau", "type": "words", "difficulty": "easy" },
-      { "id": "w12", "text": "verd", "type": "words", "difficulty": "easy" },
-      { "id": "w13", "text": "roig", "type": "words", "difficulty": "easy" },
-      { "id": "w14", "text": "groc", "type": "words", "difficulty": "easy" },
-      { "id": "w15", "text": "negre", "type": "words", "difficulty": "easy" },
-      { "id": "w16", "text": "blanc", "type": "words", "difficulty": "easy" },
-      { "id": "w17", "text": "rosa", "type": "words", "difficulty": "easy" },
-      { "id": "w18", "text": "lila", "type": "words", "difficulty": "easy" },
-      { "id": "w19", "text": "taronja", "type": "words", "difficulty": "easy" },
-      { "id": "w20", "text": "marró", "type": "words", "difficulty": "easy" }
+      {
+        "id": "w11",
+        "text": "blau",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w12",
+        "text": "verd",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w13",
+        "text": "roig",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w14",
+        "text": "groc",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w15",
+        "text": "negre",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w16",
+        "text": "blanc",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w17",
+        "text": "rosa",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w18",
+        "text": "lila",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w19",
+        "text": "taronja",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w20",
+        "text": "marró",
+        "type": "words",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -44,16 +144,66 @@
     "type": "words",
     "difficulty": "easy",
     "items": [
-      { "id": "w21", "text": "mama", "type": "words", "difficulty": "easy" },
-      { "id": "w22", "text": "papa", "type": "words", "difficulty": "easy" },
-      { "id": "w23", "text": "avi", "type": "words", "difficulty": "easy" },
-      { "id": "w24", "text": "àvia", "type": "words", "difficulty": "easy" },
-      { "id": "w25", "text": "germà", "type": "words", "difficulty": "easy" },
-      { "id": "w26", "text": "germana", "type": "words", "difficulty": "easy" },
-      { "id": "w27", "text": "oncle", "type": "words", "difficulty": "easy" },
-      { "id": "w28", "text": "tieta", "type": "words", "difficulty": "easy" },
-      { "id": "w29", "text": "cosí", "type": "words", "difficulty": "easy" },
-      { "id": "w30", "text": "bebè", "type": "words", "difficulty": "easy" }
+      {
+        "id": "w21",
+        "text": "mama",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w22",
+        "text": "papa",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w23",
+        "text": "avi",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w24",
+        "text": "àvia",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w25",
+        "text": "germà",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w26",
+        "text": "germana",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w27",
+        "text": "oncle",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w28",
+        "text": "tieta",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w29",
+        "text": "cosí",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w30",
+        "text": "bebè",
+        "type": "words",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -63,16 +213,66 @@
     "type": "words",
     "difficulty": "easy",
     "items": [
-      { "id": "w61", "text": "poma", "type": "words", "difficulty": "easy" },
-      { "id": "w62", "text": "pera", "type": "words", "difficulty": "easy" },
-      { "id": "w63", "text": "raïm", "type": "words", "difficulty": "easy" },
-      { "id": "w64", "text": "meló", "type": "words", "difficulty": "easy" },
-      { "id": "w65", "text": "plàtan", "type": "words", "difficulty": "easy" },
-      { "id": "w66", "text": "maduixa", "type": "words", "difficulty": "easy" },
-      { "id": "w67", "text": "pa", "type": "words", "difficulty": "easy" },
-      { "id": "w68", "text": "llet", "type": "words", "difficulty": "easy" },
-      { "id": "w69", "text": "ou", "type": "words", "difficulty": "easy" },
-      { "id": "w70", "text": "arròs", "type": "words", "difficulty": "easy" }
+      {
+        "id": "w61",
+        "text": "poma",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w62",
+        "text": "pera",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w63",
+        "text": "raïm",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w64",
+        "text": "meló",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w65",
+        "text": "plàtan",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w66",
+        "text": "maduixa",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w67",
+        "text": "pa",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w68",
+        "text": "llet",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w69",
+        "text": "ou",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w70",
+        "text": "arròs",
+        "type": "words",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -82,16 +282,66 @@
     "type": "words",
     "difficulty": "easy",
     "items": [
-      { "id": "w71", "text": "porta", "type": "words", "difficulty": "easy" },
-      { "id": "w72", "text": "taula", "type": "words", "difficulty": "easy" },
-      { "id": "w73", "text": "cadira", "type": "words", "difficulty": "easy" },
-      { "id": "w74", "text": "llit", "type": "words", "difficulty": "easy" },
-      { "id": "w75", "text": "got", "type": "words", "difficulty": "easy" },
-      { "id": "w76", "text": "plat", "type": "words", "difficulty": "easy" },
-      { "id": "w77", "text": "bossa", "type": "words", "difficulty": "easy" },
-      { "id": "w78", "text": "clau", "type": "words", "difficulty": "easy" },
-      { "id": "w79", "text": "llum", "type": "words", "difficulty": "easy" },
-      { "id": "w80", "text": "rellotge", "type": "words", "difficulty": "easy" }
+      {
+        "id": "w71",
+        "text": "porta",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w72",
+        "text": "taula",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w73",
+        "text": "cadira",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w74",
+        "text": "llit",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w75",
+        "text": "got",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w76",
+        "text": "plat",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w77",
+        "text": "bossa",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w78",
+        "text": "clau",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w79",
+        "text": "llum",
+        "type": "words",
+        "difficulty": "easy"
+      },
+      {
+        "id": "w80",
+        "text": "rellotge",
+        "type": "words",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -101,16 +351,66 @@
     "type": "words",
     "difficulty": "medium",
     "items": [
-      { "id": "w31", "text": "llibre", "type": "words", "difficulty": "medium" },
-      { "id": "w32", "text": "llapis", "type": "words", "difficulty": "medium" },
-      { "id": "w33", "text": "mestre", "type": "words", "difficulty": "medium" },
-      { "id": "w34", "text": "classe", "type": "words", "difficulty": "medium" },
-      { "id": "w35", "text": "pissarra", "type": "words", "difficulty": "medium" },
-      { "id": "w36", "text": "motxilla", "type": "words", "difficulty": "medium" },
-      { "id": "w37", "text": "goma", "type": "words", "difficulty": "medium" },
-      { "id": "w38", "text": "regla", "type": "words", "difficulty": "medium" },
-      { "id": "w39", "text": "tisores", "type": "words", "difficulty": "medium" },
-      { "id": "w40", "text": "pinzell", "type": "words", "difficulty": "medium" }
+      {
+        "id": "w31",
+        "text": "llibre",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w32",
+        "text": "llapis",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w33",
+        "text": "mestre",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w34",
+        "text": "classe",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w35",
+        "text": "pissarra",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w36",
+        "text": "motxilla",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w37",
+        "text": "goma",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w38",
+        "text": "regla",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w39",
+        "text": "tisores",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w40",
+        "text": "pinzell",
+        "type": "words",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -120,16 +420,66 @@
     "type": "words",
     "difficulty": "medium",
     "items": [
-      { "id": "w81", "text": "bosc", "type": "words", "difficulty": "medium" },
-      { "id": "w82", "text": "muntanya", "type": "words", "difficulty": "medium" },
-      { "id": "w83", "text": "riu", "type": "words", "difficulty": "medium" },
-      { "id": "w84", "text": "pedra", "type": "words", "difficulty": "medium" },
-      { "id": "w85", "text": "planta", "type": "words", "difficulty": "medium" },
-      { "id": "w86", "text": "flor", "type": "words", "difficulty": "medium" },
-      { "id": "w87", "text": "papallona", "type": "words", "difficulty": "medium" },
-      { "id": "w88", "text": "cargol", "type": "words", "difficulty": "medium" },
-      { "id": "w89", "text": "granota", "type": "words", "difficulty": "medium" },
-      { "id": "w90", "text": "tronc", "type": "words", "difficulty": "medium" }
+      {
+        "id": "w81",
+        "text": "bosc",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w82",
+        "text": "muntanya",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w83",
+        "text": "riu",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w84",
+        "text": "pedra",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w85",
+        "text": "planta",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w86",
+        "text": "flor",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w87",
+        "text": "papallona",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w88",
+        "text": "cargol",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w89",
+        "text": "granota",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w90",
+        "text": "tronc",
+        "type": "words",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -139,16 +489,66 @@
     "type": "words",
     "difficulty": "medium",
     "items": [
-      { "id": "w91", "text": "braç", "type": "words", "difficulty": "medium" },
-      { "id": "w92", "text": "cama", "type": "words", "difficulty": "medium" },
-      { "id": "w93", "text": "pit", "type": "words", "difficulty": "medium" },
-      { "id": "w94", "text": "esquena", "type": "words", "difficulty": "medium" },
-      { "id": "w95", "text": "muscle", "type": "words", "difficulty": "medium" },
-      { "id": "w96", "text": "genoll", "type": "words", "difficulty": "medium" },
-      { "id": "w97", "text": "colze", "type": "words", "difficulty": "medium" },
-      { "id": "w98", "text": "dit", "type": "words", "difficulty": "medium" },
-      { "id": "w99", "text": "ungla", "type": "words", "difficulty": "medium" },
-      { "id": "w100", "text": "parpella", "type": "words", "difficulty": "medium" }
+      {
+        "id": "w91",
+        "text": "braç",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w92",
+        "text": "cama",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w93",
+        "text": "pit",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w94",
+        "text": "esquena",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w95",
+        "text": "muscle",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w96",
+        "text": "genoll",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w97",
+        "text": "colze",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w98",
+        "text": "dit",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w99",
+        "text": "ungla",
+        "type": "words",
+        "difficulty": "medium"
+      },
+      {
+        "id": "w100",
+        "text": "parpella",
+        "type": "words",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -158,16 +558,66 @@
     "type": "words",
     "difficulty": "hard",
     "items": [
-      { "id": "w41", "text": "extraordinari", "type": "words", "difficulty": "hard" },
-      { "id": "w42", "text": "responsabilitat", "type": "words", "difficulty": "hard" },
-      { "id": "w43", "text": "circumferència", "type": "words", "difficulty": "hard" },
-      { "id": "w44", "text": "constitució", "type": "words", "difficulty": "hard" },
-      { "id": "w45", "text": "independència", "type": "words", "difficulty": "hard" },
-      { "id": "w46", "text": "biodiversitat", "type": "words", "difficulty": "hard" },
-      { "id": "w47", "text": "meteorologia", "type": "words", "difficulty": "hard" },
-      { "id": "w48", "text": "quadrilàter", "type": "words", "difficulty": "hard" },
-      { "id": "w49", "text": "microscòpic", "type": "words", "difficulty": "hard" },
-      { "id": "w50", "text": "esternocleidomastoïdal", "type": "words", "difficulty": "hard" }
+      {
+        "id": "w41",
+        "text": "extraordinari",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w42",
+        "text": "responsabilitat",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w43",
+        "text": "circumferència",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w44",
+        "text": "constitució",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w45",
+        "text": "independència",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w46",
+        "text": "biodiversitat",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w47",
+        "text": "meteorologia",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w48",
+        "text": "quadrilàter",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w49",
+        "text": "microscòpic",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w50",
+        "text": "esternocleidomastoïdal",
+        "type": "words",
+        "difficulty": "hard"
+      }
     ]
   },
   {
@@ -177,16 +627,66 @@
     "type": "words",
     "difficulty": "hard",
     "items": [
-      { "id": "w101", "text": "fotosíntesi", "type": "words", "difficulty": "hard" },
-      { "id": "w102", "text": "electroimant", "type": "words", "difficulty": "hard" },
-      { "id": "w103", "text": "gravitació", "type": "words", "difficulty": "hard" },
-      { "id": "w104", "text": "termòmetre", "type": "words", "difficulty": "hard" },
-      { "id": "w105", "text": "microscopi", "type": "words", "difficulty": "hard" },
-      { "id": "w106", "text": "ecosistema", "type": "words", "difficulty": "hard" },
-      { "id": "w107", "text": "clorofil·la", "type": "words", "difficulty": "hard" },
-      { "id": "w108", "text": "descomposició", "type": "words", "difficulty": "hard" },
-      { "id": "w109", "text": "transformació", "type": "words", "difficulty": "hard" },
-      { "id": "w110", "text": "perpendicular", "type": "words", "difficulty": "hard" }
+      {
+        "id": "w101",
+        "text": "fotosíntesi",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w102",
+        "text": "electroimant",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w103",
+        "text": "gravitació",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w104",
+        "text": "termòmetre",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w105",
+        "text": "microscopi",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w106",
+        "text": "ecosistema",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w107",
+        "text": "clorofil·la",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w108",
+        "text": "descomposició",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w109",
+        "text": "transformació",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w110",
+        "text": "perpendicular",
+        "type": "words",
+        "difficulty": "hard"
+      }
     ]
   },
   {
@@ -196,16 +696,675 @@
     "type": "words",
     "difficulty": "hard",
     "items": [
-      { "id": "w111", "text": "democratització", "type": "words", "difficulty": "hard" },
-      { "id": "w112", "text": "arqueologia", "type": "words", "difficulty": "hard" },
-      { "id": "w113", "text": "civilització", "type": "words", "difficulty": "hard" },
-      { "id": "w114", "text": "filosofia", "type": "words", "difficulty": "hard" },
-      { "id": "w115", "text": "arquitectura", "type": "words", "difficulty": "hard" },
-      { "id": "w116", "text": "manufactura", "type": "words", "difficulty": "hard" },
-      { "id": "w117", "text": "cosmopolita", "type": "words", "difficulty": "hard" },
-      { "id": "w118", "text": "bibliografia", "type": "words", "difficulty": "hard" },
-      { "id": "w119", "text": "contradicció", "type": "words", "difficulty": "hard" },
-      { "id": "w120", "text": "transcendència", "type": "words", "difficulty": "hard" }
+      {
+        "id": "w111",
+        "text": "democratització",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w112",
+        "text": "arqueologia",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w113",
+        "text": "civilització",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w114",
+        "text": "filosofia",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w115",
+        "text": "arquitectura",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w116",
+        "text": "manufactura",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w117",
+        "text": "cosmopolita",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w118",
+        "text": "bibliografia",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w119",
+        "text": "contradicció",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w120",
+        "text": "transcendència",
+        "type": "words",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "id": "w-hard-100",
+    "title": "Paraules difícils (100)",
+    "description": "Repte de 100 paraules",
+    "type": "words",
+    "difficulty": "hard",
+    "items": [
+      {
+        "id": "w100-001",
+        "text": "gat",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-002",
+        "text": "gos",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-003",
+        "text": "peix",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-004",
+        "text": "oca",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-005",
+        "text": "lleó",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-006",
+        "text": "rata",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-007",
+        "text": "elefant",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-008",
+        "text": "porc",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-009",
+        "text": "vaca",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-010",
+        "text": "ovella",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-011",
+        "text": "blau",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-012",
+        "text": "verd",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-013",
+        "text": "roig",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-014",
+        "text": "groc",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-015",
+        "text": "negre",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-016",
+        "text": "blanc",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-017",
+        "text": "rosa",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-018",
+        "text": "lila",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-019",
+        "text": "taronja",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-020",
+        "text": "marró",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-021",
+        "text": "mama",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-022",
+        "text": "papa",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-023",
+        "text": "avi",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-024",
+        "text": "àvia",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-025",
+        "text": "germà",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-026",
+        "text": "germana",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-027",
+        "text": "oncle",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-028",
+        "text": "tieta",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-029",
+        "text": "cosí",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-030",
+        "text": "bebè",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-031",
+        "text": "poma",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-032",
+        "text": "pera",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-033",
+        "text": "raïm",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-034",
+        "text": "meló",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-035",
+        "text": "plàtan",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-036",
+        "text": "maduixa",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-037",
+        "text": "pa",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-038",
+        "text": "llet",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-039",
+        "text": "ou",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-040",
+        "text": "arròs",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-041",
+        "text": "porta",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-042",
+        "text": "taula",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-043",
+        "text": "cadira",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-044",
+        "text": "llit",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-045",
+        "text": "got",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-046",
+        "text": "plat",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-047",
+        "text": "bossa",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-048",
+        "text": "clau",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-049",
+        "text": "llum",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-050",
+        "text": "rellotge",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-051",
+        "text": "llibre",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-052",
+        "text": "llapis",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-053",
+        "text": "mestre",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-054",
+        "text": "classe",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-055",
+        "text": "pissarra",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-056",
+        "text": "motxilla",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-057",
+        "text": "goma",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-058",
+        "text": "regla",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-059",
+        "text": "tisores",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-060",
+        "text": "pinzell",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-061",
+        "text": "bosc",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-062",
+        "text": "muntanya",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-063",
+        "text": "riu",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-064",
+        "text": "pedra",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-065",
+        "text": "planta",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-066",
+        "text": "flor",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-067",
+        "text": "papallona",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-068",
+        "text": "cargol",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-069",
+        "text": "granota",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-070",
+        "text": "tronc",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-071",
+        "text": "braç",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-072",
+        "text": "cama",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-073",
+        "text": "pit",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-074",
+        "text": "esquena",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-075",
+        "text": "muscle",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-076",
+        "text": "genoll",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-077",
+        "text": "colze",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-078",
+        "text": "dit",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-079",
+        "text": "ungla",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-080",
+        "text": "parpella",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-081",
+        "text": "extraordinari",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-082",
+        "text": "responsabilitat",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-083",
+        "text": "circumferència",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-084",
+        "text": "constitució",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-085",
+        "text": "independència",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-086",
+        "text": "biodiversitat",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-087",
+        "text": "meteorologia",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-088",
+        "text": "quadrilàter",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-089",
+        "text": "microscòpic",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-090",
+        "text": "esternocleidomastoïdal",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-091",
+        "text": "fotosíntesi",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-092",
+        "text": "electroimant",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-093",
+        "text": "gravitació",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-094",
+        "text": "termòmetre",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-095",
+        "text": "microscopi",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-096",
+        "text": "ecosistema",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-097",
+        "text": "clorofil·la",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-098",
+        "text": "descomposició",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-099",
+        "text": "transformació",
+        "type": "words",
+        "difficulty": "hard"
+      },
+      {
+        "id": "w100-100",
+        "text": "perpendicular",
+        "type": "words",
+        "difficulty": "hard"
+      }
     ]
   }
 ]

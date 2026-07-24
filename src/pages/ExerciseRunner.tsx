@@ -39,12 +39,13 @@ const SHORT_TIMER_SPEECH_GRACE_MS = 700;
 
 export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) {
   const isHardSyllableMode = set.type === 'syllables' && set.difficulty === 'hard';
+  const hardBaseItems = Math.max(1, set.items.length || HARD_SYLLABLE_BASE_ITEMS);
   const [items, setItems] = useState(() => {
     const shuffled = shuffleItems(set.items);
     if (!isHardSyllableMode || shuffled.length === 0) {
       return shuffled;
     }
-    return Array.from({ length: HARD_SYLLABLE_BASE_ITEMS }, (_, idx) => {
+    return Array.from({ length: hardBaseItems }, (_, idx) => {
       const source = shuffled[idx % shuffled.length];
       return { ...source, id: `${source.id}-run-${idx + 1}` };
     });

@@ -6,16 +6,66 @@
     "type": "pseudowords",
     "difficulty": "easy",
     "items": [
-      { "id": "p01", "text": "mato", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p02", "text": "peli", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p03", "text": "dasu", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p04", "text": "tofe", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p05", "text": "biru", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p06", "text": "sona", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p07", "text": "rupe", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p08", "text": "fimo", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p09", "text": "lati", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p10", "text": "neso", "type": "pseudowords", "difficulty": "easy" }
+      {
+        "id": "p01",
+        "text": "mato",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p02",
+        "text": "peli",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p03",
+        "text": "dasu",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p04",
+        "text": "tofe",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p05",
+        "text": "biru",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p06",
+        "text": "sona",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p07",
+        "text": "rupe",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p08",
+        "text": "fimo",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p09",
+        "text": "lati",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p10",
+        "text": "neso",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -25,16 +75,66 @@
     "type": "pseudowords",
     "difficulty": "easy",
     "items": [
-      { "id": "p31", "text": "bola", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p32", "text": "demi", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p33", "text": "batu", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p34", "text": "dipo", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p35", "text": "bune", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p36", "text": "dafe", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p37", "text": "bila", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p38", "text": "doru", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p39", "text": "beso", "type": "pseudowords", "difficulty": "easy" },
-      { "id": "p40", "text": "duna", "type": "pseudowords", "difficulty": "easy" }
+      {
+        "id": "p31",
+        "text": "bola",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p32",
+        "text": "demi",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p33",
+        "text": "batu",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p34",
+        "text": "dipo",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p35",
+        "text": "bune",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p36",
+        "text": "dafe",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p37",
+        "text": "bila",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p38",
+        "text": "doru",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p39",
+        "text": "beso",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      },
+      {
+        "id": "p40",
+        "text": "duna",
+        "type": "pseudowords",
+        "difficulty": "easy"
+      }
     ]
   },
   {
@@ -44,16 +144,66 @@
     "type": "pseudowords",
     "difficulty": "medium",
     "items": [
-      { "id": "p11", "text": "molipa", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p12", "text": "tesura", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p13", "text": "bimedo", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p14", "text": "davelo", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p15", "text": "punori", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p16", "text": "soritam", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p17", "text": "relipot", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p18", "text": "fanobis", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p19", "text": "tarimep", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p20", "text": "gositun", "type": "pseudowords", "difficulty": "medium" }
+      {
+        "id": "p11",
+        "text": "molipa",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p12",
+        "text": "tesura",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p13",
+        "text": "bimedo",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p14",
+        "text": "davelo",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p15",
+        "text": "punori",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p16",
+        "text": "soritam",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p17",
+        "text": "relipot",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p18",
+        "text": "fanobis",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p19",
+        "text": "tarimep",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p20",
+        "text": "gositun",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -63,16 +213,66 @@
     "type": "pseudowords",
     "difficulty": "medium",
     "items": [
-      { "id": "p41", "text": "baturo", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p42", "text": "dalope", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p43", "text": "binota", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p44", "text": "deburi", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p45", "text": "bulafi", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p46", "text": "dotare", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p47", "text": "bilonas", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p48", "text": "dorapel", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p49", "text": "bedolis", "type": "pseudowords", "difficulty": "medium" },
-      { "id": "p50", "text": "dibunat", "type": "pseudowords", "difficulty": "medium" }
+      {
+        "id": "p41",
+        "text": "baturo",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p42",
+        "text": "dalope",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p43",
+        "text": "binota",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p44",
+        "text": "deburi",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p45",
+        "text": "bulafi",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p46",
+        "text": "dotare",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p47",
+        "text": "bilonas",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p48",
+        "text": "dorapel",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p49",
+        "text": "bedolis",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      },
+      {
+        "id": "p50",
+        "text": "dibunat",
+        "type": "pseudowords",
+        "difficulty": "medium"
+      }
     ]
   },
   {
@@ -82,11 +282,36 @@
     "type": "pseudowords",
     "difficulty": "hard",
     "items": [
-      { "id": "p21", "text": "bravitolen", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p22", "text": "prisacolem", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p23", "text": "drotisaber", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p24", "text": "fraguimoper", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p25", "text": "tratisolber", "type": "pseudowords", "difficulty": "hard" }
+      {
+        "id": "p21",
+        "text": "bravitolen",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p22",
+        "text": "prisacolem",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p23",
+        "text": "drotisaber",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p24",
+        "text": "fraguimoper",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p25",
+        "text": "tratisolber",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      }
     ]
   },
   {
@@ -96,13 +321,657 @@
     "type": "pseudowords",
     "difficulty": "hard",
     "items": [
-      { "id": "p51", "text": "clanibodret", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p52", "text": "drobastimel", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p53", "text": "frabistonel", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p54", "text": "grepistolan", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p55", "text": "plandobirest", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p56", "text": "trambodiscel", "type": "pseudowords", "difficulty": "hard" },
-      { "id": "p57", "text": "blasidronef", "type": "pseudowords", "difficulty": "hard" }
+      {
+        "id": "p51",
+        "text": "clanibodret",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p52",
+        "text": "drobastimel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p53",
+        "text": "frabistonel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p54",
+        "text": "grepistolan",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p55",
+        "text": "plandobirest",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p56",
+        "text": "trambodiscel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p57",
+        "text": "blasidronef",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      }
+    ]
+  },
+  {
+    "id": "p-hard-100",
+    "title": "Pseudoparaules difícils (100)",
+    "description": "Repte de 100 pseudoparaules",
+    "type": "pseudowords",
+    "difficulty": "hard",
+    "items": [
+      {
+        "id": "p100-001",
+        "text": "mato",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-002",
+        "text": "peli",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-003",
+        "text": "dasu",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-004",
+        "text": "tofe",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-005",
+        "text": "biru",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-006",
+        "text": "sona",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-007",
+        "text": "rupe",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-008",
+        "text": "fimo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-009",
+        "text": "lati",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-010",
+        "text": "neso",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-011",
+        "text": "bola",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-012",
+        "text": "demi",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-013",
+        "text": "batu",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-014",
+        "text": "dipo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-015",
+        "text": "bune",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-016",
+        "text": "dafe",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-017",
+        "text": "bila",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-018",
+        "text": "doru",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-019",
+        "text": "beso",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-020",
+        "text": "duna",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-021",
+        "text": "molipa",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-022",
+        "text": "tesura",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-023",
+        "text": "bimedo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-024",
+        "text": "davelo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-025",
+        "text": "punori",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-026",
+        "text": "soritam",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-027",
+        "text": "relipot",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-028",
+        "text": "fanobis",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-029",
+        "text": "tarimep",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-030",
+        "text": "gositun",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-031",
+        "text": "baturo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-032",
+        "text": "dalope",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-033",
+        "text": "binota",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-034",
+        "text": "deburi",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-035",
+        "text": "bulafi",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-036",
+        "text": "dotare",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-037",
+        "text": "bilonas",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-038",
+        "text": "dorapel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-039",
+        "text": "bedolis",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-040",
+        "text": "dibunat",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-041",
+        "text": "bravitolen",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-042",
+        "text": "prisacolem",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-043",
+        "text": "drotisaber",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-044",
+        "text": "fraguimoper",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-045",
+        "text": "tratisolber",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-046",
+        "text": "clanibodret",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-047",
+        "text": "drobastimel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-048",
+        "text": "frabistonel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-049",
+        "text": "grepistolan",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-050",
+        "text": "plandobirest",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-051",
+        "text": "trambodiscel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-052",
+        "text": "blasidronef",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-053",
+        "text": "mato",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-054",
+        "text": "peli",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-055",
+        "text": "dasu",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-056",
+        "text": "tofe",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-057",
+        "text": "biru",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-058",
+        "text": "sona",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-059",
+        "text": "rupe",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-060",
+        "text": "fimo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-061",
+        "text": "lati",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-062",
+        "text": "neso",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-063",
+        "text": "bola",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-064",
+        "text": "demi",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-065",
+        "text": "batu",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-066",
+        "text": "dipo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-067",
+        "text": "bune",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-068",
+        "text": "dafe",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-069",
+        "text": "bila",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-070",
+        "text": "doru",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-071",
+        "text": "beso",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-072",
+        "text": "duna",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-073",
+        "text": "molipa",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-074",
+        "text": "tesura",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-075",
+        "text": "bimedo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-076",
+        "text": "davelo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-077",
+        "text": "punori",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-078",
+        "text": "soritam",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-079",
+        "text": "relipot",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-080",
+        "text": "fanobis",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-081",
+        "text": "tarimep",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-082",
+        "text": "gositun",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-083",
+        "text": "baturo",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-084",
+        "text": "dalope",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-085",
+        "text": "binota",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-086",
+        "text": "deburi",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-087",
+        "text": "bulafi",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-088",
+        "text": "dotare",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-089",
+        "text": "bilonas",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-090",
+        "text": "dorapel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-091",
+        "text": "bedolis",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-092",
+        "text": "dibunat",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-093",
+        "text": "bravitolen",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-094",
+        "text": "prisacolem",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-095",
+        "text": "drotisaber",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-096",
+        "text": "fraguimoper",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-097",
+        "text": "tratisolber",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-098",
+        "text": "clanibodret",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-099",
+        "text": "drobastimel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      },
+      {
+        "id": "p100-100",
+        "text": "frabistonel",
+        "type": "pseudowords",
+        "difficulty": "hard"
+      }
     ]
   }
 ]

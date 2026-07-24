@@ -97,6 +97,7 @@ export function ExercisesPage({ profile }: ExercisesPageProps) {
             <li><strong>Dificultat:</strong> fàcil, mitjà o difícil.</li>
             <li><strong>Conjunt:</strong> selecciona un grup d'exercicis concret i prem <strong>▶ Comença!</strong></li>
           </ul>
+          <p>Cada conjunt mostra el seu nombre d&apos;elements, i es farà exactament aquest nombre.</p>
           <p>El micròfon s'obrirà automàticament per escoltar la teva lectura i et dirà si has llegit bé.</p>
           <p><strong>Mode sense fi:</strong> llegeix elements un darrere l'altre fins que cometis un error. Intenta fer la ratxa més llarga possible!</p>
         </div>
