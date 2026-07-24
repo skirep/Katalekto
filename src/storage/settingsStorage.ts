@@ -5,6 +5,7 @@ import { supabase } from '../lib/supabase';
 
 const ALLOWED_SPEEDS = [1, 2, 4, 6];
 const ALLOWED_SKINS = ['original', 'pokemon', 'pikachu-ash', 'team-rocket'] as const;
+const CURRENT_SETTINGS_VERSION = 1;
 
 function normalizeSpeed(speed: number): number {
   if (ALLOWED_SPEEDS.includes(speed)) return speed;
@@ -32,40 +33,60 @@ function normalizeSkin(skin: AppSettings['skin'] | undefined): AppSettings['skin
   return ALLOWED_SKINS.includes(skin ?? 'original') ? (skin ?? 'original') : 'original';
 }
 
-export async function loadSettingsFromSupabase(profileId: string): Promise<void> {
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return;
-  const { data, error } = await supabase
-    .from('profile_settings')
-    .select('*')
-    .eq('profile_id', profileId)
-    .maybeSingle();
-  if (error || !data) return;
-  const cloudSettings: AppSettings = {
+function normalizeSettingsPayload(profileId: string, source: Partial<AppSettings>): AppSettings {
+  const baseSpeed = normalizeSpeed(source.speed ?? DEFAULT_SETTINGS.speed);
+  return {
+    ...DEFAULT_SETTINGS,
+    ...source,
     profileId,
-    speed: normalizeSpeed(data.speed as number),
-    exerciseSpeeds: normalizeExerciseSpeeds(undefined, data.speed as number),
-    uppercaseText: (data.uppercase_text as boolean | null) ?? false,
-    fontSize: data.font_size as AppSettings['fontSize'],
-    fontFamily: data.font_family as AppSettings['fontFamily'],
-    colorScheme: data.color_scheme as AppSettings['colorScheme'],
-    skin: data.skin as AppSettings['skin'],
-    dyslexiaMode: data.dyslexia_mode as boolean,
-    timeBetweenWords: data.time_between_words as number,
-    fullscreen: data.fullscreen as boolean,
+    speed: baseSpeed,
+    exerciseSpeeds: normalizeExerciseSpeeds(source.exerciseSpeeds, baseSpeed),
+    uppercaseText: source.uppercaseText ?? DEFAULT_SETTINGS.uppercaseText,
+    skin: normalizeSkin(source.skin),
   };
-  const local = await db.settings.get(profileId);
-  if (!local) {
-    await db.settings.put(cloudSettings);
-  }
 }
 
-async function syncSettingsToSupabase(settings: AppSettings): Promise<void> {
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return;
-  const { error } = await supabase.from('profile_settings').upsert({
+function readLegacyCloudSettings(profileId: string, data: Record<string, unknown>): AppSettings {
+  const speed = normalizeSpeed((data.speed as number | undefined) ?? DEFAULT_SETTINGS.speed);
+  return normalizeSettingsPayload(profileId, {
+    speed,
+    exerciseSpeeds: normalizeExerciseSpeeds(
+      (data.exercise_speeds as Partial<AppSettings['exerciseSpeeds']> | undefined) ?? undefined,
+      speed,
+    ),
+    uppercaseText: (data.uppercase_text as boolean | null) ?? DEFAULT_SETTINGS.uppercaseText,
+    fontSize: (data.font_size as AppSettings['fontSize'] | undefined) ?? DEFAULT_SETTINGS.fontSize,
+    fontFamily: (data.font_family as AppSettings['fontFamily'] | undefined) ?? DEFAULT_SETTINGS.fontFamily,
+    colorScheme: (data.color_scheme as AppSettings['colorScheme'] | undefined) ?? DEFAULT_SETTINGS.colorScheme,
+    skin: (data.skin as AppSettings['skin'] | undefined) ?? DEFAULT_SETTINGS.skin,
+    dyslexiaMode: (data.dyslexia_mode as boolean | undefined) ?? DEFAULT_SETTINGS.dyslexiaMode,
+    timeBetweenWords: (data.time_between_words as number | undefined) ?? DEFAULT_SETTINGS.timeBetweenWords,
+    fullscreen: (data.fullscreen as boolean | undefined) ?? DEFAULT_SETTINGS.fullscreen,
+  });
+}
+
+function upgradeCloudSettings(
+  profileId: string,
+  payload: Partial<AppSettings>,
+  version: number,
+): AppSettings {
+  // Reserved for future migrations of settings_data.
+  // Version 1 is already compatible with current defaults.
+  if (version <= 1) {
+    return normalizeSettingsPayload(profileId, payload);
+  }
+
+  return normalizeSettingsPayload(profileId, payload);
+}
+
+async function upsertSettingsToSupabase(settings: AppSettings): Promise<void> {
+  const payload = {
     profile_id: settings.profileId,
+    settings_version: CURRENT_SETTINGS_VERSION,
+    settings_data: settings,
+    // Legacy mirrored columns (backward compatibility)
     speed: settings.speed,
+    exercise_speeds: settings.exerciseSpeeds,
     uppercase_text: settings.uppercaseText,
     font_size: settings.fontSize,
     font_family: settings.fontFamily,
@@ -74,12 +95,66 @@ async function syncSettingsToSupabase(settings: AppSettings): Promise<void> {
     dyslexia_mode: settings.dyslexiaMode,
     time_between_words: settings.timeBetweenWords,
     fullscreen: settings.fullscreen,
-  }, { onConflict: 'profile_id' });
-  if (error) {
-    console.error('Failed to sync settings to Supabase:', error.message);
+  };
+
+  const { error } = await supabase.from('profile_settings').upsert(payload, { onConflict: 'profile_id' });
+  if (!error) return;
+
+  // Fallback for older DB schemas without settings_version/settings_data columns.
+  const legacyPayload = {
+    profile_id: settings.profileId,
+    speed: settings.speed,
+    exercise_speeds: settings.exerciseSpeeds,
+    uppercase_text: settings.uppercaseText,
+    font_size: settings.fontSize,
+    font_family: settings.fontFamily,
+    color_scheme: settings.colorScheme,
+    skin: settings.skin,
+    dyslexia_mode: settings.dyslexiaMode,
+    time_between_words: settings.timeBetweenWords,
+    fullscreen: settings.fullscreen,
+  };
+  const { error: legacyError } = await supabase.from('profile_settings').upsert(legacyPayload, { onConflict: 'profile_id' });
+  if (legacyError) {
+    console.error('Failed to sync settings to Supabase:', legacyError.message);
   }
 }
 
+export async function loadSettingsFromSupabase(profileId: string): Promise<void> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+  const { data, error } = await supabase
+    .from('profile_settings')
+    .select('*')
+    .eq('profile_id', profileId)
+    .maybeSingle();
+  if (error) return;
+
+  if (!data) {
+    // If cloud settings were wiped but local settings exist, repopulate cloud.
+    const localSettings = await db.settings.get(profileId);
+    if (localSettings) {
+      void upsertSettingsToSupabase(localSettings);
+    }
+    return;
+  }
+
+  const rawSettingsData = data.settings_data as Partial<AppSettings> | null;
+  const cloudVersion = (data.settings_version as number | null) ?? 0;
+  const cloudSettings = rawSettingsData
+    ? upgradeCloudSettings(profileId, rawSettingsData, cloudVersion)
+    : readLegacyCloudSettings(profileId, data as Record<string, unknown>);
+
+  const local = await db.settings.get(profileId);
+  if (!local || JSON.stringify(cloudSettings) !== JSON.stringify(local)) {
+    await db.settings.put(cloudSettings);
+  }
+
+  // Backfill versioned payload or upgraded fields in cloud.
+  if (!rawSettingsData || cloudVersion < CURRENT_SETTINGS_VERSION) {
+    void upsertSettingsToSupabase(cloudSettings);
+  }
+}
 
 export const settingsStorage = {
   async get(profileId: string): Promise<AppSettings> {
@@ -109,7 +184,7 @@ export const settingsStorage = {
 
   async save(settings: AppSettings): Promise<void> {
     await db.settings.put(settings);
-    void syncSettingsToSupabase(settings);
+    void upsertSettingsToSupabase(settings);
   },
 
   async update(profileId: string, partial: Partial<Omit<AppSettings, 'profileId'>>): Promise<AppSettings> {
@@ -131,7 +206,7 @@ export const settingsStorage = {
     };
 
     await db.settings.put(updated);
-    void syncSettingsToSupabase(updated);
+    void upsertSettingsToSupabase(updated);
     return updated;
   },
 };

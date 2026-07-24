@@ -18,7 +18,7 @@ function getNextTarget(bestScore: number): number {
 }
 
 function buildMission(sessions: ExerciseSession[]): RecommendedMission | null {
-  const availableSets = getAllSets().filter((set) => set.type !== 'pseudowords');
+  const availableSets = getAllSets().filter((set) => set.type !== 'pseudowords' && set.type !== 'sounds');
   if (availableSets.length === 0) return null;
 
   const sessionsBySet = new Map<string, ExerciseSession[]>();

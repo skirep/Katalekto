@@ -106,6 +106,17 @@
   color: var(--color-primary);
 }
 
+.typeDisabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+.typeDisabled:hover {
+  border-color: var(--color-border);
+  transform: none;
+}
+
 .diffGrid {
   display: flex;
   gap: 10px;

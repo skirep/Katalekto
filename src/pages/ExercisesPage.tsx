@@ -33,6 +33,12 @@ const TYPE_LABELS: Record<ExerciseType, string> = {
   sentences: '📖 Frases',
 };
 
+const COMING_SOON_TYPES: ExerciseType[] = ['sounds'];
+
+function isComingSoonType(type: ExerciseType): boolean {
+  return COMING_SOON_TYPES.includes(type);
+}
+
 const DIFFICULTY_LABELS: Record<Difficulty, string> = {
   easy: '🟢 Fàcil',
   medium: '🟡 Mitjà',
@@ -50,8 +56,12 @@ export function ExercisesPage({ profile, initialSetId = null, onInitialSetConsum
   const { mission, loading: missionLoading, refresh: refreshMission } = useRecommendedMission(profile.id);
   const [selectedType, setSelectedType] = useState<ExerciseType | null>(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | null>(null);
-  const [selectedSet, setSelectedSet] = useState<ExerciseSet | null>(() => initialSetId ? getSetById(initialSetId) ?? null : null);
-  const [running, setRunning] = useState(() => Boolean(initialSetId && getSetById(initialSetId)));
+  const initialPlayableSet = initialSetId ? getSetById(initialSetId) : null;
+  const [selectedSet, setSelectedSet] = useState<ExerciseSet | null>(() => {
+    if (!initialPlayableSet) return null;
+    return isComingSoonType(initialPlayableSet.type) ? null : initialPlayableSet;
+  });
+  const [running, setRunning] = useState(() => Boolean(initialPlayableSet && !isComingSoonType(initialPlayableSet.type)));
   const [endlessRunning, setEndlessRunning] = useState(false);
   const [endlessPool, setEndlessPool] = useState<ExerciseItem[]>([]);
   const [endlessLabel, setEndlessLabel] = useState('');
@@ -59,11 +69,12 @@ export function ExercisesPage({ profile, initialSetId = null, onInitialSetConsum
   const allTypes: ExerciseType[] = ['sounds', 'syllables', 'words', 'pseudowords', 'sentences'];
   const difficulties: Difficulty[] = ['easy', 'medium', 'hard'];
 
-  const availableSets = selectedType && selectedDifficulty
+  const availableSets = (selectedType && selectedDifficulty
     ? getSetsByTypeAndDifficulty(selectedType, selectedDifficulty)
     : selectedType
     ? getSetsByType(selectedType)
-    : getAllSets();
+    : getAllSets())
+    .filter((set) => !isComingSoonType(set.type));
   const featuredPokemon = (selectedType
     ? pokemonCollection.filter((pokemon) => pokemon.exerciseType === selectedType)
     : pokemonCollection
@@ -74,6 +85,7 @@ export function ExercisesPage({ profile, initialSetId = null, onInitialSetConsum
   }, [initialSetId, onInitialSetConsumed]);
 
   const startMission = (set: ExerciseSet) => {
+    if (isComingSoonType(set.type)) return;
     setSelectedType(set.type);
     setSelectedDifficulty(set.difficulty);
     setSelectedSet(set);
@@ -167,10 +179,14 @@ export function ExercisesPage({ profile, initialSetId = null, onInitialSetConsum
           {allTypes.map((type) => (
             <button
               key={type}
-              className={`${styles.typeBtn} ${selectedType === type ? styles.typeSelected : ''}`}
-              onClick={() => setSelectedType(selectedType === type ? null : type)}
+              className={`${styles.typeBtn} ${selectedType === type ? styles.typeSelected : ''} ${isComingSoonType(type) ? styles.typeDisabled : ''}`}
+              onClick={() => {
+                if (isComingSoonType(type)) return;
+                setSelectedType(selectedType === type ? null : type);
+              }}
+              disabled={isComingSoonType(type)}
             >
-              {TYPE_LABELS[type]}
+              {TYPE_LABELS[type]} {isComingSoonType(type) ? '· Pròximament' : ''}
             </button>
           ))}
         </div>
