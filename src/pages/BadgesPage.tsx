@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './BadgesPage.module.css';
 import { PokemonCollection } from '../components/gamification';
 import { usePokemonCollection } from '../hooks';
@@ -48,6 +48,7 @@ const ATTACKS_BY_DIFFICULTY: Record<PokemonCollectionItem['difficulty'], string[
 
 interface BattleTurn {
   attackerId: number;
+  defenderId: number;
   attackerName: string;
   defenderName: string;
   attackName: string;
@@ -110,13 +111,59 @@ export function BadgesPage({ profile }: BadgesPageProps) {
   const [selectedPokemonIds, setSelectedPokemonIds] = useState<number[]>([]);
   const [battleResult, setBattleResult] = useState<BattleResult | null>(null);
   const [battleHistory, setBattleHistory] = useState<BattleHistoryEntry[]>([]);
+  const [battlePlan, setBattlePlan] = useState<BattleResult | null>(null);
+  const [activeTurnIndex, setActiveTurnIndex] = useState<number | null>(null);
+  const [battlePhase, setBattlePhase] = useState<'charge' | 'impact'>('charge');
+  const [animatedHp, setAnimatedHp] = useState<Record<number, number>>({});
 
   const selectedPokemon = selectedPokemonIds
     .map((pokemonId) => unlockedCollection.find((pokemon) => pokemon.pokemonId === pokemonId) ?? null)
     .filter((pokemon): pokemon is PokemonCollectionItem => pokemon !== null);
+  const activeTurn = battlePlan && activeTurnIndex !== null ? battlePlan.turns[activeTurnIndex] : null;
+  const isBattling = battlePlan !== null;
+
+  useEffect(() => {
+    if (!battlePlan || activeTurnIndex === null) return;
+
+    const turn = battlePlan.turns[activeTurnIndex];
+    if (!turn) return;
+
+    setBattlePhase('charge');
+    const impactTimer = window.setTimeout(() => {
+      setBattlePhase('impact');
+      setAnimatedHp((current) => ({ ...current, [turn.defenderId]: turn.defenderHp }));
+    }, 420);
+
+    const nextTurnTimer = window.setTimeout(() => {
+      if (activeTurnIndex + 1 < battlePlan.turns.length) {
+        setActiveTurnIndex(activeTurnIndex + 1);
+        return;
+      }
+
+      setBattleResult(battlePlan);
+      setBattleHistory((current) => [
+        {
+          id: Date.now(),
+          winnerName: battlePlan.winner.name,
+          loserName: battlePlan.loser.name,
+          winnerPower: battlePlan.winnerPower,
+          loserPower: battlePlan.loserPower,
+          summary: battlePlan.commentary,
+        },
+        ...current,
+      ].slice(0, 6));
+      setBattlePlan(null);
+      setActiveTurnIndex(null);
+    }, 980);
+
+    return () => {
+      window.clearTimeout(impactTimer);
+      window.clearTimeout(nextTurnTimer);
+    };
+  }, [activeTurnIndex, battlePlan]);
 
   const toggleBattlePokemon = (pokemon: PokemonCollectionItem) => {
-    if (!pokemon.unlocked) return;
+    if (!pokemon.unlocked || isBattling) return;
 
     setBattleResult(null);
     setSelectedPokemonIds((prev) => {
@@ -133,7 +180,7 @@ export function BadgesPage({ profile }: BadgesPageProps) {
   };
 
   const simulateBattle = () => {
-    if (selectedPokemon.length !== 2) return;
+    if (selectedPokemon.length !== 2 || isBattling) return;
 
     const [firstPokemon, secondPokemon] = selectedPokemon;
     const fighterStates = [
@@ -157,6 +204,7 @@ export function BadgesPage({ profile }: BadgesPageProps) {
 
       turns.push({
         attackerId: attacker.pokemonId,
+        defenderId: defender.pokemonId,
         attackerName: attacker.name,
         defenderName: defender.name,
         attackName: isSpecialAttack ? getSpecialAttackLine(attacker) : getAttackLine(attacker, round),
@@ -178,7 +226,7 @@ export function BadgesPage({ profile }: BadgesPageProps) {
     const loserPower = firstWins ? secondPokemon.power : firstPokemon.power;
     const commentary = getBattleSummary(winner, loser, winnerPower, loserPower);
 
-    setBattleResult({
+    const result: BattleResult = {
       winner,
       loser,
       winnerPower,
@@ -190,19 +238,12 @@ export function BadgesPage({ profile }: BadgesPageProps) {
         currentHp: state.currentHp,
         maxHp: state.maxHp,
       })),
-    });
+    };
 
-    setBattleHistory((prev) => [
-      {
-        id: Date.now(),
-        winnerName: winner.name,
-        loserName: loser.name,
-        winnerPower,
-        loserPower,
-        summary: commentary,
-      },
-      ...prev,
-    ].slice(0, 6));
+    setBattleResult(null);
+    setAnimatedHp(Object.fromEntries(fighterStates.map((state) => [state.pokemon.pokemonId, state.maxHp])));
+    setBattlePlan(result);
+    setActiveTurnIndex(0);
   };
 
   return (
@@ -244,17 +285,25 @@ export function BadgesPage({ profile }: BadgesPageProps) {
             type="button"
             className={styles.battleBtn}
             onClick={simulateBattle}
-            disabled={selectedPokemon.length !== 2}
+            disabled={selectedPokemon.length !== 2 || isBattling}
           >
-            ⚔ Simula la lluita
+            {isBattling ? 'Lluitant...' : '⚔ Simula la lluita'}
           </button>
         </div>
 
-        <div className={styles.battleArena}>
-          {selectedPokemon.map((pokemon) => (
+        <div className={`${styles.battleArena} ${isBattling ? styles.battleArenaActive : ''}`}>
+          {selectedPokemon.map((pokemon, fighterIndex) => {
+            const isAttacker = activeTurn?.attackerId === pokemon.pokemonId;
+            const isDefender = activeTurn?.defenderId === pokemon.pokemonId;
+            const currentHp = animatedHp[pokemon.pokemonId]
+              ?? battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.currentHp
+              ?? getMaxHp(pokemon);
+            const maxHp = battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.maxHp ?? getMaxHp(pokemon);
+
+            return (
             <article
               key={pokemon.pokemonId}
-              className={`${styles.fighterCard} ${battleResult?.winner.pokemonId === pokemon.pokemonId ? styles.fighterWinner : ''} ${battleResult?.loser.pokemonId === pokemon.pokemonId ? styles.fighterLoser : ''}`}
+              className={`${styles.fighterCard} ${fighterIndex === 0 ? styles.fighterLeft : styles.fighterRight} ${isAttacker ? styles.fighterAttacking : ''} ${isDefender && battlePhase === 'impact' ? styles.fighterHit : ''} ${battleResult?.winner.pokemonId === pokemon.pokemonId ? styles.fighterWinner : ''} ${battleResult?.loser.pokemonId === pokemon.pokemonId ? styles.fighterLoser : ''}`}
             >
               {pokemon.imageUrl ? <img className={styles.fighterArt} src={pokemon.imageUrl} alt={pokemon.name} /> : <div className={styles.fighterPlaceholder}>⚡</div>}
               <div className={styles.fighterName}>{pokemon.name}</div>
@@ -263,23 +312,25 @@ export function BadgesPage({ profile }: BadgesPageProps) {
               <div className={styles.hpBlock}>
                 <div className={styles.hpHeader}>
                   <span>HP</span>
-                  <span>
-                    {battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.currentHp ?? getMaxHp(pokemon)}
-                    /
-                    {battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.maxHp ?? getMaxHp(pokemon)}
-                  </span>
+                  <span>{currentHp}/{maxHp}</span>
                 </div>
                 <div className={styles.hpBar}>
                   <div
                     className={styles.hpFill}
-                    style={{
-                      width: `${Math.round((((battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.currentHp ?? getMaxHp(pokemon)) / (battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.maxHp ?? getMaxHp(pokemon))) * 100))}%`,
-                    }}
+                    style={{ width: `${Math.round((currentHp / maxHp) * 100)}%` }}
                   />
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
+          {activeTurn && (
+            <div className={`${styles.attackCallout} ${activeTurn.isSpecialAttack ? styles.attackCalloutSpecial : ''}`}>
+              <strong>{activeTurn.attackName}</strong>
+              {battlePhase === 'impact' && <span>−{activeTurn.damage} HP</span>}
+            </div>
+          )}
+          {activeTurn && battlePhase === 'impact' && <div className={styles.impactFlash} aria-hidden="true" />}
           {selectedPokemon.length < 2 && Array.from({ length: 2 - selectedPokemon.length }, (_, idx) => (
             <div key={`empty-${idx}`} className={styles.fighterEmpty}>Tria un Pokémon desbloquejat</div>
           ))}
