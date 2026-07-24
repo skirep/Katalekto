@@ -37,7 +37,7 @@ interface ExerciseRunnerProps {
 }
 
 const RESULT_DISPLAY_MS = 1200;
-const SYLLABLE_RESULT_DISPLAY_MS = 350;
+const SYLLABLE_RESULT_DISPLAY_MS = 0;
 const HARD_SYLLABLE_BASE_ITEMS = 50;
 
 export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) {
