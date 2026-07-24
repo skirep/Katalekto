@@ -30,7 +30,7 @@ export function useSpeechRecognition(engine?: SpeechEngine) {
     e.onEnd = () => {
       setIsListening(false);
     };
-    e.start({ language: 'ca-ES', continuous: false, interimResults: true });
+    e.start({ language: 'ca-ES', continuous: false, interimResults: false });
   }, []);
 
   const stop = useCallback(() => {

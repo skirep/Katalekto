@@ -67,8 +67,8 @@ export function calculateSimilarity(expected: string, recognized: string): numbe
 }
 
 export function classifyResult(similarity: number): ReadingResult {
-  if (similarity >= 0.85) return 'correct';
-  if (similarity >= 0.6) return 'almost';
+  if (similarity >= 0.8) return 'correct';
+  if (similarity >= 0.55) return 'almost';
   return 'incorrect';
 }
 

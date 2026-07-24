@@ -96,7 +96,7 @@ export class WebSpeechEngine implements SpeechEngine {
     this.recognition = new SpeechRecognitionCtor();
     this.recognition.lang = options.language ?? 'ca-ES';
     this.recognition.continuous = options.continuous ?? false;
-    this.recognition.interimResults = options.interimResults ?? true;
+    this.recognition.interimResults = options.interimResults ?? false;
     this.recognition.maxAlternatives = 5;
 
     this.recognition.onresult = (event: SpeechRecognitionEvent) => {
@@ -108,11 +108,24 @@ export class WebSpeechEngine implements SpeechEngine {
           confidence: result[i].confidence,
         });
       }
+
+      // Build a full transcript from all chunks for the current utterance.
+      // Web Speech may split one spoken sentence into multiple results.
+      const fullTranscript = Array.from({ length: event.results.length }, (_, i) => event.results[i][0]?.transcript ?? '')
+        .join(' ')
+        .trim()
+        .toLowerCase();
+
+      const dedupedAlternatives = [
+        { transcript: fullTranscript, confidence: alternatives[0]?.confidence ?? 0 },
+        ...alternatives,
+      ].filter((alt, idx, list) => alt.transcript && list.findIndex((candidate) => candidate.transcript === alt.transcript) === idx);
+
       this.onResult?.({
-        transcript: alternatives[0]?.transcript ?? '',
-        confidence: alternatives[0]?.confidence ?? 0,
+        transcript: fullTranscript || alternatives[0]?.transcript || '',
+        confidence: dedupedAlternatives[0]?.confidence ?? 0,
         isFinal: result.isFinal,
-        alternatives,
+        alternatives: dedupedAlternatives,
       });
     };
 
