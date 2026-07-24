@@ -47,6 +47,7 @@ export function EndlessRunner({ profile, itemPool, sessionType, sessionDifficult
   const startTimeRef = useRef(0);
   const sessionStartRef = useRef(Date.now());
   const itemDeadlineRef = useRef(0);
+  const timedOutRef = useRef(false);
   const readTimeoutRef = useRef<number | null>(null);
   const nextTimeoutRef = useRef<number | null>(null);
   const attemptsRef = useRef<ExerciseAttempt[]>([]);
@@ -72,7 +73,7 @@ export function EndlessRunner({ profile, itemPool, sessionType, sessionDifficult
   }, [itemPool]);
 
   const evaluateCurrentAttempt = useCallback((recognizedText: string) => {
-    if (phaseRef.current !== 'listening') return;
+    if (phaseRef.current !== 'listening' || timedOutRef.current) return;
     clearTimer(readTimeoutRef);
     const timeMs = Date.now() - startTimeRef.current;
 
@@ -161,6 +162,7 @@ export function EndlessRunner({ profile, itemPool, sessionType, sessionDifficult
     setTranscript('');
     transcriptRef.current = '';
     setLastResult(null);
+    timedOutRef.current = false;
     const durationMs = Math.max(1000, Math.round(settings.speed * 1000));
     startTimeRef.current = Date.now();
     itemDeadlineRef.current = startTimeRef.current + durationMs;
@@ -168,6 +170,7 @@ export function EndlessRunner({ profile, itemPool, sessionType, sessionDifficult
     setPhase('listening');
     start();
     readTimeoutRef.current = window.setTimeout(() => {
+      timedOutRef.current = true;
       stop();
       setTimeLeftMs(0);
       if (!transcriptRef.current.trim()) {
@@ -190,7 +193,7 @@ export function EndlessRunner({ profile, itemPool, sessionType, sessionDifficult
 
   // When recognition ends naturally
   useEffect(() => {
-    if (!isListening && phase === 'listening') {
+    if (!isListening && phase === 'listening' && !timedOutRef.current) {
       evaluateCurrentAttempt(transcriptRef.current);
     }
   }, [isListening, phase, evaluateCurrentAttempt]);

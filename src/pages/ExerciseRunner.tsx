@@ -59,6 +59,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
   const startTimeRef = useRef<number>(0);
   const sessionStartRef = useRef<number>(Date.now());
   const itemDeadlineRef = useRef<number>(0);
+  const timedOutRef = useRef(false);
   const readTimeoutRef = useRef<number | null>(null);
   const nextTimeoutRef = useRef<number | null>(null);
   const attemptsRef = useRef<ExerciseAttempt[]>([]);
@@ -80,7 +81,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
   }, []);
 
   const evaluateCurrentAttempt = useCallback((recognizedText: string) => {
-    if (phaseRef.current !== 'listening' || !currentItem) return;
+    if (phaseRef.current !== 'listening' || timedOutRef.current || !currentItem) return;
     clearTimer(readTimeoutRef);
     const timeMs = Date.now() - startTimeRef.current;
 
@@ -185,6 +186,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     setTranscript('');
     transcriptRef.current = '';
     setLastResult(null);
+    timedOutRef.current = false;
     const durationMs = Math.max(1000, Math.round(settings.speed * 1000));
     startTimeRef.current = Date.now();
     itemDeadlineRef.current = startTimeRef.current + durationMs;
@@ -192,6 +194,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     setPhase('listening');
     start();
     readTimeoutRef.current = window.setTimeout(() => {
+      timedOutRef.current = true;
       stop();
       setTimeLeftMs(0);
       if (!transcriptRef.current.trim()) {
@@ -221,7 +224,7 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
 
   // When recognition ends automatically, evaluate and transition to result phase
   useEffect(() => {
-    if (!isListening && phase === 'listening') {
+    if (!isListening && phase === 'listening' && !timedOutRef.current) {
       evaluateCurrentAttempt(transcriptRef.current);
     }
   }, [isListening, phase, evaluateCurrentAttempt]);
