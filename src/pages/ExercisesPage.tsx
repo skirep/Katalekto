@@ -25,12 +25,12 @@ import type { ExerciseType, Difficulty, ExerciseSet, ExerciseItem, Profile } fro
  * or `endlessRunning` is true the corresponding component replaces this page.
  */
 
-const TYPE_LABELS: Record<ExerciseType, string> = {
-  sounds: '🔊 Sons',
-  syllables: '🔤 Síl·labes',
-  words: '📝 Paraules',
-  pseudowords: '🔮 Pseudoparaules',
-  sentences: '📖 Frases',
+const TYPE_OPTIONS: Record<ExerciseType, { icon: string; label: string; description: string }> = {
+  sounds: { icon: '🔊', label: 'Sons', description: 'Escolta i practica cada so' },
+  syllables: { icon: '🔤', label: 'Síl·labes', description: 'Ajunta lletres i sons' },
+  words: { icon: '📝', label: 'Paraules', description: 'Llegeix paraules senceres' },
+  pseudowords: { icon: '🔮', label: 'Paraules inventades', description: 'Supera un repte de lectura' },
+  sentences: { icon: '📖', label: 'Frases', description: 'Llegeix històries curtes' },
 };
 
 const COMING_SOON_TYPES: ExerciseType[] = ['sounds'];
@@ -39,10 +39,10 @@ function isComingSoonType(type: ExerciseType): boolean {
   return COMING_SOON_TYPES.includes(type);
 }
 
-const DIFFICULTY_LABELS: Record<Difficulty, string> = {
-  easy: '🟢 Fàcil',
-  medium: '🟡 Mitjà',
-  hard: '🔴 Difícil',
+const DIFFICULTY_OPTIONS: Record<Difficulty, { icon: string; label: string; description: string }> = {
+  easy: { icon: '🌱', label: 'Fàcil', description: 'Per començar' },
+  medium: { icon: '⭐', label: 'Mitjà', description: 'Un bon repte' },
+  hard: { icon: '🔥', label: 'Difícil', description: 'Aventura experta' },
 };
 
 interface ExercisesPageProps {
@@ -121,22 +121,14 @@ export function ExercisesPage({ profile, initialSetId = null, onInitialSetConsum
 
   return (
     <div className={`page ${styles.page}`}>
-      <h1 className="page-title">Exercicis</h1>
-
-      <details className="info-box">
-        <summary>ℹ️ Com funciona aquesta pantalla?</summary>
-        <div className="info-box-content">
-          <p>Aquí pots triar i llançar exercicis de lectura en veu alta:</p>
-          <ul>
-            <li><strong>Tipus:</strong> tria entre sons, síl·labes, paraules, pseudoparaules o frases.</li>
-            <li><strong>Dificultat:</strong> fàcil, mitjà o difícil.</li>
-            <li><strong>Conjunt:</strong> selecciona un grup d'exercicis concret i prem <strong>▶ Comença!</strong></li>
-          </ul>
-          <p>Cada conjunt mostra el seu nombre d&apos;elements, i es farà exactament aquest nombre.</p>
-          <p>El micròfon s'obrirà automàticament per escoltar la teva lectura i et dirà si has llegit bé.</p>
-          <p><strong>Mode sense fi:</strong> llegeix elements un darrere l'altre fins que cometis un error. Intenta fer la ratxa més llarga possible!</p>
+      <header className={styles.hero}>
+        <div>
+          <span className={styles.eyebrow}>Zona d&apos;entrenament</span>
+          <h1>Què vols practicar avui?</h1>
+          <p>Tria una aventura i llegeix en veu alta.</p>
         </div>
-      </details>
+        <span className={styles.heroIcon} aria-hidden="true">🎤</span>
+      </header>
 
       {(mission || missionLoading) && (
         <section className={styles.missionBanner}>
@@ -145,36 +137,24 @@ export function ExercisesPage({ profile, initialSetId = null, onInitialSetConsum
           ) : (
             <>
               <div className={styles.missionBannerText}>
-                <span className={styles.missionBannerLabel}>Repte recomanat · Objectiu {mission.targetScore}%</span>
+                <span className={styles.missionBannerLabel}>⭐ Fet per a tu · Objectiu {mission.targetScore}%</span>
                 <strong>{mission.set.title}</strong>
                 <span>{mission.reason}</span>
               </div>
-              <Button onClick={() => startMission(mission.set)}>Jugar ara</Button>
+              <Button onClick={() => startMission(mission.set)}>Comença ara</Button>
             </>
           )}
         </section>
       )}
 
-      <section className={`card ${styles.pokemonSection}`}>
-        <div className={styles.pokemonSectionHeader}>
+      <section className={styles.stepSection} aria-labelledby="type-heading">
+        <div className={styles.stepHeading}>
+          <span className={styles.stepNumber}>1</span>
           <div>
-            <h2 className={styles.sectionTitle}>Pokémon del teu camí</h2>
-            <p className={styles.pokemonSectionText}>
-              Veus els Pokémon que pots desbloquejar mentre tries el nivell. Si filtres per tipus, el llistat s’actualitza.
-            </p>
+            <h2 id="type-heading">Què vols llegir?</h2>
+            <p>Toca una opció</p>
           </div>
-          <div className={styles.pokemonCounter}>{featuredPokemon.filter((pokemon) => pokemon.unlocked).length}/{featuredPokemon.length || 0}</div>
         </div>
-        <PokemonCollection
-          collection={featuredPokemon}
-          loading={pokemonLoading}
-          emptyMessage="Encara no hi ha Pokémon disponibles per mostrar."
-        />
-      </section>
-
-      {/* Type selection */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Tipus</h2>
         <div className={styles.typeGrid}>
           {allTypes.map((type) => (
             <button
@@ -182,89 +162,128 @@ export function ExercisesPage({ profile, initialSetId = null, onInitialSetConsum
               className={`${styles.typeBtn} ${selectedType === type ? styles.typeSelected : ''} ${isComingSoonType(type) ? styles.typeDisabled : ''}`}
               onClick={() => {
                 if (isComingSoonType(type)) return;
-                setSelectedType(selectedType === type ? null : type);
+                const nextType = selectedType === type ? null : type;
+                setSelectedType(nextType);
+                setSelectedDifficulty(null);
+                setSelectedSet(null);
               }}
               disabled={isComingSoonType(type)}
+              aria-pressed={selectedType === type}
             >
-              {TYPE_LABELS[type]} {isComingSoonType(type) ? '· Pròximament' : ''}
+              <span className={styles.typeIcon} aria-hidden="true">{TYPE_OPTIONS[type].icon}</span>
+              <span className={styles.choiceText}>
+                <strong>{TYPE_OPTIONS[type].label}</strong>
+                <small>{isComingSoonType(type) ? 'Pròximament' : TYPE_OPTIONS[type].description}</small>
+              </span>
+              {selectedType === type && <span className={styles.checkmark} aria-hidden="true">✓</span>}
             </button>
           ))}
         </div>
       </section>
 
-      {/* Difficulty selection */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Dificultat</h2>
+      <section className={`${styles.stepSection} ${!selectedType ? styles.stepLocked : ''}`} aria-labelledby="difficulty-heading">
+        <div className={styles.stepHeading}>
+          <span className={styles.stepNumber}>2</span>
+          <div>
+            <h2 id="difficulty-heading">Tria el teu nivell</h2>
+            <p>{selectedType ? 'Pots canviar-lo quan vulguis' : 'Primer tria què vols llegir'}</p>
+          </div>
+        </div>
         <div className={styles.diffGrid}>
           {difficulties.map((d) => (
             <button
               key={d}
-              className={`${styles.diffBtn} ${selectedDifficulty === d ? styles.diffSelected : ''}`}
-              onClick={() => setSelectedDifficulty(selectedDifficulty === d ? null : d)}
+              className={`${styles.diffBtn} ${styles[`difficulty${d}`]} ${selectedDifficulty === d ? styles.diffSelected : ''}`}
+              onClick={() => {
+                setSelectedDifficulty(selectedDifficulty === d ? null : d);
+                setSelectedSet(null);
+              }}
+              disabled={!selectedType}
+              aria-pressed={selectedDifficulty === d}
             >
-              {DIFFICULTY_LABELS[d]}
+              <span className={styles.diffIcon} aria-hidden="true">{DIFFICULTY_OPTIONS[d].icon}</span>
+              <strong>{DIFFICULTY_OPTIONS[d].label}</strong>
+              <small>{DIFFICULTY_OPTIONS[d].description}</small>
             </button>
           ))}
         </div>
       </section>
 
-      {/* Exercise sets */}
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>
-          Exercicis disponibles ({availableSets.length})
-        </h2>
-        <div className={styles.setList}>
-          {availableSets.map((set) => (
-            <button
-              key={set.id}
-              className={`${styles.setCard} ${selectedSet?.id === set.id ? styles.setSelected : ''}`}
-              onClick={() => setSelectedSet(selectedSet?.id === set.id ? null : set)}
-            >
-              <div className={styles.setTitle}>{set.title}</div>
-              <div className={styles.setMeta}>
-                <span>{TYPE_LABELS[set.type]}</span>
-                <span>{DIFFICULTY_LABELS[set.difficulty]}</span>
-                <span>{set.items.length} elements</span>
-              </div>
-            </button>
-          ))}
+      <section className={`${styles.stepSection} ${!selectedDifficulty ? styles.stepLocked : ''}`} aria-labelledby="exercise-heading">
+        <div className={styles.stepHeading}>
+          <span className={styles.stepNumber}>3</span>
+          <div>
+            <h2 id="exercise-heading">Escull una aventura</h2>
+            <p>{selectedDifficulty ? `${availableSets.length} jocs preparats` : 'Tria un nivell per continuar'}</p>
+          </div>
         </div>
+        {selectedType && selectedDifficulty && (
+          <div className={styles.setList}>
+            {availableSets.map((set, setIndex) => (
+              <button
+                key={set.id}
+                className={`${styles.setCard} ${selectedSet?.id === set.id ? styles.setSelected : ''}`}
+                onClick={() => setSelectedSet(selectedSet?.id === set.id ? null : set)}
+                aria-pressed={selectedSet?.id === set.id}
+              >
+                <span className={styles.setNumber} aria-hidden="true">{setIndex + 1}</span>
+                <span className={styles.setContent}>
+                  <strong className={styles.setTitle}>{set.title}</strong>
+                  <span className={styles.setMeta}>🎯 {set.items.length} lectures</span>
+                </span>
+                <span className={styles.setArrow} aria-hidden="true">{selectedSet?.id === set.id ? '✓' : '›'}</span>
+              </button>
+            ))}
+          </div>
+        )}
       </section>
 
       {selectedSet && (
         <div className={styles.startBar}>
           <div className={styles.selectedInfo}>
             <strong>{selectedSet.title}</strong>
-            <span>{selectedSet.items.length} elements</span>
+            <span>{selectedSet.items.length} lectures · El micròfon s&apos;engegarà sol</span>
           </div>
           <Button size="lg" onClick={() => setRunning(true)}>
-            ▶ Comença!
+            Comença! ▶
           </Button>
         </div>
       )}
 
-      {/* Endless mode */}
-      <section className={`${styles.section} ${styles.endlessSection}`}>
-        <h2 className={styles.sectionTitle}>🔄 Mode sense fi</h2>
-        <p className={styles.endlessDesc}>
-          Llegeix elements sense parar fins que cometis un error.
-          {selectedType && <> ({TYPE_LABELS[selectedType]})</>}
-        </p>
-        <Button
-          variant="secondary"
-          onClick={() => {
-            const pool = availableSets.flatMap((s) => s.items);
-            if (pool.length === 0) return;
-            const label = selectedType ? TYPE_LABELS[selectedType] : 'Tots els elements';
-            setEndlessPool(pool);
-            setEndlessLabel(label);
-            setEndlessRunning(true);
-          }}
-          disabled={availableSets.flatMap((s) => s.items).length === 0}
-        >
-          🚀 Jugar en mode sense fi
-        </Button>
-      </section>
+      {selectedType && selectedDifficulty && (
+        <section className={styles.endlessSection}>
+          <div>
+            <span className={styles.endlessLabel}>Per a valents</span>
+            <h2>♾️ Repte sense fi</h2>
+            <p>Llegeix sense parar i supera la teva millor ratxa.</p>
+          </div>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              const pool = availableSets.flatMap((set) => set.items);
+              if (pool.length === 0) return;
+              setEndlessPool(pool);
+              setEndlessLabel(TYPE_OPTIONS[selectedType].label);
+              setEndlessRunning(true);
+            }}
+            disabled={availableSets.flatMap((set) => set.items).length === 0}
+          >
+            Juga sense fi
+          </Button>
+        </section>
+      )}
+
+      <details className={styles.rewardsSection}>
+        <summary>
+          <span>🏆 Els meus premis</span>
+          <strong>{featuredPokemon.filter((pokemon) => pokemon.unlocked).length}/{featuredPokemon.length || 0}</strong>
+        </summary>
+        <PokemonCollection
+          collection={featuredPokemon}
+          loading={pokemonLoading}
+          emptyMessage="Encara no hi ha Pokémon disponibles per mostrar."
+        />
+      </details>
     </div>
   );
 }
