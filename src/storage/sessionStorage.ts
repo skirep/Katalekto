@@ -64,6 +64,13 @@ export const sessionStorage = {
       .toArray();
   },
 
+  async getAllByProfile(profileId: string): Promise<ExerciseSession[]> {
+    return db.sessions
+      .where('profileId')
+      .equals(profileId)
+      .toArray();
+  },
+
   async getRecentByProfile(profileId: string, days = 30): Promise<ExerciseSession[]> {
     const since = Date.now() - days * 24 * 60 * 60 * 1000;
     const local = await db.sessions

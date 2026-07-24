@@ -53,7 +53,19 @@ export function PokemonCollection({
                 </div>
               )}
               <div className={styles.name}>{pokemon.name}</div>
+              <div className={styles.power}>Força {pokemon.power}</div>
+              <div className={styles.progressBlock}>
+                <div className={styles.progressHeader}>
+                  <span>Progrés</span>
+                  <span>{Math.round(pokemon.progressPercent * 100)}%</span>
+                </div>
+                <div className={styles.progressBar}>
+                  <div className={styles.progressFill} style={{ width: `${Math.round(pokemon.progressPercent * 100)}%` }} />
+                </div>
+              </div>
+              <div className={styles.meta}>{pokemon.description}</div>
               <div className={styles.meta}>{pokemon.unlockCondition}</div>
+              <div className={styles.exerciseList}>{pokemon.assignedExerciseTitles.join(' · ')}</div>
             </button>
           );
         }
@@ -77,7 +89,19 @@ export function PokemonCollection({
               </div>
             )}
             <div className={styles.name}>{pokemon.name}</div>
+            <div className={styles.power}>Força {pokemon.power}</div>
+            <div className={styles.progressBlock}>
+              <div className={styles.progressHeader}>
+                <span>Progrés</span>
+                <span>{Math.round(pokemon.progressPercent * 100)}%</span>
+              </div>
+              <div className={styles.progressBar}>
+                <div className={styles.progressFill} style={{ width: `${Math.round(pokemon.progressPercent * 100)}%` }} />
+              </div>
+            </div>
+            <div className={styles.meta}>{pokemon.description}</div>
             <div className={styles.meta}>{pokemon.unlockCondition}</div>
+            <div className={styles.exerciseList}>{pokemon.assignedExerciseTitles.join(' · ')}</div>
           </article>
         );
       })}

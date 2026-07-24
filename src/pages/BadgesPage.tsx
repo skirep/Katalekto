@@ -6,40 +6,92 @@ import type { Profile, PokemonCollectionItem } from '../models';
 
 const POKEDEX_SECTIONS = [
   {
-    id: 'starter-route',
-    title: 'Ruta inicial',
-    description: 'Els primers Pokémon que arriben amb els primers avenços de lectura.',
-    match: (pokemon: PokemonCollectionItem) => pokemon.unlockRequirement.type === 'progress' && pokemon.pokemonId <= 25,
+    id: 'syllables-route',
+    title: 'Camí de síl·labes',
+    description: 'Pokémon que creixen completant els conjunts de síl·labes, des del nivell fàcil fins al repte de 100.',
+    match: (pokemon: PokemonCollectionItem) => pokemon.exerciseType === 'syllables',
+    evolutionLabel: 'Bulbasaur → Ivysaur → Venusaur',
   },
   {
-    id: 'adventure-route',
-    title: 'Aventura lectora',
-    description: 'Pokémon per a qui ja manté una bona progressió diària.',
-    match: (pokemon: PokemonCollectionItem) => pokemon.unlockRequirement.type === 'progress' && pokemon.pokemonId > 25 && pokemon.pokemonId <= 60,
+    id: 'words-route',
+    title: 'Camí de paraules',
+    description: 'La branca més ofensiva: paraules fàcils, mitjanes i difícils per fer créixer l’atac.',
+    match: (pokemon: PokemonCollectionItem) => pokemon.exerciseType === 'words',
+    evolutionLabel: 'Charmander → Charmeleon → Charizard',
   },
   {
-    id: 'master-route',
-    title: 'Mestres del progrés',
-    description: 'Criatures reservades per als lectors més constants.',
-    match: (pokemon: PokemonCollectionItem) => pokemon.unlockRequirement.type === 'progress' && pokemon.pokemonId > 60,
-  },
-  {
-    id: 'milestone-route',
-    title: 'Fites especials',
-    description: 'Desbloquejos per punts de fita, insígnies i constància acumulada.',
-    match: (pokemon: PokemonCollectionItem) => pokemon.unlockRequirement.type === 'milestones' && pokemon.pokemonId <= 150,
-  },
-  {
-    id: 'legend-route',
-    title: 'Llegendes finals',
-    description: 'Els Pokémon més difícils d’aconseguir, reservats a grans assoliments.',
-    match: (pokemon: PokemonCollectionItem) => pokemon.unlockRequirement.type === 'milestones' && pokemon.pokemonId > 150,
+    id: 'sentences-route',
+    title: 'Camí de frases',
+    description: 'La ruta més tècnica. Aquí viuen els Pokémon més forts, inclosa la Mew.',
+    match: (pokemon: PokemonCollectionItem) => pokemon.exerciseType === 'sentences',
+    evolutionLabel: 'Dratini → Dragonair → Mew',
   },
 ] as const;
 
-function getBattlePower(pokemon: PokemonCollectionItem): number {
-  const requirementBonus = pokemon.unlockRequirement.target * (pokemon.unlockRequirement.type === 'progress' ? 2 : 3);
-  return pokemon.pokemonId + requirementBonus + pokemon.name.length;
+const DIFFICULTY_RANK: Record<PokemonCollectionItem['difficulty'], number> = {
+  easy: 1,
+  medium: 2,
+  hard: 3,
+};
+
+const ATTACKS_BY_TYPE: Record<PokemonCollectionItem['exerciseType'], string[]> = {
+  syllables: ['Impacte sil·làbic', 'Rafega vocal', 'Combo de consonants'],
+  words: ['Foc de paraules', 'Tall lèxic', 'Crit d’ortografia'],
+  sentences: ['Onada sintàctica', 'Raig de frase llarga', 'Tempesta narrativa'],
+};
+
+const ATTACKS_BY_DIFFICULTY: Record<PokemonCollectionItem['difficulty'], string[]> = {
+  easy: ['Cop àgil', 'Empenta ràpida', 'Brisa lleugera'],
+  medium: ['Tornado tàctic', 'Impacte sostingut', 'Descàrrega precisa'],
+  hard: ['Explosió mestra', 'Rugir llegendari', 'Tempesta definitiva'],
+};
+
+interface BattleTurn {
+  attackerId: number;
+  attackerName: string;
+  defenderName: string;
+  attackName: string;
+  damage: number;
+  defenderHp: number;
+}
+
+interface BattleResult {
+  winner: PokemonCollectionItem;
+  loser: PokemonCollectionItem;
+  winnerPower: number;
+  loserPower: number;
+  commentary: string;
+  turns: BattleTurn[];
+  fighterStates: Array<{ pokemonId: number; currentHp: number; maxHp: number }>;
+}
+
+interface BattleHistoryEntry {
+  id: number;
+  winnerName: string;
+  loserName: string;
+  winnerPower: number;
+  loserPower: number;
+  summary: string;
+}
+
+function getMaxHp(pokemon: PokemonCollectionItem): number {
+  const difficultyBonus = pokemon.difficulty === 'easy' ? 0 : pokemon.difficulty === 'medium' ? 12 : 24;
+  return 90 + difficultyBonus + Math.round(pokemon.power * 0.7);
+}
+
+function getAttackLine(attacker: PokemonCollectionItem, turnIndex: number) {
+  const typeAttacks = ATTACKS_BY_TYPE[attacker.exerciseType];
+  const difficultyAttacks = ATTACKS_BY_DIFFICULTY[attacker.difficulty];
+  const attackPool = [...typeAttacks, ...difficultyAttacks];
+  return attackPool[turnIndex % attackPool.length] ?? attackPool[0];
+}
+
+function getBattleSummary(winner: PokemonCollectionItem, loser: PokemonCollectionItem, winnerPower: number, loserPower: number) {
+  if (winnerPower - loserPower > 18) {
+    return `${winner.name} ha arrasat el combat i deixa ${loser.name} sense opcions.`;
+  }
+
+  return `${winner.name} ha superat ${loser.name} després d’un duel molt igualat.`;
 }
 
 interface BadgesPageProps {
@@ -51,13 +103,8 @@ export function BadgesPage({ profile }: BadgesPageProps) {
   const unlockedPokemon = collection.filter((pokemon) => pokemon.unlocked).length;
   const unlockedCollection = collection.filter((pokemon) => pokemon.unlocked);
   const [selectedPokemonIds, setSelectedPokemonIds] = useState<number[]>([]);
-  const [battleResult, setBattleResult] = useState<{
-    winner: PokemonCollectionItem;
-    loser: PokemonCollectionItem;
-    winnerPower: number;
-    loserPower: number;
-    commentary: string;
-  } | null>(null);
+  const [battleResult, setBattleResult] = useState<BattleResult | null>(null);
+  const [battleHistory, setBattleHistory] = useState<BattleHistoryEntry[]>([]);
 
   const selectedPokemon = selectedPokemonIds
     .map((pokemonId) => unlockedCollection.find((pokemon) => pokemon.pokemonId === pokemonId) ?? null)
@@ -84,18 +131,71 @@ export function BadgesPage({ profile }: BadgesPageProps) {
     if (selectedPokemon.length !== 2) return;
 
     const [firstPokemon, secondPokemon] = selectedPokemon;
-    const firstPower = getBattlePower(firstPokemon) + Math.floor(Math.random() * 18);
-    const secondPower = getBattlePower(secondPokemon) + Math.floor(Math.random() * 18);
-    const firstWins = firstPower >= secondPower;
+    const fighterStates = [
+      { pokemon: firstPokemon, currentHp: getMaxHp(firstPokemon), maxHp: getMaxHp(firstPokemon) },
+      { pokemon: secondPokemon, currentHp: getMaxHp(secondPokemon), maxHp: getMaxHp(secondPokemon) },
+    ];
+
+    const turns: BattleTurn[] = [];
+    let attackerIndex = firstPokemon.power >= secondPokemon.power ? 0 : 1;
+    let round = 0;
+
+    while (fighterStates[0].currentHp > 0 && fighterStates[1].currentHp > 0 && round < 8) {
+      const defenderIndex = attackerIndex === 0 ? 1 : 0;
+      const attacker = fighterStates[attackerIndex].pokemon;
+      const defender = fighterStates[defenderIndex].pokemon;
+      const damageBase = Math.max(8, Math.round(attacker.power * 0.18));
+      const difficultyBonus = attacker.difficulty === 'easy' ? 2 : attacker.difficulty === 'medium' ? 5 : 9;
+      const damage = damageBase + difficultyBonus + Math.floor(Math.random() * 10);
+      fighterStates[defenderIndex].currentHp = Math.max(0, fighterStates[defenderIndex].currentHp - damage);
+
+      turns.push({
+        attackerId: attacker.pokemonId,
+        attackerName: attacker.name,
+        defenderName: defender.name,
+        attackName: getAttackLine(attacker, round),
+        damage,
+        defenderHp: fighterStates[defenderIndex].currentHp,
+      });
+
+      attackerIndex = defenderIndex;
+      round += 1;
+    }
+
+    const firstState = fighterStates[0];
+    const secondState = fighterStates[1];
+    const firstWins = firstState.currentHp >= secondState.currentHp;
     const winner = firstWins ? firstPokemon : secondPokemon;
     const loser = firstWins ? secondPokemon : firstPokemon;
-    const winnerPower = firstWins ? firstPower : secondPower;
-    const loserPower = firstWins ? secondPower : firstPower;
-    const commentary = winnerPower - loserPower > 12
-      ? `${winner.name} domina clarament el combat amb un atac espectacular.`
-      : `${winner.name} guanya un duel molt ajustat després d’un intercanvi intens.`;
+    const winnerPower = firstWins ? firstPokemon.power : secondPokemon.power;
+    const loserPower = firstWins ? secondPokemon.power : firstPokemon.power;
+    const commentary = getBattleSummary(winner, loser, winnerPower, loserPower);
 
-    setBattleResult({ winner, loser, winnerPower, loserPower, commentary });
+    setBattleResult({
+      winner,
+      loser,
+      winnerPower,
+      loserPower,
+      commentary,
+      turns,
+      fighterStates: fighterStates.map((state) => ({
+        pokemonId: state.pokemon.pokemonId,
+        currentHp: state.currentHp,
+        maxHp: state.maxHp,
+      })),
+    });
+
+    setBattleHistory((prev) => [
+      {
+        id: Date.now(),
+        winnerName: winner.name,
+        loserName: loser.name,
+        winnerPower,
+        loserPower,
+        summary: commentary,
+      },
+      ...prev,
+    ].slice(0, 6));
   };
 
   return (
@@ -105,13 +205,14 @@ export function BadgesPage({ profile }: BadgesPageProps) {
       <details className="info-box">
         <summary>ℹ️ Com funciona aquesta pantalla?</summary>
         <div className="info-box-content">
-          <p>Completa exercicis per desbloquejar Pokémon i omplir la teva Pokédex de logros.</p>
+          <p>Cada Pokémon està vinculat a exercicis reals del joc. Si superes aquests exercicis, el Pokémon es desbloqueja i guanya força.</p>
           <ul>
-            <li><strong>Ruta inicial, aventura i mestres:</strong> s'obtenen amb el progrés de lectura.</li>
-            <li><strong>Fites especials i llegendes:</strong> s'obtenen amb punts de fita, constància i desbloquejos acumulats.</li>
-            <li><strong>Arena Pokémon:</strong> quan tinguis Pokémon desbloquejats, pots seleccionar-ne dos i fer una mini-lluita amistosa.</li>
+            <li><strong>Síl·labes:</strong> obren la branca Bulbasaur → Ivysaur → Venusaur.</li>
+            <li><strong>Paraules:</strong> fan créixer Charmander → Charmeleon → Charizard.</li>
+            <li><strong>Frases:</strong> desbloquegen Dratini → Dragonair → Mew.</li>
+            <li><strong>Pseudoparaules:</strong> queden fora de la Pokédex perquè el reconeixement de veu no és prou fiable.</li>
           </ul>
-          <p>Els Pokémon bloquejats es mostren com a siluetes. Practica per descobrir-los tots.</p>
+          <p>A la mini-lluita pots triar dos Pokémon desbloquejats. El seu poder depèn del nivell base i dels exercicis superats d’aquell camí.</p>
         </div>
       </details>
 
@@ -120,7 +221,7 @@ export function BadgesPage({ profile }: BadgesPageProps) {
           <div className={styles.heroEyebrow}>Progrés general</div>
           <h2 className={styles.heroTitle}>Has desbloquejat {unlockedPokemon} Pokémon</h2>
           <p className={styles.heroText}>
-            Cada categoria representa un tipus d’assoliment diferent. Obre-les per veure què et falta per completar-les.
+            La teva Pokédex ara segueix el teu recorregut lector real. Cada criatura té uns exercicis associats i creix quan els vas superant.
           </p>
         </div>
         <div className={styles.heroCounter}>{unlockedPokemon}/{collection.length || 0}</div>
@@ -144,10 +245,32 @@ export function BadgesPage({ profile }: BadgesPageProps) {
 
         <div className={styles.battleArena}>
           {selectedPokemon.map((pokemon) => (
-            <article key={pokemon.pokemonId} className={styles.fighterCard}>
+            <article
+              key={pokemon.pokemonId}
+              className={`${styles.fighterCard} ${battleResult?.winner.pokemonId === pokemon.pokemonId ? styles.fighterWinner : ''} ${battleResult?.loser.pokemonId === pokemon.pokemonId ? styles.fighterLoser : ''}`}
+            >
               {pokemon.imageUrl ? <img className={styles.fighterArt} src={pokemon.imageUrl} alt={pokemon.name} /> : <div className={styles.fighterPlaceholder}>⚡</div>}
               <div className={styles.fighterName}>{pokemon.name}</div>
               <div className={styles.fighterMeta}>{pokemon.unlockCondition}</div>
+              <div className={styles.fighterPower}>Força {pokemon.power}</div>
+              <div className={styles.hpBlock}>
+                <div className={styles.hpHeader}>
+                  <span>HP</span>
+                  <span>
+                    {battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.currentHp ?? getMaxHp(pokemon)}
+                    /
+                    {battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.maxHp ?? getMaxHp(pokemon)}
+                  </span>
+                </div>
+                <div className={styles.hpBar}>
+                  <div
+                    className={styles.hpFill}
+                    style={{
+                      width: `${Math.round((((battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.currentHp ?? getMaxHp(pokemon)) / (battleResult?.fighterStates.find((state) => state.pokemonId === pokemon.pokemonId)?.maxHp ?? getMaxHp(pokemon))) * 100))}%`,
+                    }}
+                  />
+                </div>
+              </div>
             </article>
           ))}
           {selectedPokemon.length < 2 && Array.from({ length: 2 - selectedPokemon.length }, (_, idx) => (
@@ -161,13 +284,37 @@ export function BadgesPage({ profile }: BadgesPageProps) {
             <div className={styles.battleScores}>
               {battleResult.winner.name}: {battleResult.winnerPower} · {battleResult.loser.name}: {battleResult.loserPower}
             </div>
+            <div className={styles.battleLog}>
+              {battleResult.turns.map((turn, index) => (
+                <div key={`${turn.attackerId}-${index}`} className={styles.battleLine}>
+                  {turn.attackerName} usa {turn.attackName} contra {turn.defenderName} i fa {turn.damage} de mal. HP restant: {turn.defenderHp}
+                </div>
+              ))}
+            </div>
             <p className={styles.battleCommentary}>{battleResult.commentary}</p>
+          </div>
+        )}
+
+        {battleHistory.length > 0 && (
+          <div className={styles.historyCard}>
+            <h3 className={styles.historyTitle}>Historial recent de combats</h3>
+            <div className={styles.historyList}>
+              {battleHistory.map((entry) => (
+                <div key={entry.id} className={styles.historyItem}>
+                  <div className={styles.historyNames}>{entry.winnerName} vs {entry.loserName}</div>
+                  <div className={styles.historyMeta}>Força {entry.winnerPower} · {entry.loserPower}</div>
+                  <div className={styles.historySummary}>{entry.summary}</div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </section>
 
       {POKEDEX_SECTIONS.map((section) => {
-        const sectionCollection = collection.filter(section.match);
+        const sectionCollection = collection
+          .filter(section.match)
+          .sort((left, right) => DIFFICULTY_RANK[left.difficulty] - DIFFICULTY_RANK[right.difficulty]);
         const sectionUnlocked = sectionCollection.filter((pokemon) => pokemon.unlocked).length;
 
         return (
@@ -179,6 +326,19 @@ export function BadgesPage({ profile }: BadgesPageProps) {
               </div>
               <div className={styles.sectionCounter}>{sectionUnlocked}/{sectionCollection.length}</div>
             </div>
+            <div className={styles.evolutionTrack}>
+              {sectionCollection.map((pokemon, index) => (
+                <div key={pokemon.pathId} className={styles.evolutionNodeWrap}>
+                  <div className={`${styles.evolutionNode} ${pokemon.unlocked ? styles.evolutionNodeUnlocked : styles.evolutionNodeLocked}`}>
+                    {pokemon.imageUrl ? <img className={styles.evolutionArt} src={pokemon.imageUrl} alt={pokemon.name} /> : <span>{pokemon.unlocked ? '⚡' : '🔒'}</span>}
+                    <div className={styles.evolutionName}>{pokemon.name}</div>
+                    <div className={styles.evolutionDifficulty}>{pokemon.difficulty}</div>
+                  </div>
+                  {index < sectionCollection.length - 1 && <div className={styles.evolutionArrow}>→</div>}
+                </div>
+              ))}
+            </div>
+            <div className={styles.evolutionCaption}>{section.evolutionLabel}</div>
             <PokemonCollection
               collection={sectionCollection}
               loading={loading}

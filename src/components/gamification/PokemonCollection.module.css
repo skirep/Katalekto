@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  min-height: 184px;
+  min-height: 270px;
   padding: 14px 10px;
   border-radius: var(--radius-md);
   text-align: center;
@@ -79,10 +79,50 @@ button.card:disabled {
   color: var(--color-text);
 }
 
+.power {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.progressBlock {
+  width: 100%;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.progressBar {
+  margin-top: 4px;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
 .meta {
   font-size: 11px;
   line-height: 1.3;
   color: var(--color-text-muted);
+}
+
+.exerciseList {
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--color-text);
 }
 
 .date {
