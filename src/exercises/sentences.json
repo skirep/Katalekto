@@ -17,6 +17,40 @@
     ]
   },
   {
+    "id": "sent-easy-2",
+    "title": "Frases fàcils - b i d",
+    "description": "Frases curtes amb la b i la d",
+    "type": "sentences",
+    "difficulty": "easy",
+    "items": [
+      { "id": "f21", "text": "El bebè dorm.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f22", "text": "La bola és blava.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f23", "text": "El drac és bonic.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f24", "text": "La dona balla.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f25", "text": "El bou és gran.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f26", "text": "La dama porta un barret.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f27", "text": "El dad és bo.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f28", "text": "La bici és de David.", "type": "sentences", "difficulty": "easy" }
+    ]
+  },
+  {
+    "id": "sent-easy-3",
+    "title": "Frases fàcils - Accions",
+    "description": "Frases curtes sobre accions quotidianes",
+    "type": "sentences",
+    "difficulty": "easy",
+    "items": [
+      { "id": "f29", "text": "El gat beu llet.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f30", "text": "La nena llegeix.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f31", "text": "El nen corre ràpid.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f32", "text": "El gos menja.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f33", "text": "La mama somriu.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f34", "text": "L'ocell canta.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f35", "text": "El nen dorm bé.", "type": "sentences", "difficulty": "easy" },
+      { "id": "f36", "text": "La nena dibuixa.", "type": "sentences", "difficulty": "easy" }
+    ]
+  },
+  {
     "id": "sent-medium-1",
     "title": "Frases mitjanes",
     "description": "Frases amb més paraules",
@@ -32,6 +66,36 @@
     ]
   },
   {
+    "id": "sent-medium-2",
+    "title": "Frases mitjanes - b i d",
+    "description": "Frases mitjanes amb b i d per practicar",
+    "type": "sentences",
+    "difficulty": "medium",
+    "items": [
+      { "id": "f37", "text": "La ballarina dansa al damunt de l'escenari.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f38", "text": "El drac blau busca el seu tresor.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f39", "text": "La bicicleta del David és de color blava.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f40", "text": "En Bernat dóna una beguda a la seva besàvia.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f41", "text": "La bestia dormia dins de la cova.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f42", "text": "El dimoni bona boca no tenia.", "type": "sentences", "difficulty": "medium" }
+    ]
+  },
+  {
+    "id": "sent-medium-3",
+    "title": "Frases mitjanes - Escola i natura",
+    "description": "Frases sobre l'escola i la naturalesa",
+    "type": "sentences",
+    "difficulty": "medium",
+    "items": [
+      { "id": "f43", "text": "Els arbres del bosc creixen molt alts.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f44", "text": "La mestra explica la lliçó de matemàtiques.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f45", "text": "Els ocells canten al jardí cada matí.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f46", "text": "Avui hem anat d'excursió al camp.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f47", "text": "La papallona vola entre les flors.", "type": "sentences", "difficulty": "medium" },
+      { "id": "f48", "text": "Els nens pinten un mural a la classe.", "type": "sentences", "difficulty": "medium" }
+    ]
+  },
+  {
     "id": "sent-hard-1",
     "title": "Frases difícils",
     "description": "Frases llargues i complexes",
@@ -42,6 +106,32 @@
       { "id": "f16", "text": "La professora va explicar una lliçó molt interessant sobre els animals.", "type": "sentences", "difficulty": "hard" },
       { "id": "f17", "text": "Quan plou, els carrerons de la ciutat es tornen molt lliscadissos.", "type": "sentences", "difficulty": "hard" },
       { "id": "f18", "text": "En Pere i la Maria estudien molt per treure bones notes a l'escola.", "type": "sentences", "difficulty": "hard" }
+    ]
+  },
+  {
+    "id": "sent-hard-2",
+    "title": "Frases difícils - b i d",
+    "description": "Frases llargues amb b i d per practicar",
+    "type": "sentences",
+    "difficulty": "hard",
+    "items": [
+      { "id": "f49", "text": "La ballena blava és el mamífer més gran que existeix al planeta.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f50", "text": "En David i la Berta van descobrir un bosc encantat durant l'excursió.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f51", "text": "La biodiversitat dels boscos catalans depèn de la conservació dels hàbitats naturals.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f52", "text": "Després de la tormenta, els núvols desapareixien deixant un cel completament blau.", "type": "sentences", "difficulty": "hard" }
+    ]
+  },
+  {
+    "id": "sent-hard-3",
+    "title": "Frases difícils - Ciència",
+    "description": "Frases sobre ciència i coneixement",
+    "type": "sentences",
+    "difficulty": "hard",
+    "items": [
+      { "id": "f53", "text": "La fotosíntesi és el procés pel qual les plantes transformen la llum solar en energia.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f54", "text": "L'astronauta va descriure detalladament l'experiència de veure la Terra des de l'espai.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f55", "text": "La investigació científica requereix molta paciència i rigorositat en els experiments.", "type": "sentences", "difficulty": "hard" },
+      { "id": "f56", "text": "Els dinosaures van desaparèixer fa aproximadament seixanta-sis milions d'anys de la Terra.", "type": "sentences", "difficulty": "hard" }
     ]
   }
 ]
