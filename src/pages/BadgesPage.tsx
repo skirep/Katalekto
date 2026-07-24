@@ -324,17 +324,18 @@ export function BadgesPage({ profile }: BadgesPageProps) {
             </article>
             );
           })}
-          {activeTurn && (
-            <div className={`${styles.attackCallout} ${activeTurn.isSpecialAttack ? styles.attackCalloutSpecial : ''}`}>
-              <strong>{activeTurn.attackName}</strong>
-              {battlePhase === 'impact' && <span>−{activeTurn.damage} HP</span>}
-            </div>
-          )}
           {activeTurn && battlePhase === 'impact' && <div className={styles.impactFlash} aria-hidden="true" />}
           {selectedPokemon.length < 2 && Array.from({ length: 2 - selectedPokemon.length }, (_, idx) => (
             <div key={`empty-${idx}`} className={styles.fighterEmpty}>Tria un Pokémon desbloquejat</div>
           ))}
         </div>
+
+        {activeTurn && (
+          <div className={`${styles.attackCallout} ${activeTurn.isSpecialAttack ? styles.attackCalloutSpecial : ''}`}>
+            <strong>{activeTurn.attackName}</strong>
+            {battlePhase === 'impact' && <span>−{activeTurn.damage} HP</span>}
+          </div>
+        )}
 
         {battleResult && (
           <div className={styles.battleResult} key={battleResult.turns.length}>
