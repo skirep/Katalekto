@@ -162,6 +162,20 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     setPhase('done');
   }, [profile.id, set.id, set.type, set.difficulty]);
 
+  const handleReadTimeout = useCallback(() => {
+    if (phaseRef.current !== 'listening' || timedOutRef.current) return;
+    timedOutRef.current = true;
+    clearTimer(readTimeoutRef);
+    stop();
+    setTimeLeftMs(0);
+    if (index + 1 >= items.length) {
+      void completeSession(attemptsRef.current);
+    } else {
+      setIndex((i) => i + 1);
+      setPhase('ready');
+    }
+  }, [clearTimer, stop, index, items.length, completeSession]);
+
   useEffect(() => {
     attemptsRef.current = attempts;
   }, [attempts]);
@@ -194,30 +208,25 @@ export function ExerciseRunner({ profile, set, onFinish }: ExerciseRunnerProps) 
     setTimeLeftMs(durationMs);
     setPhase('listening');
     start();
-    readTimeoutRef.current = window.setTimeout(() => {
-      timedOutRef.current = true;
-      stop();
-      setTimeLeftMs(0);
-      if (index + 1 >= items.length) {
-        void completeSession(attemptsRef.current);
-      } else {
-        setIndex((i) => i + 1);
-        setPhase('ready');
-      }
-    }, durationMs);
+    readTimeoutRef.current = window.setTimeout(handleReadTimeout, durationMs);
 
     return () => {
       clearTimer(readTimeoutRef);
     };
-  }, [phase, settings.speed, start, stop, setTranscript, clearTimer, evaluateCurrentAttempt, items.length]);
+  }, [phase, settings.speed, start, setTranscript, clearTimer, evaluateCurrentAttempt, handleReadTimeout]);
 
   useEffect(() => {
     if (phase !== 'listening') return;
     const intervalId = window.setInterval(() => {
-      setTimeLeftMs(Math.max(0, itemDeadlineRef.current - Date.now()));
+      const remaining = Math.max(0, itemDeadlineRef.current - Date.now());
+      if (remaining <= 0) {
+        handleReadTimeout();
+        return;
+      }
+      setTimeLeftMs(remaining);
     }, 100);
     return () => window.clearInterval(intervalId);
-  }, [phase]);
+  }, [phase, handleReadTimeout]);
 
   // When recognition ends automatically, evaluate and transition to result phase
   useEffect(() => {
