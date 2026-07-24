@@ -14,6 +14,7 @@ export interface AppSettings {
   profileId: string;
   speed: number;
   exerciseSpeeds: ExerciseSpeeds;
+  uppercaseText: boolean;
   fontSize: FontSize;
   fontFamily: FontFamily;
   colorScheme: ColorScheme;
@@ -31,6 +32,7 @@ export const DEFAULT_SETTINGS: Omit<AppSettings, 'profileId'> = {
     pseudowords: 2,
     sentences: 2,
   },
+  uppercaseText: false,
   fontSize: 'large',
   fontFamily: 'standard',
   colorScheme: 'default',

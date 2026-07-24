@@ -29,6 +29,7 @@ function AppSettings({ settings }: { settings: AppSettingsData }) {
     document.documentElement.dataset.skin = settings.skin;
     document.documentElement.dataset.dyslexia = String(settings.dyslexiaMode);
     document.documentElement.dataset.fontSize = settings.fontSize;
+    document.documentElement.dataset.uppercase = String(settings.uppercaseText);
   }, [settings]);
 
   if (settings.skin === 'pokemon') {

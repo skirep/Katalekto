@@ -18,6 +18,10 @@
   line-height: 1.3;
 }
 
+:global(html[data-uppercase="true"]) .text {
+  text-transform: uppercase;
+}
+
 .large .text {
   font-size: calc(var(--exercise-font-size, 40px) * 1.3);
 }

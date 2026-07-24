@@ -80,6 +80,7 @@ export function SettingsPage({ profile, settings, onUpdateSettings: update, onUp
             <li><strong>Mida de la lletra:</strong> ajusta la mida del text per llegir-lo millor.</li>
             <li><strong>Colors / Skin:</strong> tria l'aspecte visual de l'aplicació.</li>
             <li><strong>Tipus de lletra:</strong> la lletra per a dislèxia facilita distingir lletres similars com b/d.</li>
+            <li><strong>Majúscules:</strong> mostra el text dels exercicis tot en majúscules.</li>
             <li><strong>Velocitat de lectura:</strong> temps que tens per llegir cada element en veu alta.</li>
             <li><strong>Mode dislèxia:</strong> activa espaiament especial per millorar la llegibilitat.</li>
           </ul>
@@ -200,6 +201,24 @@ export function SettingsPage({ profile, settings, onUpdateSettings: update, onUp
             onClick={() => void update({ fontFamily: 'dyslexia' })}
           >
             Dislèxia
+          </button>
+        </div>
+      </section>
+
+      <section className={`card ${styles.section}`}>
+        <div className={styles.toggleRow}>
+          <div>
+            <h2 className={styles.sectionTitle}>Text en majúscules</h2>
+            <p className="text-muted" style={{ fontSize: '14px' }}>
+              Mostra el text dels exercicis tot en majúscules
+            </p>
+          </div>
+          <button
+            className={`${styles.toggle} ${settings.uppercaseText ? styles.toggleOn : ''}`}
+            onClick={() => void update({ uppercaseText: !settings.uppercaseText })}
+            aria-label="Text en majúscules"
+          >
+            <span className={styles.toggleKnob} />
           </button>
         </div>
       </section>

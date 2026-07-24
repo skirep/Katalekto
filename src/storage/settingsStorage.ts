@@ -44,6 +44,7 @@ export async function loadSettingsFromSupabase(profileId: string): Promise<void>
     profileId,
     speed: normalizeSpeed(data.speed as number),
     exerciseSpeeds: normalizeExerciseSpeeds(undefined, data.speed as number),
+    uppercaseText: (data.uppercase_text as boolean | null) ?? false,
     fontSize: data.font_size as AppSettings['fontSize'],
     fontFamily: data.font_family as AppSettings['fontFamily'],
     colorScheme: data.color_scheme as AppSettings['colorScheme'],
@@ -64,6 +65,7 @@ async function syncSettingsToSupabase(settings: AppSettings): Promise<void> {
   const { error } = await supabase.from('profile_settings').upsert({
     profile_id: settings.profileId,
     speed: settings.speed,
+    uppercase_text: settings.uppercaseText,
     font_size: settings.fontSize,
     font_family: settings.fontFamily,
     color_scheme: settings.colorScheme,
