@@ -1,6 +1,6 @@
-# Lletrix
+# Lletrimon
 
-Lletrix és una aplicació web de suport a la lectura, pensada especialment per a infants i persones que s'estan aprenent a llegir o que presenten dificultats de lectura (com la dislèxia). Utilitza el **reconeixement de veu** del navegador per avaluar en temps real com el jugador llegeix síl·labes, paraules, pseudoparaules i frases.
+Lletrimon és una aplicació web de suport a la lectura, pensada especialment per a infants i persones que s'estan aprenent a llegir o que presenten dificultats de lectura (com la dislèxia). Utilitza el **reconeixement de veu** del navegador per avaluar en temps real com el jugador llegeix síl·labes, paraules, pseudoparaules i frases.
 
 ---
 

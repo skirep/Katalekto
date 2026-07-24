@@ -1,4 +1,4 @@
-# Documentació tècnica de Lletrix
+# Documentació tècnica de Lletrimon
 
 ## 1) Stack tecnològic
 
@@ -81,7 +81,7 @@ L’esquema SQL de les taules està documentat a `.env.example`.
 
 `vite.config.ts` configura:
 
-- `base: '/lletrix/'`
+- `base` dinàmic segons el nom de repositori a GitHub Pages (o `BASE_PATH`)
 - Manifest PWA
 - Service worker generat amb Workbox
 

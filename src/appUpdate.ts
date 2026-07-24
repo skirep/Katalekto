@@ -1,16 +1,17 @@
 import { registerSW } from 'virtual:pwa-register';
 
-const BUILD_STORAGE_KEY = 'lletrix:build-id';
-const RELOAD_STORAGE_KEY = 'lletrix:reloaded-build-id';
-const APP_SCOPE_SEGMENT = '/lletrix/';
+const BUILD_STORAGE_KEY = 'lletrimon:build-id';
+const RELOAD_STORAGE_KEY = 'lletrimon:reloaded-build-id';
+const APP_SCOPE_SEGMENT = import.meta.env.BASE_URL || '/';
 
 async function clearApplicationCaches() {
   if (!('caches' in window)) return;
 
   const cacheNames = await caches.keys();
+  const scopeToken = APP_SCOPE_SEGMENT.replace(/^\/+|\/+$/g, '');
   await Promise.all(
     cacheNames
-      .filter((cacheName) => cacheName.includes('workbox') || cacheName.includes('lletrix'))
+      .filter((cacheName) => cacheName.includes('workbox') || (scopeToken ? cacheName.includes(scopeToken) : false) || cacheName.includes('lletrimon'))
       .map((cacheName) => caches.delete(cacheName)),
   );
 }

@@ -34,9 +34,9 @@ export function HomePage({ profile, onNavigate, onStartMission, onSwitchProfile 
 
       {/* About the game */}
       <details className="info-box">
-        <summary>🎓 Sobre Lletrix: per a què serveix?</summary>
+        <summary>🎓 Sobre Lletrimon: per a què serveix?</summary>
         <div className="info-box-content">
-          <p><strong>Lletrix</strong> és una eina d&apos;entrenament de la lectura en veu alta pensada per a infants i persones que volen millorar la seva fluïdesa lectora.</p>
+          <p><strong>Lletrimon</strong> és una eina d&apos;entrenament de la lectura en veu alta pensada per a infants i persones que volen millorar la seva fluïdesa lectora.</p>
           <p>L&apos;objectiu principal és practicar la descodificació de síl·labes, paraules, pseudoparaules i frases llegint amb la veu mentre el sistema comprova automàticament si ho has dit bé.</p>
           <ul>
             <li>🔤 <strong>Síl·labes i paraules</strong> — consolida el coneixement fonètic i ortogràfic.</li>

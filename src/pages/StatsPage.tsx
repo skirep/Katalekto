@@ -5,6 +5,14 @@ import { formatDate, formatTime, percentageStr } from '../utils';
 import { useProfileStats, useRankings } from '../hooks';
 import type { Profile, ExerciseSession } from '../models';
 
+const EXERCISE_TYPE_LABELS = {
+  sounds: 'Sons',
+  syllables: 'Síl·labes',
+  words: 'Paraules',
+  pseudowords: 'Pseudoparaules',
+  sentences: 'Frases',
+} as const;
+
 interface StatsPageProps {
   profile: Profile;
 }
@@ -196,7 +204,7 @@ export function StatsPage({ profile }: StatsPageProps) {
                           {session.score}%
                         </div>
                         <div className={styles.sessionInfo}>
-                          <div className={styles.sessionType}>{session.type}</div>
+                          <div className={styles.sessionType}>{EXERCISE_TYPE_LABELS[session.type] ?? session.type}</div>
                           <div className={styles.sessionMeta}>
                             {percentageStr(session.correctItems, session.totalItems)} correctes
                             · {formatTime(Math.round(session.averageTimeMs))} per element

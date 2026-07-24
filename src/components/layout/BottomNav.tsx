@@ -24,7 +24,7 @@ export function BottomNav({ currentPage, onNavigate }: BottomNavProps) {
     <nav className={styles.nav} aria-label="Navegació principal">
       <div className={styles.brand} aria-hidden="true">
         <span className={styles.brandIcon}>🔤</span>
-        <span className={styles.brandName}>Lletrix</span>
+        <span className={styles.brandName}>Lletrimon</span>
       </div>
       <div className={styles.items}>
         {NAV_ITEMS.map((item) => (

@@ -24,7 +24,7 @@ const COLOR_SCHEMES: { id: ColorScheme; label: string; emoji: string }[] = [
 ];
 
 const SKINS: { id: SkinId; label: string; description: string; emoji: string }[] = [
-  { id: 'original', label: 'Original', description: 'L\'aspecte clàssic de Lletrix', emoji: '📖' },
+  { id: 'original', label: 'Original', description: 'L\'aspecte clàssic de Lletrimon', emoji: '📖' },
   { id: 'pokemon', label: 'Pokémon', description: 'Amb la Mew i la MewTwo', emoji: '✨' },
   { id: 'pikachu-ash', label: 'Pikachu i Ash', description: 'Amb el Pikachu i el Charizard', emoji: '⚡' },
   { id: 'team-rocket', label: 'Team Rocket', description: 'Prepareu-vos per a la batalla!', emoji: '🚀' },

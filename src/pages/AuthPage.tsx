@@ -62,7 +62,7 @@ export function AuthPage() {
     <div className={styles.page}>
       <div className={styles.header}>
         <span className={styles.logo}>📖</span>
-        <h1 className={styles.title}>Lletrix</h1>
+        <h1 className={styles.title}>Lletrimon</h1>
         <p className={styles.subtitle}>Aprèn a llegir en català</p>
       </div>
 

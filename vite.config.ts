@@ -3,9 +3,11 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const buildId = `${process.env.npm_package_version ?? '0.0.0'}-${process.env.GITHUB_SHA?.slice(0, 8) ?? Date.now()}`
+const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
+const resolvedBase = process.env.BASE_PATH ?? (repositoryName ? `/${repositoryName}/` : '/')
 
 export default defineConfig({
-  base: '/lletrix/',
+  base: resolvedBase,
   define: {
     __APP_BUILD_ID__: JSON.stringify(buildId),
   },
@@ -17,8 +19,8 @@ export default defineConfig({
       filename: 'sw.js',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'Lletrix - Aprèn a Llegir',
-        short_name: 'Lletrix',
+        name: 'Lletrimon - Apren a Llegir',
+        short_name: 'Lletrimon',
         description: 'Aplicació de lectura per a nens en català',
         lang: 'ca',
         theme_color: '#6366f1',
